@@ -32,6 +32,21 @@ public class PersistenciaCursosInscritos {
         }
 
     }
+    
+    public static void guardarLista(List<Inscripcion> lista){
+        File archivo = new File(FILENAME);
+            try {
+                FileOutputStream fos = new FileOutputStream(archivo);
+                ObjectOutputStream oos = new ObjectOutputStream(fos);
+                for(Inscripcion auxiliar : lista){
+                    oos.writeObject(auxiliar);
+                }
+                oos.close();
+                fos.close();
+            } catch (Exception e) {
+                System.out.println("error al guardar: " + e);
+            }
+    }
 
     public static List<Inscripcion> extraerListaObjetos() throws IOException, ClassNotFoundException {
         File archivo = new File(FILENAME);
@@ -62,6 +77,7 @@ public class PersistenciaCursosInscritos {
     public static void eliminarInscripcion(Inscripcion inscripcion) throws IOException, ClassNotFoundException {
         List<Inscripcion> inscritos= new ArrayList<>();
         inscritos = extraerListaObjetos();
+        
         for(Inscripcion auxiliar : extraerListaObjetos()){
             if(auxiliar.toString().equals(inscripcion.toString())){
                 inscritos.remove(auxiliar);
