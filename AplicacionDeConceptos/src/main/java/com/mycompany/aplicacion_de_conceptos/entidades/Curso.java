@@ -8,14 +8,14 @@ package com.mycompany.aplicacion_de_conceptos.entidades;
  *
  * @author Estudiante_MCA
  */
-public class Facultad {
-    private double ID;
-    private String nombre;
-    private Persona decano;
+public class Curso {
+    private int ID;
+    private Programa programa;
+    private boolean activo;
     
     public String toString(){
-        return "Id :"+ID+"\n"+
-                "Nombre :"+nombre+"\n"+
-                "Decano : "+decano.toString();
+        return "ID :"+ID+"\n"+
+                "Estado :"+activo+"\n"+
+                "Programa :"+programa.toString();
     }
 }

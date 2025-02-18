@@ -9,13 +9,13 @@ package com.mycompany.aplicacion_de_conceptos.entidades;
  * @author Estudiante_MCA
  */
 public class Persona {
-    double ID;
-    String nombres;
-    String apellidos;
-    String email;
+    private double ID;
+    private String nombres;
+    private String apellidos;
+    private String email;
     
     
-    public String toStrong(){
+    public String toString(){
         return "Nombres :"+nombres+"\n"+
                 "Apellidos :"+apellidos+"\n"+
                 "Email :"+email;
