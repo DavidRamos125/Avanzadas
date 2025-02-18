@@ -1,5 +1,3 @@
 package com.mycompany.aplicacion_de_conceptos.persistencia;
 
-public class PersistenciaCursosInscritos {
-    
-}
+import com.mycompany.aplicacion_de_conceptos.procesos.CursosInscritos;

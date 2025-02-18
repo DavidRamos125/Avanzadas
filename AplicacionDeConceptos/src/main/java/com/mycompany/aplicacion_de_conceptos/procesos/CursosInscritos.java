@@ -4,6 +4,7 @@
  */
 package com.mycompany.aplicacion_de_conceptos.procesos;
 
+<<<<<<< Updated upstream
 import com.mycompany.aplicacion_de_conceptos.entidades.Inscripcion;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +13,8 @@ import java.util.List;
  *
  * @author Estudiante_MCA
  */
+=======
+>>>>>>> Stashed changes
 public class CursosInscritos {
     private List<Inscripcion> listado = new ArrayList<>();
     
