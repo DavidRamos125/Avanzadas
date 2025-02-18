@@ -2,13 +2,14 @@ package com.mycompany.aplicacion_de_conceptos.entidades;
 
 import java.io.Serializable;
 
-public class Estudiante implements Serializable{
+public class Estudiante extends Persona implements Serializable{
     private double codigo;
     private Programa programa;
     private boolean activo;
     private double promedio;
     
-    public Estudiante(double codigo, Programa programa, boolean activo, double promedio) {
+    public Estudiante(double ID, String nombres, String apellidos, String email,double codigo, Programa programa, boolean activo, double promedio) {
+        super(ID, nombres, apellidos, email);
         this.codigo = codigo;
         this.programa = programa;
         this.activo = activo;
