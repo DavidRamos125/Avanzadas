@@ -20,7 +20,7 @@ public class CursosInscritos {
     }
     
     public void  eliminar(Inscripcion inscripcion){
-        //falta logica
+        listado.remove(inscripcion);
     }
     
     public void actualizar(Inscripcion inscripcion){
@@ -31,9 +31,14 @@ public class CursosInscritos {
         //falta logica
     }
     
-//    public List toString(){
-//        Falta logica, se deja comentado por error
-//    }
+     @Override
+    public String toString(){
+        StringBuilder sb = new StringBuilder("Cursos Inscritos:\n");
+        for (Inscripcion inscripcion : listado) {
+            sb.append(inscripcion.toString()).append("\n");
+        }
+        return sb.toString();
+    }
     
     public void cargarDatos(){
         //falta logica
