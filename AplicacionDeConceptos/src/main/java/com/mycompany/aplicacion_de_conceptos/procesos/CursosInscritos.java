@@ -3,18 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.mycompany.aplicacion_de_conceptos.procesos;
-
-<<<<<<< Updated upstream
 import com.mycompany.aplicacion_de_conceptos.entidades.Inscripcion;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author Estudiante_MCA
- */
-=======
->>>>>>> Stashed changes
 public class CursosInscritos {
     private List<Inscripcion> listado = new ArrayList<>();
     
