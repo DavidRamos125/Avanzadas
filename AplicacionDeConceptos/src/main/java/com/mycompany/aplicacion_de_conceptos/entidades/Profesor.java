@@ -4,11 +4,13 @@
  */
 package com.mycompany.aplicacion_de_conceptos.entidades;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Estudiante_MCA
  */
-public class Profesor extends Persona {
+public class Profesor extends Persona implements Serializable{
    private String TipoContrato;
    
    public Profesor(double ID, String nombres,String apellidos, String email, String TipoContrato){

@@ -4,11 +4,13 @@
  */
 package com.mycompany.aplicacion_de_conceptos.entidades;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Estudiante_MCA
  */
-class Programa {
+class Programa implements Serializable{
     private double ID;
     private String nombre;
     private double duracion;
