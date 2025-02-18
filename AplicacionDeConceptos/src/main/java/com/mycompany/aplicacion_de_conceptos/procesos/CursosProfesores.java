@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.aplicacion_de_conceptos.procesos.CursoProfesor;
-
-import com.mycompany.aplicacion_de_conceptos.persistencia.PersistenciaCursosProfesores.PersistenciaCursosProfesores;
+package com.mycompany.aplicacion_de_conceptos.procesos;
+import com.mycompany.aplicacion_de_conceptos.entidades.CursoProfesor;
+import com.mycompany.aplicacion_de_conceptos.persistencia.PersistenciaCursosProfesores;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,12 +29,13 @@ public class CursosProfesores {
         }
     }
     
-    public List<String> toStringList() {
-        List<String> result = new ArrayList<>();
+    @Override
+    public String toString(){
+        StringBuilder sb = new StringBuilder("Cursos Inscritos del profesor:\n");
         for (CursoProfesor cursoProfesor : listado) {
-            result.add(cursoProfesor.toString());
-        }  
-        return result;
+            sb.append(cursoProfesor.toString()).append("\n");
+        }
+        return sb.toString();
     }
 
     public void cargarDatos() {
