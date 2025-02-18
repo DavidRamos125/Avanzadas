@@ -8,6 +8,15 @@ package com.mycompany.aplicacion_de_conceptos.entidades;
  *
  * @author Estudiante_MCA
  */
-public class Profesor {
-    
+public class Profesor extends Persona {
+   private String TipoContrato;
+   
+   public Profesor(double ID, String nombres,String apellidos, String email, String TipoContrato){
+       super(ID, nombres, apellidos, email);
+       this.TipoContrato = TipoContrato;
+   }
+   
+   public String toString(){
+       return super.toString() + ", tipo de contrato: " + TipoContrato;
+   }
 }
