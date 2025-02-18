@@ -4,10 +4,41 @@
  */
 package com.mycompany.aplicacion_de_conceptos.procesos;
 
+<<<<<<< Updated upstream
+import com.mycompany.aplicacion_de_conceptos.entidades.Inscripcion;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Estudiante_MCA
  */
+=======
+>>>>>>> Stashed changes
 public class CursosInscritos {
+    private List<Inscripcion> listado = new ArrayList<>();
     
+    public void inscribirCurso(Inscripcion inscripcion){
+        listado.add(inscripcion);
+    }
+    
+    public void  eliminar(Inscripcion inscripcion){
+        //falta logica
+    }
+    
+    public void actualizar(Inscripcion inscripcion){
+        //falta logica
+    }
+    
+    public void guardarInformacion(){
+        //falta logica
+    }
+    
+//    public List toString(){
+//        Falta logica, se deja comentado por error
+//    }
+    
+    public void cargarDatos(){
+        //falta logica
+    }
 }
