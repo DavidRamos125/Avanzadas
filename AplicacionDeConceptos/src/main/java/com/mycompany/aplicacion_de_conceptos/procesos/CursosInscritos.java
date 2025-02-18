@@ -8,7 +8,11 @@ import java.util.List;
 
 public class CursosInscritos {
 
-    private List<Inscripcion> listado = new ArrayList<>();
+    private List<Inscripcion> listado ;
+    
+    public CursosInscritos(){
+        listado = new ArrayList<>();
+    }
 
     public void inscribirCurso(Inscripcion inscripcion) {
         listado.add(inscripcion);

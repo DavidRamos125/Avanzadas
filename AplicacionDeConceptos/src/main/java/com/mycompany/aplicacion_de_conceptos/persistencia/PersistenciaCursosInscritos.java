@@ -58,6 +58,17 @@ public class PersistenciaCursosInscritos {
         }
         return false;
     }
+    
+    public static void eliminarInscripcion(Inscripcion inscripcion) throws IOException, ClassNotFoundException {
+        List<Inscripcion> inscritos= new ArrayList<>();
+        inscritos = extraerListaObjetos();
+        for(Inscripcion auxiliar : extraerListaObjetos()){
+            if(auxiliar.toString().equals(inscripcion.toString())){
+                inscritos.remove(auxiliar);
+                
+            }
+        }
+    }
 
     public static void LeerArchivo() {
         File archivo = new File(FILENAME);
