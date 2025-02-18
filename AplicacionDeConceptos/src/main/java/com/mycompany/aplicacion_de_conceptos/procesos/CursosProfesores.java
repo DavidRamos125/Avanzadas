@@ -4,6 +4,9 @@
  */
 package com.mycompany.aplicacion_de_conceptos.procesos;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Estudiante_MCA
@@ -16,14 +19,19 @@ public class CursosProfesores {
     }
     
     public void guardarInformacion(CursoProfesor cursoProfesor){
-        
+        System.out.println("Guardando información del curso: "+cursoProfesor.toString());
     }
     
-    public List toString(){
-        
+    public List<String> toStringList(){
+        List<String> result = new ArrayList<>(){
+        for(CursoProfesor cursoProfesor : listado){
+            result.add(cursoProfesor.toString());
+        }  
+        return result;
+        }
     }
     
-    public cargarDatos(){
-        
+    public void cargarDatos(){
+        System.out.println("Cargando datos");
     }
 }
