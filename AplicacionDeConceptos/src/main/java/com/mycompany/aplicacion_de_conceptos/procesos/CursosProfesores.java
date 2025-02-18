@@ -18,6 +18,13 @@ public class CursosProfesores {
     
     public void inscribir(CursoProfesor cursoProfesor){
         listado.add(cursoProfesor);
+        try {
+            PersistenciaCursosProfesores.guardarCursoProfesor(cursoProfesor);
+        } catch (IOException e) {
+            System.out.println("Error" + e.getMessage());
+        } catch (ClassNotFoundException e) {
+            System.out.println("Error" + e.getMessage());
+        }
     }
     
     public void guardarInformacion(CursoProfesor cursoProfesor) {
