@@ -1,6 +1,8 @@
 package com.mycompany.aplicacion_de_conceptos.entidades;
 
-public class Inscripcion {
+import java.io.Serializable;
+
+public class Inscripcion implements Serializable{
     private Curso curso;
     private int año;
     private int semestre;

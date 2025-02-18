@@ -1,6 +1,8 @@
 package com.mycompany.aplicacion_de_conceptos.entidades;
 
-public class Curso {
+import java.io.Serializable;
+
+public class Curso implements Serializable{
     private int ID;
     private Programa programa;
     private boolean activo;
