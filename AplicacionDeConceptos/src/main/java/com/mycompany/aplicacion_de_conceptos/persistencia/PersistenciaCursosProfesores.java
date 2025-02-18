@@ -1,6 +1,6 @@
 package com.mycompany.aplicacion_de_conceptos.persistencia;
 
-import com.mycompany.aplicacion_de_conceptos.procesos.CursoProfesor;
+import com.mycompany.aplicacion_de_conceptos.entidades.CursoProfesor;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
