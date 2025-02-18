@@ -9,5 +9,15 @@ package com.mycompany.aplicacion_de_conceptos.entidades;
  * @author Estudiante_MCA
  */
 public class Estudiante {
+    private double codigo;
+    private Programa programa;
+    private boolean activo;
+    private double promedio;
     
+    public String toString(){
+        return "Codigo :"+codigo+"\n"+
+                "Programa :"+programa.toString()+"\n"+
+                "Estado :"+activo+"\n"+
+                "Promedio :"+promedio;
+    }
 }
