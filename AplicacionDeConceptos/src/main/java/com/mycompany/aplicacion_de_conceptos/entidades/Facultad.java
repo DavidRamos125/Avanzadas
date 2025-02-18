@@ -13,6 +13,12 @@ public class Facultad {
     private String nombre;
     private Persona decano;
     
+    public Facultad(double ID, String nombre, Persona decano) {
+        this.ID = ID;
+        this.nombre = nombre;
+        this.decano = decano;
+    }
+    
     public String toString(){
         return "Id :"+ID+"\n"+
                 "Nombre :"+nombre+"\n"+

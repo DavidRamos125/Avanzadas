@@ -15,6 +15,14 @@ class Programa {
     private String registro;
     private Facultad facultad;
     
+    public Programa(double ID, String nombre, double duracion, String registro, Facultad facultad) {
+        this.ID = ID;
+        this.nombre = nombre;
+        this.duracion = duracion;
+        this.registro = registro;
+        this.facultad = facultad;
+    }
+    
     public String toString(){
         return "Id :"+ID+"\n"+
                 "Nombre :"+nombre+"\n"+
