@@ -14,6 +14,12 @@ public class Persona {
     private String apellidos;
     private String email;
     
+ public Persona(double ID, String nombres, String apellidos, String email) {
+    this.ID = ID;
+    this.nombres = nombres;
+    this.apellidos = apellidos;
+    this.email = email;
+    }
     
     public String toString(){
         return "Nombres :"+nombres+"\n"+
