@@ -34,9 +34,9 @@ public class CursosInscritos {
     // Recorremos la lista en busca de la inscripción que coincida
     for (int i = 0; i < listado.size(); i++) {
         if (listado.get(i).getEstudiante().getCodigo() == inscripcion.getEstudiante().getCodigo()){
-            //.get(i).getEstudiante().getCodigo().equals(inscripcion.getEstudiante().getCodigo())) {
             listado.get(i).setEstudiante(inscripcion.getEstudiante());
-            break; // Salimos del bucle una vez encontrada y actualizada
+            //recordar poner la funcion de actualizar en el archivo binario
+            break;
         }
     }
 }

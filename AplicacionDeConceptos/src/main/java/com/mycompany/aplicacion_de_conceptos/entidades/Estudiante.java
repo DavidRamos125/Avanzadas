@@ -24,10 +24,6 @@ public class Estudiante extends Persona implements Serializable{
                 "Promedio :"+promedio;
     }
     
-    public String getNombre(){
-        return persona.getNombres();
-    }
-    
     public double getCodigo(){
         return codigo;
     }
