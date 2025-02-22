@@ -14,7 +14,15 @@ public class Persona implements Serializable{
     this.apellidos = apellidos;
     this.email = email;
     }
-    
+
+    public String getNombres() {
+        return nombres;
+    }
+
+    public void setNombres(String nombres) {
+        this.nombres = nombres;
+    }
+ 
     public String toString(){
         return "Nombres :"+nombres+"\n"+
                 "Apellidos :"+apellidos+"\n"+

@@ -31,10 +31,15 @@ public class CursosInscritos {
     }
 
     public void actualizar(Inscripcion inscripcion) {
-        //falta logica
-        //Toca poner al final llamar la funcion de guardar para que tanto el archivo como la lista tengan la misma info
-        
+    // Recorremos la lista en busca de la inscripción que coincida
+    for (int i = 0; i < listado.size(); i++) {
+        if (listado.get(i).getEstudiante().getCodigo() == inscripcion.getEstudiante().getCodigo()){
+            //.get(i).getEstudiante().getCodigo().equals(inscripcion.getEstudiante().getCodigo())) {
+            listado.get(i).setEstudiante(inscripcion.getEstudiante());
+            break; // Salimos del bucle una vez encontrada y actualizada
+        }
     }
+}
 
     public void guardarInformacion() {
         //falta logica
