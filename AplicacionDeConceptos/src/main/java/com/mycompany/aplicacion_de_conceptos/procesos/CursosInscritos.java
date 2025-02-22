@@ -32,6 +32,8 @@ public class CursosInscritos {
 
     public void actualizar(Inscripcion inscripcion) {
         //falta logica
+        //Toca poner al final llamar la funcion de guardar para que tanto el archivo como la lista tengan la misma info
+        
     }
 
     public void guardarInformacion() {
