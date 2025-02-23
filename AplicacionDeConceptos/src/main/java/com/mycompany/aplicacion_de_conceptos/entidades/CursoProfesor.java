@@ -2,10 +2,7 @@ package com.mycompany.aplicacion_de_conceptos.entidades;
 
 import com.mycompany.aplicacion_de_conceptos.entidades.Profesor;
 import com.mycompany.aplicacion_de_conceptos.entidades.Curso;
-/**
- *
- * @author Estudiante_MCA
- */
+
 public class CursoProfesor {
     private Profesor profesor;
     private Integer año;
