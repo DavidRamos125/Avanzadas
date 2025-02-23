@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PersistenciaCursosInscritos {
-    //prueba
 
     private static final String FILENAME = "CursosInscritos.dat";
 
