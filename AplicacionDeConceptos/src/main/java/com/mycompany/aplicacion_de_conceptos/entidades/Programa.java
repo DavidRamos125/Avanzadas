@@ -1,16 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.aplicacion_de_conceptos.entidades;
 
 import java.io.Serializable;
 
-/**
- *
- * @author Estudiante_MCA
- */
-class Programa implements Serializable{
+
+public class Programa implements Serializable{
     private double ID;
     private String nombre;
     private double duracion;
