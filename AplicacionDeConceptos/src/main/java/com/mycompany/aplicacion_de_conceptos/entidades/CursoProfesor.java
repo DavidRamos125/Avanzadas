@@ -3,7 +3,9 @@ package com.mycompany.aplicacion_de_conceptos.entidades;
 import com.mycompany.aplicacion_de_conceptos.entidades.Profesor;
 import com.mycompany.aplicacion_de_conceptos.entidades.Curso;
 
-public class CursoProfesor {
+import java.io.Serializable;
+
+public class CursoProfesor implements Serializable {
     private Profesor profesor;
     private Integer año;
     private Integer semestre;

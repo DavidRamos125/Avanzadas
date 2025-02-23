@@ -82,10 +82,10 @@ public class PersistenciaPersonas {
         for(Persona auxiliar : extraerListaObjetos()){
             if(auxiliar.toString().equals(persona.toString())){
                 personas.remove(auxiliar);
-
+                break;
             }
         }
-        guardarLista(personas);
+
     }
 
 }

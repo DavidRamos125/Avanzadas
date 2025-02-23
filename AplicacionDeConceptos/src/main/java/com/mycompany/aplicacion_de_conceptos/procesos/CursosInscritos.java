@@ -3,6 +3,8 @@ package com.mycompany.aplicacion_de_conceptos.procesos;
 import com.mycompany.aplicacion_de_conceptos.entidades.Inscripcion;
 import com.mycompany.aplicacion_de_conceptos.interfaces.Servicios;
 import com.mycompany.aplicacion_de_conceptos.persistencia.PersistenciaCursosInscritos;
+import com.mycompany.aplicacion_de_conceptos.persistencia.PersistenciaCursosProfesores;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +30,7 @@ public class CursosInscritos implements Servicios{
 
     public void eliminar(Inscripcion inscripcion) {
         listado.remove(inscripcion);
+        PersistenciaCursosInscritos.guardarLista(listado);
     }
 
     public void actualizar(Inscripcion inscripcion) {
@@ -35,14 +38,19 @@ public class CursosInscritos implements Servicios{
     for (int i = 0; i < listado.size(); i++) {
         if (listado.get(i).getEstudiante().getCodigo() == inscripcion.getEstudiante().getCodigo()){
             listado.get(i).setEstudiante(inscripcion.getEstudiante());
-            //recordar poner la funcion de actualizar en el archivo binario
+            PersistenciaCursosInscritos.guardarLista(listado);
             break;
         }
     }
 }
 
-    public void guardarInformacion() {
-        //falta logica
+    public void guardarInformacion(Inscripcion inscripcion) {
+        try {
+            PersistenciaCursosInscritos.guardarInscripcion(inscripcion);
+            System.out.println("Guardando información de la inscripcion: " + inscripcion.toString());
+        } catch (IOException | ClassNotFoundException e) {
+            System.out.println("Error al guardar la información: " + e.getMessage());
+        }
     }
 
     @Override
@@ -54,11 +62,11 @@ public class CursosInscritos implements Servicios{
         return sb.toString();
     }
 
-    public void cargarDatos() {
-        //falta logica
+    public void cargarDatos() throws IOException, ClassNotFoundException {
+
+        listado = PersistenciaCursosInscritos.extraerListaObjetos();
     }
 
-    //implementacion de servicios
     public String imprimirPosicion(int posicion){
         return listado.get(posicion).toString();
     }

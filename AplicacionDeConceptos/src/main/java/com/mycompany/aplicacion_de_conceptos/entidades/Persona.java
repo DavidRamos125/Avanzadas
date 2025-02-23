@@ -22,7 +22,11 @@ public class Persona implements Serializable{
     public void setNombres(String nombres) {
         this.nombres = nombres;
     }
- 
+
+    public double getID() {
+        return ID;
+    }
+
     public String toString(){
         return "Nombres :"+nombres+"\n"+
                 "Apellidos :"+apellidos+"\n"+

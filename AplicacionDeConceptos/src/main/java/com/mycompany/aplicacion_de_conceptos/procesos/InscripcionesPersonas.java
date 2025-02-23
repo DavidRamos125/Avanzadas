@@ -26,10 +26,18 @@ public class InscripcionesPersonas {
         }
     }
     public void eliminar(Persona persona){
-        
+        if(listado.contains(persona)){
+            listado.remove(persona);
+            PersistenciaPersonas.guardarLista(listado);
+        }
     }
     public void actualizar(Persona persona){
-        
+        for(int i=0; i<listado.size(); i++){
+            if(listado.get(i).getID() == persona.getID()){
+                listado.set(i, persona);
+                PersistenciaPersonas.guardarLista(listado);
+            }
+        }
     }
     public void guardarInformacion(Persona persona) {
         try {

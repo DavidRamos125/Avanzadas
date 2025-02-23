@@ -2,6 +2,9 @@ package com.mycompany.aplicacion_de_conceptos;
 
 import com.mycompany.aplicacion_de_conceptos.entidades.*;
 import com.mycompany.aplicacion_de_conceptos.procesos.*;
+
+import java.io.IOException;
+
 /**
  *  Fabian David Ramos Acota    160004327
  *  Tian David Castro Parra     160004333
@@ -10,7 +13,7 @@ import com.mycompany.aplicacion_de_conceptos.procesos.*;
  */
 public class Aplicacion_de_Conceptos {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
 
         Persona decano1 = new Persona(1, "Carlos", "Ramírez", "carlos.ramirez@example.com");
         Persona decano2 = new Persona(2, "Lucía", "Martínez", "lucia.martinez@example.com");
@@ -39,6 +42,16 @@ public class Aplicacion_de_Conceptos {
         CursosInscritos cursosInscritos = new CursosInscritos();
         CursosProfesores cursosProfesores = new CursosProfesores();
         InscripcionesPersonas inscripcionesPersonas = new InscripcionesPersonas();
+
+        cursosInscritos.cargarDatos();
+        cursosProfesores.cargarDatos();
+        inscripcionesPersonas.cargarDatos();
+
+        cursosProfesores.inscribir(cursoProfesor1);
+        cursosInscritos.inscribirCurso(inscripcion1);
+        inscripcionesPersonas.inscribir(profesor1);
+        inscripcionesPersonas.inscribir(estudiante2);
+
 
 
 
