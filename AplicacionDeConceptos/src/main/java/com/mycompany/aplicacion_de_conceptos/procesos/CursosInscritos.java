@@ -24,7 +24,6 @@ public class CursosInscritos implements Servicios{
         } catch (ClassNotFoundException e) {
             System.out.println("Error" + e.getMessage());
         }
-
     }
 
     public void eliminar(Inscripcion inscripcion) {
@@ -61,12 +60,16 @@ public class CursosInscritos implements Servicios{
 
     //implementacion de servicios
     public String imprimirPosicion(int posicion){
-
+        return listado.get(posicion).toString();
     }
     public int cantidadActual(){
-
+        return listado.size();
     }
     public List<String> imprimirListado(){
-
+        List<String> listaString = new ArrayList<>();
+        for(Inscripcion auxiliar:listado){
+            listaString.add(auxiliar.toString());
+        }
+        return listaString;
     }
 }

@@ -1,5 +1,6 @@
 package com.mycompany.aplicacion_de_conceptos.persistencia;
 
+import com.mycompany.aplicacion_de_conceptos.entidades.Inscripcion;
 import com.mycompany.aplicacion_de_conceptos.entidades.Persona;
 import java.io.File;
 import java.io.FileInputStream;
@@ -59,18 +60,32 @@ public class PersistenciaPersonas {
         return false;
     }
 
-    public static void LeerArchivo() {
+    public static void guardarLista(List<Persona> lista){
         File archivo = new File(FILENAME);
         try {
-            FileInputStream fis = new FileInputStream(archivo);
-            while (fis.available() > 0) {
-                ObjectInputStream ois = new ObjectInputStream(fis);
-                Persona auxiliar = (Persona) ois.readObject();
-                System.out.println(auxiliar.toString());
+            FileOutputStream fos = new FileOutputStream(archivo);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            for(Persona auxiliar : lista){
+                oos.writeObject(auxiliar);
             }
+            oos.close();
+            fos.close();
         } catch (Exception e) {
-            System.out.println("error al leer: " + e);
+            System.out.println("error al guardar: " + e);
         }
+    }
+
+    public static void eliminarPersona(Persona persona) throws IOException, ClassNotFoundException {
+        List<Persona> personas= new ArrayList<>();
+        personas = extraerListaObjetos();
+
+        for(Persona auxiliar : extraerListaObjetos()){
+            if(auxiliar.toString().equals(persona.toString())){
+                personas.remove(auxiliar);
+
+            }
+        }
+        guardarLista(personas);
     }
 
 }

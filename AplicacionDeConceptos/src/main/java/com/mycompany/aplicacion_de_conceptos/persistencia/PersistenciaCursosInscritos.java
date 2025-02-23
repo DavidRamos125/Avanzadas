@@ -32,36 +32,21 @@ public class PersistenciaCursosInscritos {
         }
 
     }
-    
-    public static void guardarLista(List<Inscripcion> lista){
-        File archivo = new File(FILENAME);
-            try {
-                FileOutputStream fos = new FileOutputStream(archivo);
-                ObjectOutputStream oos = new ObjectOutputStream(fos);
-                for(Inscripcion auxiliar : lista){
-                    oos.writeObject(auxiliar);
-                }
-                oos.close();
-                fos.close();
-            } catch (Exception e) {
-                System.out.println("error al guardar: " + e);
-            }
-    }
 
     public static List<Inscripcion> extraerListaObjetos() throws IOException, ClassNotFoundException {
         File archivo = new File(FILENAME);
-        List<Inscripcion> listaInscripcions = new ArrayList<>();
+        List<Inscripcion> listaInscripciones = new ArrayList<>();
         try {
             FileInputStream lectura = new FileInputStream(archivo);
             while (lectura.available() > 0) {
                 ObjectInputStream objeto = new ObjectInputStream(lectura);
-                listaInscripcions.add((Inscripcion) objeto.readObject());
+                listaInscripciones.add((Inscripcion) objeto.readObject());
             }
             lectura.close();
         } catch (Exception e) {
             System.out.println("error: " + e);
         }
-        return listaInscripcions;
+        return listaInscripciones;
 
     }
 
@@ -72,6 +57,21 @@ public class PersistenciaCursosInscritos {
             }
         }
         return false;
+    }
+
+    public static void guardarLista(List<Inscripcion> lista){
+        File archivo = new File(FILENAME);
+        try {
+            FileOutputStream fos = new FileOutputStream(archivo);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            for(Inscripcion auxiliar : lista){
+                oos.writeObject(auxiliar);
+            }
+            oos.close();
+            fos.close();
+        } catch (Exception e) {
+            System.out.println("error al guardar: " + e);
+        }
     }
     
     public static void eliminarInscripcion(Inscripcion inscripcion) throws IOException, ClassNotFoundException {
@@ -84,20 +84,7 @@ public class PersistenciaCursosInscritos {
                 
             }
         }
-    }
-
-    public static void LeerArchivo() {
-        File archivo = new File(FILENAME);
-        try {
-            FileInputStream fis = new FileInputStream(archivo);
-            while (fis.available() > 0) {
-                ObjectInputStream ois = new ObjectInputStream(fis);
-                Inscripcion auxiliar = (Inscripcion) ois.readObject();
-                System.out.println(auxiliar.toString());
-            }
-        } catch (Exception e) {
-            System.out.println("error al leer: " + e);
-        }
+        guardarLista(inscritos);
     }
 
 }

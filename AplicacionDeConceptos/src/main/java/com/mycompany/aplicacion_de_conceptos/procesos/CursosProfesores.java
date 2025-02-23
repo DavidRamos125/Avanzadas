@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.aplicacion_de_conceptos.procesos;
 import com.mycompany.aplicacion_de_conceptos.entidades.CursoProfesor;
 import com.mycompany.aplicacion_de_conceptos.interfaces.Servicios;
@@ -54,12 +50,16 @@ public class CursosProfesores implements Servicios{
 
     //implementacion de servicios
     public String imprimirPosicion(int posicion){
-
+        return listado.get(posicion).toString();
     }
     public int cantidadActual(){
-
+        return listado.size();
     }
     public List<String> imprimirListado(){
-
+        List<String> listaString = new ArrayList<>();
+        for(CursoProfesor auxiliar:listado){
+            listaString.add(auxiliar.toString());
+        }
+        return listaString;
     }
 }
