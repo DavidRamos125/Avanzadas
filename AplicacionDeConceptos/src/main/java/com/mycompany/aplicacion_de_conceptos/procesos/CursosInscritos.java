@@ -1,12 +1,13 @@
 package com.mycompany.aplicacion_de_conceptos.procesos;
 
 import com.mycompany.aplicacion_de_conceptos.entidades.Inscripcion;
+import com.mycompany.aplicacion_de_conceptos.interfaces.Servicios;
 import com.mycompany.aplicacion_de_conceptos.persistencia.PersistenciaCursosInscritos;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CursosInscritos {
+public class CursosInscritos implements Servicios{
 
     private List<Inscripcion> listado ;
     
@@ -56,5 +57,16 @@ public class CursosInscritos {
 
     public void cargarDatos() {
         //falta logica
+    }
+
+    //implementacion de servicios
+    public String imprimirPosicion(int posicion){
+
+    }
+    public int cantidadActual(){
+
+    }
+    public List<String> imprimirListado(){
+
     }
 }

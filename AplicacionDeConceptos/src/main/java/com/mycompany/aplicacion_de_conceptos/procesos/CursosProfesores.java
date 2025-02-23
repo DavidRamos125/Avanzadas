@@ -4,16 +4,13 @@
  */
 package com.mycompany.aplicacion_de_conceptos.procesos;
 import com.mycompany.aplicacion_de_conceptos.entidades.CursoProfesor;
+import com.mycompany.aplicacion_de_conceptos.interfaces.Servicios;
 import com.mycompany.aplicacion_de_conceptos.persistencia.PersistenciaCursosProfesores;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author Estudiante_MCA
- */
-public class CursosProfesores {
+public class CursosProfesores implements Servicios{
     private List<CursoProfesor> listado = new ArrayList<>();
     
     public void inscribir(CursoProfesor cursoProfesor){
@@ -53,5 +50,16 @@ public class CursosProfesores {
         } catch (IOException | ClassNotFoundException e) {
             System.out.println("Error al cargar los datos: " + e.getMessage());
         }
+    }
+
+    //implementacion de servicios
+    public String imprimirPosicion(int posicion){
+
+    }
+    public int cantidadActual(){
+
+    }
+    public List<String> imprimirListado(){
+
     }
 }
