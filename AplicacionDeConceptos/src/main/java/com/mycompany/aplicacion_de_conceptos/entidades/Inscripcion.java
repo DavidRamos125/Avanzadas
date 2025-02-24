@@ -21,6 +21,12 @@ public class Inscripcion implements Serializable{
 
     public void setEstudiante(Estudiante estudiante) {
         this.estudiante = estudiante;
+    }     
+
+    @Override
+    public String toString() {
+        return "Inscripcion{" + "curso=" + curso + ", a\u00f1o=" + año + ", semestre=" + semestre + ", estudiante=" + estudiante + '}';
     }
+    
     
 }
