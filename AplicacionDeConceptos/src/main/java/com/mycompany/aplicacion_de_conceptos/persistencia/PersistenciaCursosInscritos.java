@@ -44,7 +44,7 @@ public class PersistenciaCursosInscritos {
             }
             lectura.close();
         } catch (Exception e) {
-            System.out.println("error: " + e);
+            System.out.println("error con la cabecera: " + e);
         }
         return listaInscripciones;
 
@@ -63,11 +63,11 @@ public class PersistenciaCursosInscritos {
         File archivo = new File(FILENAME);
         try {
             FileOutputStream fos = new FileOutputStream(archivo);
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
+
             for(Inscripcion auxiliar : lista){
+                ObjectOutputStream oos = new ObjectOutputStream(fos);
                 oos.writeObject(auxiliar);
             }
-            oos.close();
             fos.close();
         } catch (Exception e) {
             System.out.println("error al guardar: " + e);
