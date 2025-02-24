@@ -65,11 +65,12 @@ public class PersistenciaCursosProfesores {
         File archivo = new File(FILENAME);
         try {
             FileOutputStream fos = new FileOutputStream(archivo);
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
+
             for (CursoProfesor auxiliar : lista) {
+                ObjectOutputStream oos = new ObjectOutputStream(fos);
                 oos.writeObject(auxiliar);
             }
-            oos.close();
+
             fos.close();
         } catch (Exception e) {
             System.out.println("error al guardar: " + e);
