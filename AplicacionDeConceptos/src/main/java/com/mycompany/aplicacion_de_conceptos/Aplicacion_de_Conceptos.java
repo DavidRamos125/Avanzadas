@@ -52,7 +52,19 @@ public class Aplicacion_de_Conceptos {
         inscripcionesPersonas.inscribir(profesor1);
         inscripcionesPersonas.inscribir(estudiante2);
 
+        
+        cursosInscritos.eliminar(inscripcion2);
+        inscripcionesPersonas.eliminar(estudiante1);
 
+        cursosInscritos.actualizar(inscripcion1);
+        inscripcionesPersonas.actualizar(estudiante2);
+
+        System.out.println(cursosInscritos.toString());
+        System.out.println(cursosProfesores.toString());
+
+        cursosInscritos.guardarInformacion(inscripcion1);
+        cursosProfesores.guardarInformacion(cursoProfesor1);
+        inscripcionesPersonas.guardarInformacion(estudiante1);
 
 
     }
