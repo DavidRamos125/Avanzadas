@@ -57,8 +57,9 @@ public class CursosInscritos implements Servicios{
     public String toString() {
         StringBuilder sb = new StringBuilder("Cursos Inscritos:\n");
         for (Inscripcion inscripcion : listado) {
-            sb.append(inscripcion.toString()).append("\n");
+            sb.append(inscripcion.toString()).append("-----------\n");
         }
+        sb.append("--------\n");
         return sb.toString();
     }
 
