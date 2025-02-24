@@ -15,23 +15,23 @@ public class Aplicacion_de_Conceptos {
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
 
-        Persona decano1 = new Persona(1, "Carlos", "Ramírez", "carlos.ramirez@example.com");
-        Persona decano2 = new Persona(2, "Lucía", "Martínez", "lucia.martinez@example.com");
+        Persona decano1 = new Persona(1, "Carlos", "Ramirez", "carlos.ramirez@example.com");
+        Persona decano2 = new Persona(2, "Lucia", "Martinez", "lucia.martinez@example.com");
 
-        Facultad facultad1 = new Facultad(1, "Ingenierías", decano1);
-        Facultad facultad2 = new Facultad(2, "Ciencias Económicas", decano2);
+        Facultad facultad1 = new Facultad(1, "Ingenierias", decano1);
+        Facultad facultad2 = new Facultad(2, "Ciencias Economicas", decano2);
 
-        Programa programa1 = new Programa(1, "Ingeniería de Sistemas", 10, "REG123", facultad1);
-        Programa programa2 = new Programa(2, "Administración de Empresas", 8, "REG456", facultad2);
+        Programa programa1 = new Programa(1, "Ingenieria de Sistemas", 10, "REG123", facultad1);
+        Programa programa2 = new Programa(2, "Administracion de Empresas", 8, "REG456", facultad2);
 
-        Estudiante estudiante1 = new Estudiante(1, "Juan", "Pérez", "juan.perez@example.com", 12345, programa1, true, 4.5);
-        Estudiante estudiante2 = new Estudiante(2, "María", "González", "maria.gonzalez@example.com", 54321, programa2, true, 3.8);
+        Estudiante estudiante1 = new Estudiante(1, "Juan", "Perez", "juan.perez@example.com", 12345, programa1, true, 4.5);
+        Estudiante estudiante2 = new Estudiante(2, "Maria", "Gonzalez", "maria.gonzalez@example.com", 54321, programa2, true, 3.8);
 
-        Curso curso1 = new Curso(1, "Programación Orientada a Objetos", programa1, true);
+        Curso curso1 = new Curso(1, "Programacion Orientada a Objetos", programa1, true);
         Curso curso2 = new Curso(2, "Contabilidad Financiera", programa2, true);
 
-        Profesor profesor1 = new Profesor(1, "Laura", "Fernández", "laura.fernandez@example.com", "Tiempo Completo");
-        Profesor profesor2 = new Profesor(2, "Carlos", "López", "carlos.lopez@example.com", "Medio Tiempo");
+        Profesor profesor1 = new Profesor(1, "Laura", "Fernandez", "laura.fernandez@example.com", "Tiempo Completo");
+        Profesor profesor2 = new Profesor(2, "Carlos", "Lopez", "carlos.lopez@example.com", "Medio Tiempo");
 
         Inscripcion inscripcion1 = new Inscripcion(curso1, 2025, 1, estudiante1);
         Inscripcion inscripcion2 = new Inscripcion(curso2, 2025, 1, estudiante2);
@@ -59,8 +59,11 @@ public class Aplicacion_de_Conceptos {
         cursosInscritos.actualizar(inscripcion1);
         inscripcionesPersonas.actualizar(estudiante2);
 
+        System.out.println("\n---------------------------\n");
         System.out.println(cursosInscritos.toString());
+        System.out.println("\n---------------------------\n");
         System.out.println(cursosProfesores.toString());
+        System.out.println("\n---------------------------\n");
 
         cursosInscritos.guardarInformacion(inscripcion1);
         cursosProfesores.guardarInformacion(cursoProfesor1);

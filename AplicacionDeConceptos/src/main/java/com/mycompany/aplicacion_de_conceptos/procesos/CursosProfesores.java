@@ -23,9 +23,9 @@ public class CursosProfesores implements Servicios{
     public void guardarInformacion(CursoProfesor cursoProfesor) {
         try {
             PersistenciaCursosProfesores.guardarCursoProfesor(cursoProfesor);
-            System.out.println("Guardando información del curso: " + cursoProfesor.toString());
+            System.out.println("Guardando informacion del curso: " + cursoProfesor.toString());
         } catch (IOException | ClassNotFoundException e) {
-            System.out.println("Error al guardar la información: " + e.getMessage());
+            System.out.println("Error al guardar la informacion: " + e.getMessage());
         }
     }
     

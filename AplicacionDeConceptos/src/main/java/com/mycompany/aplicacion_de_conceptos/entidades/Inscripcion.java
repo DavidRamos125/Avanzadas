@@ -25,7 +25,7 @@ public class Inscripcion implements Serializable{
 
     @Override
     public String toString() {
-        return "Inscripcion{" + "curso=" + curso + ", a\u00f1o=" + año + ", semestre=" + semestre + ", estudiante=" + estudiante + '}';
+        return "Inscripcion{" + "curso=" + curso + ", ano=" + año + ", semestre=" + semestre + ", estudiante=" + estudiante + '}';
     }
     
     

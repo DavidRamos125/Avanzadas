@@ -19,7 +19,7 @@ public class CursoProfesor implements Serializable {
     }
     public String toString(){
         return "Profesor: "+profesor.toString()+"\n"+
-               "Año: "+año+"\n"+
+               "Ano: "+año+"\n"+
                "Semestre:"+semestre+"\n"+
                "Curso: "+curso.toString();
     }

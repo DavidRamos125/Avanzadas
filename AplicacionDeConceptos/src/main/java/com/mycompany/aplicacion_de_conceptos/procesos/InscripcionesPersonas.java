@@ -42,9 +42,9 @@ public class InscripcionesPersonas {
     public void guardarInformacion(Persona persona) {
         try {
             PersistenciaPersonas.guardarPersona(persona);
-            System.out.println("Guardando información del alumno: " + persona.toString());
+            System.out.println("Guardando informacion del alumno: " + persona.toString());
         } catch (IOException | ClassNotFoundException e) {
-            System.out.println("Error al guardar la información: " + e.getMessage());
+            System.out.println("Error al guardar la informacion: " + e.getMessage());
         }
     } 
     public void cargarDatos() {
