@@ -21,6 +21,5 @@ public class Inscripcion implements Serializable{
 
     public void setEstudiante(Estudiante estudiante) {
         this.estudiante = estudiante;
-    }
-    
+    }       
 }
