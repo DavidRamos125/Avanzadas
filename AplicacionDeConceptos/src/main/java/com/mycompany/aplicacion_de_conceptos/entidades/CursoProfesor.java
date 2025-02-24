@@ -18,9 +18,9 @@ public class CursoProfesor implements Serializable {
         this.curso = curso;
     }
     public String toString(){
-        return "Profesor: "+profesor+"\n"+
+        return "Profesor: "+profesor.toString()+"\n"+
                "Año: "+año+"\n"+
                "Semestre:"+semestre+"\n"+
-               "Curso: "+curso;
+               "Curso: "+curso.toString();
     }
 }
