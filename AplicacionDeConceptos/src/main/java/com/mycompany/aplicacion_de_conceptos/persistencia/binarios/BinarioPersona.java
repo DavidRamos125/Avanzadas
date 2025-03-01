@@ -1,17 +1,37 @@
-package com.mycompany.aplicacion_de_conceptos.persistencia;
+package com.mycompany.aplicacion_de_conceptos.persistencia.binarios;
 
-import com.mycompany.aplicacion_de_conceptos.entidades.Inscripcion;
 import com.mycompany.aplicacion_de_conceptos.entidades.Persona;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import com.mycompany.aplicacion_de_conceptos.persistencia.CRUD;
+
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PersistenciaPersonas {
+public class BinarioPersona implements CRUD<Persona> {
+    @Override
+    public void crear(Persona objecto) {
+
+    }
+
+    @Override
+    public Persona obtener(String id) {
+        return null;
+    }
+
+    @Override
+    public List<Persona> obtenerTodos() {
+        return List.of();
+    }
+
+    @Override
+    public void actualizar(Persona objecto) {
+
+    }
+
+    @Override
+    public void eliminar(String id) {
+
+    }
 
     private static final String FILENAME = "Personas.dat";
 

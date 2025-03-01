@@ -1,6 +1,8 @@
-package com.mycompany.aplicacion_de_conceptos.persistencia;
+package com.mycompany.aplicacion_de_conceptos.persistencia.binarios;
 
 import com.mycompany.aplicacion_de_conceptos.entidades.Inscripcion;
+import com.mycompany.aplicacion_de_conceptos.persistencia.CRUD;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -10,7 +12,31 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PersistenciaCursosInscritos {
+public class BinarioCursoInscrito implements CRUD<Inscripcion> {
+    @Override
+    public void crear(Inscripcion objecto) {
+
+    }
+
+    @Override
+    public Inscripcion obtener(String id) {
+        return null;
+    }
+
+    @Override
+    public List<Inscripcion> obtenerTodos() {
+        return List.of();
+    }
+
+    @Override
+    public void actualizar(Inscripcion objecto) {
+
+    }
+
+    @Override
+    public void eliminar(String id) {
+
+    }
 
     private static final String FILENAME = "CursosInscritos.dat";
 

@@ -6,7 +6,7 @@ import com.mycompany.aplicacion_de_conceptos.procesos.*;
 import java.io.IOException;
 
 /**
- *  Fabian David Ramos Acota    160004327
+ *  Fabian David Ramos Acosta    160004327
  *  Tian David Castro Parra     160004333
  *  Maria Camila Galeano Arenas 160004641      
  * 

@@ -1,9 +1,7 @@
 package com.mycompany.aplicacion_de_conceptos.procesos;
 
 import com.mycompany.aplicacion_de_conceptos.entidades.Inscripcion;
-import com.mycompany.aplicacion_de_conceptos.interfaces.Servicios;
-import com.mycompany.aplicacion_de_conceptos.persistencia.PersistenciaCursosInscritos;
-import com.mycompany.aplicacion_de_conceptos.persistencia.PersistenciaCursosProfesores;
+import com.mycompany.aplicacion_de_conceptos.persistencia.binarios.BinarioCursoInscrito;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,7 +18,7 @@ public class CursosInscritos implements Servicios{
     public void inscribirCurso(Inscripcion inscripcion) {
         listado.add(inscripcion);
         try {
-            PersistenciaCursosInscritos.guardarInscripcion(inscripcion);
+            BinarioCursoInscrito.guardarInscripcion(inscripcion);
         } catch (IOException e) {
             System.out.println("Error" + e.getMessage());
         } catch (ClassNotFoundException e) {
@@ -30,7 +28,7 @@ public class CursosInscritos implements Servicios{
 
     public void eliminar(Inscripcion inscripcion) {
         listado.remove(inscripcion);
-        PersistenciaCursosInscritos.guardarLista(listado);
+        BinarioCursoInscrito.guardarLista(listado);
     }
 
     public void actualizar(Inscripcion inscripcion) {
@@ -38,7 +36,7 @@ public class CursosInscritos implements Servicios{
     for (int i = 0; i < listado.size(); i++) {
         if (listado.get(i).getEstudiante().getCodigo() == inscripcion.getEstudiante().getCodigo()){
             listado.get(i).setEstudiante(inscripcion.getEstudiante());
-            PersistenciaCursosInscritos.guardarLista(listado);
+            BinarioCursoInscrito.guardarLista(listado);
             break;
         }
     }
@@ -46,7 +44,7 @@ public class CursosInscritos implements Servicios{
 
     public void guardarInformacion(Inscripcion inscripcion) {
         try {
-            PersistenciaCursosInscritos.guardarInscripcion(inscripcion);
+            BinarioCursoInscrito.guardarInscripcion(inscripcion);
             System.out.println("Guardando informacion de la inscripcion: " + inscripcion.toString());
         } catch (IOException | ClassNotFoundException e) {
             System.out.println("Error al guardar la informacion: " + e.getMessage());
@@ -65,7 +63,7 @@ public class CursosInscritos implements Servicios{
 
     public void cargarDatos() throws IOException, ClassNotFoundException {
 
-        listado = PersistenciaCursosInscritos.extraerListaObjetos();
+        listado = BinarioCursoInscrito.extraerListaObjetos();
     }
 
     public String imprimirPosicion(int posicion){

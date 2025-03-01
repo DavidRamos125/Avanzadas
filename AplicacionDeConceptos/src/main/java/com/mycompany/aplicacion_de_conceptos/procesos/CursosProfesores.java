@@ -1,7 +1,6 @@
 package com.mycompany.aplicacion_de_conceptos.procesos;
 import com.mycompany.aplicacion_de_conceptos.entidades.CursoProfesor;
-import com.mycompany.aplicacion_de_conceptos.interfaces.Servicios;
-import com.mycompany.aplicacion_de_conceptos.persistencia.PersistenciaCursosProfesores;
+import com.mycompany.aplicacion_de_conceptos.persistencia.binarios.BinarioCursoProfesor;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +11,7 @@ public class CursosProfesores implements Servicios{
     public void inscribir(CursoProfesor cursoProfesor){
         listado.add(cursoProfesor);
         try {
-            PersistenciaCursosProfesores.guardarCursoProfesor(cursoProfesor);
+            BinarioCursoProfesor.guardarCursoProfesor(cursoProfesor);
         } catch (IOException e) {
             System.out.println("Error" + e.getMessage());
         } catch (ClassNotFoundException e) {
@@ -22,7 +21,7 @@ public class CursosProfesores implements Servicios{
     
     public void guardarInformacion(CursoProfesor cursoProfesor) {
         try {
-            PersistenciaCursosProfesores.guardarCursoProfesor(cursoProfesor);
+            BinarioCursoProfesor.guardarCursoProfesor(cursoProfesor);
             System.out.println("Guardando informacion del curso: " + cursoProfesor.toString());
         } catch (IOException | ClassNotFoundException e) {
             System.out.println("Error al guardar la informacion: " + e.getMessage());
@@ -40,7 +39,7 @@ public class CursosProfesores implements Servicios{
 
     public void cargarDatos() {
         try {
-            List<CursoProfesor> cursosGuardados = PersistenciaCursosProfesores.extraerListaObjetos();
+            List<CursoProfesor> cursosGuardados = BinarioCursoProfesor.extraerListaObjetos();
             listado.addAll(cursosGuardados); // Cargar todos los cursos guardados en el archivo a la lista
             System.out.println("Datos cargados: " + cursosGuardados.size() + " cursos.");
         } catch (IOException | ClassNotFoundException e) {

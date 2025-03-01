@@ -4,7 +4,7 @@
  */
 package com.mycompany.aplicacion_de_conceptos.procesos;
 import com.mycompany.aplicacion_de_conceptos.entidades.Persona;
-import com.mycompany.aplicacion_de_conceptos.persistencia.PersistenciaPersonas;
+import com.mycompany.aplicacion_de_conceptos.persistencia.binarios.BinarioPersona;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +18,7 @@ public class InscripcionesPersonas {
     public void inscribir(Persona persona){
         listado.add(persona);
         try {
-            PersistenciaPersonas.guardarPersona(persona);
+            BinarioPersona.guardarPersona(persona);
         } catch (IOException e) {
             System.out.println("Error" + e.getMessage());
         } catch (ClassNotFoundException e) {
@@ -28,20 +28,20 @@ public class InscripcionesPersonas {
     public void eliminar(Persona persona){
         if(listado.contains(persona)){
             listado.remove(persona);
-            PersistenciaPersonas.guardarLista(listado);
+            BinarioPersona.guardarLista(listado);
         }
     }
     public void actualizar(Persona persona){
         for(int i=0; i<listado.size(); i++){
             if(listado.get(i).getID() == persona.getID()){
                 listado.set(i, persona);
-                PersistenciaPersonas.guardarLista(listado);
+                BinarioPersona.guardarLista(listado);
             }
         }
     }
     public void guardarInformacion(Persona persona) {
         try {
-            PersistenciaPersonas.guardarPersona(persona);
+            BinarioPersona.guardarPersona(persona);
             System.out.println("Guardando informacion del alumno: " + persona.toString());
         } catch (IOException | ClassNotFoundException e) {
             System.out.println("Error al guardar la informacion: " + e.getMessage());
@@ -49,7 +49,7 @@ public class InscripcionesPersonas {
     } 
     public void cargarDatos() {
         try {
-            List<Persona> personasGuardadas = PersistenciaPersonas.extraerListaObjetos();
+            List<Persona> personasGuardadas = BinarioPersona.extraerListaObjetos();
             listado.addAll(personasGuardadas); // Cargar todos los cursos guardados en el archivo a la lista
             System.out.println("Datos cargados: " + personasGuardadas.size() + " personas.");
         } catch (IOException | ClassNotFoundException e) {
