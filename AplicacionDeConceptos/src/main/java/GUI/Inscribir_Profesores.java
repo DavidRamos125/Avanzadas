@@ -5,6 +5,7 @@
 package GUI;
 
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -180,16 +181,46 @@ public class Inscribir_Profesores extends javax.swing.JPanel {
         if(c<'0' || c>'9') evt.consume();
     }//GEN-LAST:event_ID_CursoKeyTyped
 
+    private boolean Revision(JTextField text){
+        boolean valor;
+        valor = true;
+        if(text.getText().equals("")){
+            JOptionPane.showMessageDialog(this,"Por favor llenar correctamente los espacios");
+            valor = false;
+        } 
+    return valor;    
+    }
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        int respuesta = JOptionPane.showConfirmDialog(this, "Seguro que quieres proceder ?");
+        String Id_Profesor,semestre,año,Id_Curso;
+        boolean vacio = false;
         
-        if (respuesta == 0 ){
-            //aqui estaria el llamdo a eliminar
-            JOptionPane.showMessageDialog(this , "Se ah inscrito correctamente");
-        }else if(respuesta == 1){
-            JOptionPane.showMessageDialog(this , "Se ah abortado la inscrito");
-        }else{
-            JOptionPane.showMessageDialog(this , "Se ah cancelado la accion");
+        Id_Profesor = ID_Profesor.getText();
+        semestre = Semestre.getText();
+        año = Año.getText();
+        Id_Curso = ID_Curso.getText();
+        
+        vacio = Revision(ID_Profesor);
+        if(vacio == false){
+            vacio = Revision(Semestre);
+            if(vacio == false){
+                vacio = Revision(Año);
+                if(vacio == false){
+                    vacio = Revision(ID_Curso);
+                }
+            }
+        }
+        
+        if(vacio == false){
+            int respuesta = JOptionPane.showConfirmDialog(this, "Seguro que quieres proceder ?");
+            if (respuesta == 0 ){
+                //aqui estaria el llamdo a eliminar
+                JOptionPane.showMessageDialog(this , "Se ah inscrito correctamente");
+            }else if(respuesta == 1){
+                JOptionPane.showMessageDialog(this , "Se ah abortado la inscrito");
+            }else{
+                JOptionPane.showMessageDialog(this , "Se ah cancelado la accion");
+            }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

@@ -5,6 +5,7 @@
 package GUI;
 
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -44,6 +45,11 @@ public class Eliminar_Persona extends javax.swing.JPanel {
         jPanel1.setPreferredSize(new java.awt.Dimension(778, 544));
 
         jToggleButton1.setLabel("Buscar Por ID");
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
 
         ID.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -122,17 +128,37 @@ public class Eliminar_Persona extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private boolean Revision(JTextField text){
+        boolean valor;
+        valor = true;
+        if(text.getText().equals("")){
+            JOptionPane.showMessageDialog(this,"Por favor llenar correctamente los espacios");
+            valor = false;
+        } 
+    return valor;    
+    }
+    
     private void EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarActionPerformed
-        int respuesta = JOptionPane.showConfirmDialog(this, "Seguro que quieres proceder ?");
+        String Id;
+        boolean vacio;
         
-        if (respuesta == 0 ){
-            //aqui estaria el llamdo a eliminar
-            JOptionPane.showMessageDialog(this , "Se ah eliminado correctamente");
-        }else if(respuesta == 1){
-            JOptionPane.showMessageDialog(this , "Se ah abortado la eliminacion");
-        }else{
-            JOptionPane.showMessageDialog(this , "Se ah cancelado la accion");
+        Id = ID.getText();
+        vacio = false;
+        
+        vacio = Revision(ID);
+        
+        if(vacio == false){
+            int respuesta = JOptionPane.showConfirmDialog(this, "Seguro que quieres proceder ?"); 
+            if (respuesta == 0 ){
+                //aqui estaria el llamdo a eliminar
+                JOptionPane.showMessageDialog(this , "Se ah eliminado correctamente");
+            }else if(respuesta == 1){
+                JOptionPane.showMessageDialog(this , "Se ah abortado la eliminacion");
+            }else{
+                JOptionPane.showMessageDialog(this , "Se ah cancelado la accion");
+            }
         }
+        
     }//GEN-LAST:event_EliminarActionPerformed
 
     private void IDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IDKeyTyped
@@ -140,6 +166,12 @@ public class Eliminar_Persona extends javax.swing.JPanel {
         
         if(c<'0' || c>'9') evt.consume();
     }//GEN-LAST:event_IDKeyTyped
+
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        String Id;
+        
+        Id = ID.getText();
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

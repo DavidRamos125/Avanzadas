@@ -4,7 +4,9 @@
  */
 package GUI;
 
+import java.awt.TextField;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -39,6 +41,11 @@ public class Actualizar_Persona extends javax.swing.JPanel {
         Actualizar = new javax.swing.JToggleButton();
 
         Buscar.setText("Buscar por ID :");
+        Buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuscarActionPerformed(evt);
+            }
+        });
 
         ID.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -51,6 +58,12 @@ public class Actualizar_Persona extends javax.swing.JPanel {
         jLabel2.setText(" Apellido :");
 
         jLabel3.setText("Email :");
+
+        Nombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NombreActionPerformed(evt);
+            }
+        });
 
         Actualizar.setText("Actualizar");
         Actualizar.addActionListener(new java.awt.event.ActionListener() {
@@ -106,17 +119,49 @@ public class Actualizar_Persona extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private boolean Revision(JTextField text){
+        boolean valor;
+        valor = true;
+        if(text.getText().equals("")){
+            JOptionPane.showMessageDialog(this,"Por favor llenar correctamente los espacios");
+            valor = false;
+        } 
+    return valor;    
+    }
+    
     private void ActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarActionPerformed
-        int respuesta = JOptionPane.showConfirmDialog(this, "Seguro que quieres proceder ?");
+        String nombre,apellido,email,Id;
+        boolean vacio;
         
-        if (respuesta == 0 ){
-            //aqui estaria el llamdo a eliminar
-            JOptionPane.showMessageDialog(this , "Se ah actualizado correctamente");
-        }else if(respuesta == 1){
-            JOptionPane.showMessageDialog(this , "Se ah abortado la actualizacion");
-        }else{
-            JOptionPane.showMessageDialog(this , "Se ah cancelado la accion");
+        Id = ID.getText();
+        nombre = Nombre.getText();
+        apellido = Apellido.getText();
+        email = Email.getText();
+        vacio = false;
+        
+        vacio = Revision(ID);
+        if(vacio == false){
+            vacio = Revision(Nombre);
+            if(vacio == false){
+                vacio = Revision(Apellido);
+                if(vacio == false){
+                    vacio = Revision(Email);
+                }
+            }
         }
+        
+        if(vacio == false){
+            int respuesta = JOptionPane.showConfirmDialog(this, "Seguro que quieres proceder ?");
+            if (respuesta == 0 ){
+                //aqui estaria el llamdo a eliminar
+                JOptionPane.showMessageDialog(this , "Se ah actualizado correctamente");
+            }else if(respuesta == 1){
+                JOptionPane.showMessageDialog(this , "Se ah abortado la actualizacion");
+            }else{
+                JOptionPane.showMessageDialog(this , "Se ah cancelado la accion");
+            }
+        }
+        
     }//GEN-LAST:event_ActualizarActionPerformed
 
     private void IDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IDKeyTyped
@@ -124,6 +169,15 @@ public class Actualizar_Persona extends javax.swing.JPanel {
         
         if(c<'0' || c>'9') evt.consume();
     }//GEN-LAST:event_IDKeyTyped
+
+    private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
+        String Id;
+        Id = ID.getText();
+    }//GEN-LAST:event_BuscarActionPerformed
+
+    private void NombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NombreActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

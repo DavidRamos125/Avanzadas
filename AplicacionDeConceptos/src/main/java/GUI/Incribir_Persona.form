@@ -60,7 +60,7 @@
                               <Group type="102" attributes="0">
                                   <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" pref="13" max="32767" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace max="32767" attributes="0"/>
@@ -80,10 +80,10 @@
                               </Group>
                           </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="Apellidos" min="-2" pref="301" max="-2" attributes="0"/>
                               <Component id="Nombres" min="-2" pref="301" max="-2" attributes="0"/>
-                              <Component id="Nombres1" min="-2" pref="301" max="-2" attributes="0"/>
-                              <Component id="Nombres2" min="-2" pref="301" max="-2" attributes="0"/>
-                              <Component id="Nombres3" min="-2" pref="301" max="-2" attributes="0"/>
+                              <Component id="Email" min="-2" pref="301" max="-2" attributes="0"/>
+                              <Component id="ID" min="-2" pref="301" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -100,22 +100,22 @@
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="Nombres1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="Nombres" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="Nombres" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="Apellidos" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel2" alignment="3" min="-2" pref="13" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="Nombres2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="Email" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="Nombres3" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="ID" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -138,10 +138,16 @@
           <Properties>
             <Property name="label" type="java.lang.String" value="Inscribir"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jToggleButton1ActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="Apellidos">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ApellidosActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="Nombres">
-        </Component>
-        <Component class="javax.swing.JTextField" name="Nombres1">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
@@ -153,16 +159,16 @@
             <Property name="text" type="java.lang.String" value="Email :"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="Nombres2">
+        <Component class="javax.swing.JTextField" name="Email">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
             <Property name="text" type="java.lang.String" value="ID:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="Nombres3">
+        <Component class="javax.swing.JTextField" name="ID">
           <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Nombres3KeyTyped"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="IDKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="Caja_Texto">
