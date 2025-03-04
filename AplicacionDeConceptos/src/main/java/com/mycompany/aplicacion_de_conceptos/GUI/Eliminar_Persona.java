@@ -4,6 +4,8 @@
  */
 package com.mycompany.aplicacion_de_conceptos.GUI;
 
+import com.mycompany.aplicacion_de_conceptos.dtos.DTOPersona;
+import com.mycompany.aplicacion_de_conceptos.servicios.ServicioPersona;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -86,10 +88,12 @@ public class Eliminar_Persona extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Eliminar)
                     .addComponent(ID, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Nombre_Busqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(282, 282, 282)
+                        .addComponent(Nombre_Busqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(Email_Busqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Apellido_Busqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(330, Short.MAX_VALUE))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -110,9 +114,9 @@ public class Eliminar_Persona extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(Email_Busqueda))
-                .addGap(18, 18, 18)
+                .addGap(24, 24, 24)
                 .addComponent(Eliminar)
-                .addContainerGap(406, Short.MAX_VALUE))
+                .addContainerGap(400, Short.MAX_VALUE))
         );
 
         jToggleButton1.getAccessibleContext().setAccessibleName("Buscar");
@@ -170,8 +174,13 @@ public class Eliminar_Persona extends javax.swing.JPanel {
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         String Id;
-        
         Id = ID.getText();
+        
+        DTOPersona dtoPersona = servicio.getPersona(Id);
+        Nombre_Busqueda.setText(dtoPersona.getNombres());
+        Apellido_Busqueda.setText(dtoPersona.getApellidos());
+        Email_Busqueda.setText(dtoPersona.getEmail());
+        
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
 
@@ -187,4 +196,5 @@ public class Eliminar_Persona extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
+    private ServicioPersona servicio = new ServicioPersona();
 }

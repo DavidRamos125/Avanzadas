@@ -1,5 +1,6 @@
 package com.mycompany.aplicacion_de_conceptos;
 
+import com.mycompany.aplicacion_de_conceptos.GUI.GIU_Principal;
 import com.mycompany.aplicacion_de_conceptos.entidades.*;
 import com.mycompany.aplicacion_de_conceptos.procesos.*;
 
@@ -68,6 +69,9 @@ public class Aplicacion_de_Conceptos {
         cursosInscritos.guardarInformacion(inscripcion1);
         cursosProfesores.guardarInformacion(cursoProfesor1);
         inscripcionesPersonas.guardarInformacion(estudiante1);
+
+        GIU_Principal principal = new GIU_Principal();
+        principal.setVisible(true);
 
 
     }
