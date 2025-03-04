@@ -4,6 +4,7 @@
  */
 package GUI;
 
+import com.mycompany.aplicacion_de_conceptos.dtos.DTOPersona;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -174,6 +175,7 @@ public class Incribir_Persona extends javax.swing.JPanel {
         boolean vacio = false;
         
         Id = ID.getText();
+        double ID_ = Double.parseDouble(Id);
         nombre = Nombres.getText();
         apellido = Apellidos.getText();
         email = Email.getText();
@@ -192,7 +194,7 @@ public class Incribir_Persona extends javax.swing.JPanel {
         if(vacio == true){
             int respuesta = JOptionPane.showConfirmDialog(this, "Seguro que quieres proceder ?");
             if (respuesta == 0 ){
-                //aqui estaria el llamdo a eliminar
+                DTOPersona persona = new DTOPersona(ID_,nombre,apellido,email);
                 JOptionPane.showMessageDialog(this , "Se ah inscrito correctamente");
             }else if(respuesta == 1){
                 JOptionPane.showMessageDialog(this , "Se ah abortado la inscripcion");
