@@ -52,6 +52,12 @@ public class Inscribir_Inscripcion extends javax.swing.JPanel {
 
         jLabel4.setText("ID del estudiante");
 
+        ID_Curso.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                ID_CursoKeyTyped(evt);
+            }
+        });
+
         Año.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 AñoKeyTyped(evt);
@@ -61,6 +67,12 @@ public class Inscribir_Inscripcion extends javax.swing.JPanel {
         Semestre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 SemestreKeyTyped(evt);
+            }
+        });
+
+        ID_Estudiante.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                ID_EstudianteKeyTyped(evt);
             }
         });
 
@@ -188,6 +200,18 @@ public class Inscribir_Inscripcion extends javax.swing.JPanel {
         char c = evt.getKeyChar();
         if(c<'0' || c>'9') evt.consume();
     }//GEN-LAST:event_SemestreKeyTyped
+
+    private void ID_CursoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ID_CursoKeyTyped
+        char c = evt.getKeyChar();
+        
+        if(c<'0' || c>'9') evt.consume();
+    }//GEN-LAST:event_ID_CursoKeyTyped
+
+    private void ID_EstudianteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ID_EstudianteKeyTyped
+        char c = evt.getKeyChar();
+        
+        if(c<'0' || c>'9') evt.consume();
+    }//GEN-LAST:event_ID_EstudianteKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

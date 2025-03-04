@@ -107,8 +107,14 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Buscar por ID del curso Inscrito"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Buscar_ID_CursoInscritoActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="ID_CursoInscrito">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="ID_CursoInscritoKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>

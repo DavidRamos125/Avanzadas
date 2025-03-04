@@ -4,6 +4,9 @@
  */
 package GUI;
 
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+
 /**
  *
  * @author getro
@@ -27,13 +30,45 @@ public class toString_Inscripcion extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        ToString = new javax.swing.JButton();
-        toString = new javax.swing.JTextField();
+        Buscar_ID = new javax.swing.JButton();
+        ID_CursoInscrito = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        ID_Curso = new javax.swing.JLabel();
+        ID_Estudiante = new javax.swing.JLabel();
+        Año = new javax.swing.JLabel();
+        Semestre = new javax.swing.JLabel();
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         jPanel1.setMinimumSize(new java.awt.Dimension(778, 544));
 
-        ToString.setText("Mostrar todo");
+        Buscar_ID.setText("Buscar por ID del curso Inscrito");
+        Buscar_ID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Buscar_IDActionPerformed(evt);
+            }
+        });
+        Buscar_ID.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                Buscar_IDKeyTyped(evt);
+            }
+        });
+
+        ID_CursoInscrito.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                ID_CursoInscritoKeyTyped(evt);
+            }
+        });
+
+        jLabel1.setText("ID del Curso :");
+
+        jLabel2.setText("Año :");
+
+        jLabel3.setText("ID del estudiante :");
+
+        jLabel4.setText("Semestre :");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -41,20 +76,45 @@ public class toString_Inscripcion extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(ToString)
-                .addGap(8, 8, 8)
-                .addComponent(toString, javax.swing.GroupLayout.PREFERRED_SIZE, 631, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel1)
+                    .addComponent(Buscar_ID)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(ID_CursoInscrito, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
+                    .addComponent(ID_Curso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Semestre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Año, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ID_Estudiante, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(ToString)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(toString, javax.swing.GroupLayout.Alignment.TRAILING)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(ID_CursoInscrito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Buscar_ID))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(ID_Curso))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(ID_Estudiante))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(Año))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(Semestre))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -73,10 +133,47 @@ public class toString_Inscripcion extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void Buscar_IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Buscar_IDActionPerformed
+        String Id_CursoInscrito;
+        Id_CursoInscrito = ID_CursoInscrito.getText();
+    }//GEN-LAST:event_Buscar_IDActionPerformed
+
+    private void Buscar_IDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Buscar_IDKeyTyped
+        char c = evt.getKeyChar();
+        
+        if(c<'0' || c>'9') evt.consume();
+    }//GEN-LAST:event_Buscar_IDKeyTyped
+
+    private void ID_CursoInscritoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ID_CursoInscritoKeyTyped
+        char c = evt.getKeyChar();
+        
+        if(c<'0' || c>'9') evt.consume();
+    }//GEN-LAST:event_ID_CursoInscritoKeyTyped
+
+    private boolean Revision(JTextField text){
+        boolean valor;
+        valor = true;
+        if(text.getText().equals("")){
+            JOptionPane.showMessageDialog(this,"Por favor llenar correctamente los espacios");
+            valor = false;
+        } 
+    return valor;    
+    }
+    
+      
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton ToString;
+    private javax.swing.JLabel Año;
+    private javax.swing.JButton Buscar_ID;
+    private javax.swing.JLabel ID_Curso;
+    private javax.swing.JTextField ID_CursoInscrito;
+    private javax.swing.JLabel ID_Estudiante;
+    private javax.swing.JLabel Semestre;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField toString;
     // End of variables declaration//GEN-END:variables
 }
