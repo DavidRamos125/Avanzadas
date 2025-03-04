@@ -40,6 +40,8 @@ public class Actualizar_Persona extends javax.swing.JPanel {
         Email = new javax.swing.JTextField();
         Actualizar = new javax.swing.JToggleButton();
 
+        setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+
         Buscar.setText("Buscar por ID :");
         Buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -92,7 +94,7 @@ public class Actualizar_Persona extends javax.swing.JPanel {
                             .addComponent(Nombre)
                             .addComponent(Apellido)
                             .addComponent(Email, javax.swing.GroupLayout.DEFAULT_SIZE, 332, Short.MAX_VALUE))))
-                .addContainerGap(315, Short.MAX_VALUE))
+                .addContainerGap(313, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -115,7 +117,7 @@ public class Actualizar_Persona extends javax.swing.JPanel {
                     .addComponent(Email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(Actualizar)
-                .addContainerGap(390, Short.MAX_VALUE))
+                .addContainerGap(388, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

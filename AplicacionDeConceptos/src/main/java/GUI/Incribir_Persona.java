@@ -43,6 +43,7 @@ public class Incribir_Persona extends javax.swing.JPanel {
 
         setPreferredSize(new java.awt.Dimension(778, 544));
 
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         jPanel1.setPreferredSize(new java.awt.Dimension(778, 544));
 
         jLabel1.setText("Nombres :");
@@ -131,7 +132,7 @@ public class Incribir_Persona extends javax.swing.JPanel {
                     .addComponent(Caja_Texto))
                 .addGap(18, 18, 18)
                 .addComponent(jToggleButton1)
-                .addContainerGap(377, Short.MAX_VALUE))
+                .addContainerGap(375, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

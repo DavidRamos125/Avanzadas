@@ -42,6 +42,7 @@ public class Eliminar_Persona extends javax.swing.JPanel {
 
         setPreferredSize(new java.awt.Dimension(778, 544));
 
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         jPanel1.setPreferredSize(new java.awt.Dimension(778, 544));
 
         jToggleButton1.setLabel("Buscar Por ID");
@@ -88,7 +89,7 @@ public class Eliminar_Persona extends javax.swing.JPanel {
                     .addComponent(Nombre_Busqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Email_Busqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Apellido_Busqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(332, Short.MAX_VALUE))
+                .addContainerGap(330, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -111,7 +112,7 @@ public class Eliminar_Persona extends javax.swing.JPanel {
                     .addComponent(Email_Busqueda))
                 .addGap(18, 18, 18)
                 .addComponent(Eliminar)
-                .addContainerGap(408, Short.MAX_VALUE))
+                .addContainerGap(406, Short.MAX_VALUE))
         );
 
         jToggleButton1.getAccessibleContext().setAccessibleName("Buscar");
