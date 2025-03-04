@@ -26,4 +26,9 @@ public class ServicioPersona {
     public void eliminarPersona(String id) {
         crud.eliminar(id);
     }
+
+    public void actualizarPersona(DTOPersona dtoPersona) {
+        Persona persona = new Persona(dtoPersona.getId(), dtoPersona.getNombres(), dtoPersona.getApellidos(), dtoPersona.getEmail());
+        crud.actualizar(persona);
+    }
 }
