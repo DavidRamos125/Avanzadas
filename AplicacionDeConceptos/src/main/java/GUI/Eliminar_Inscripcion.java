@@ -48,6 +48,12 @@ public class Eliminar_Inscripcion extends javax.swing.JPanel {
 
         jLabel1.setText("ID del Curso :");
 
+        ID_CursoInscrito.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                ID_CursoInscritoKeyTyped(evt);
+            }
+        });
+
         jLabel2.setText("ID del Estudiante :");
 
         jLabel3.setText("Año :");
@@ -139,6 +145,12 @@ public class Eliminar_Inscripcion extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this , "Se ah cancelado la accion");
         }
     }//GEN-LAST:event_EliminarActionPerformed
+
+    private void ID_CursoInscritoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ID_CursoInscritoKeyTyped
+        char c = evt.getKeyChar();
+        
+        if(c<'0' || c>'9') evt.consume();
+    }//GEN-LAST:event_ID_CursoInscritoKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

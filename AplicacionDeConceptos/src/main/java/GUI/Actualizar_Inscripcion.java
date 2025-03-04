@@ -46,6 +46,17 @@ public class Actualizar_Inscripcion extends javax.swing.JPanel {
         jPanel1.setMinimumSize(new java.awt.Dimension(778, 544));
 
         Buscar_ID_CursoInscrito.setText("Buscar por ID del curso Inscrito");
+        Buscar_ID_CursoInscrito.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Buscar_ID_CursoInscritoActionPerformed(evt);
+            }
+        });
+
+        ID_CursoInscrito.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                ID_CursoInscritoKeyTyped(evt);
+            }
+        });
 
         jLabel1.setText("ID del curso :");
 
@@ -168,6 +179,17 @@ public class Actualizar_Inscripcion extends javax.swing.JPanel {
             }
         }
     }//GEN-LAST:event_ActualizarActionPerformed
+
+    private void Buscar_ID_CursoInscritoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Buscar_ID_CursoInscritoActionPerformed
+        String Id_CursoInscrito;
+        Id_CursoInscrito = ID_CursoInscrito.getText();
+    }//GEN-LAST:event_Buscar_ID_CursoInscritoActionPerformed
+
+    private void ID_CursoInscritoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ID_CursoInscritoKeyTyped
+        char c = evt.getKeyChar();
+        
+        if(c<'0' || c>'9') evt.consume();
+    }//GEN-LAST:event_ID_CursoInscritoKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
