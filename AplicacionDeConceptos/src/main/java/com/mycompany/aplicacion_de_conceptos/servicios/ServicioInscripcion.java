@@ -6,5 +6,8 @@ import com.mycompany.aplicacion_de_conceptos.persistencia.CRUD;
 public class ServicioInscripcion {
     private CRUD<Inscripcion> crud;
 
+    public ServicioInscripcion(CRUD<Inscripcion> crud) {
+        this.crud = crud;
+    }
 
 }
