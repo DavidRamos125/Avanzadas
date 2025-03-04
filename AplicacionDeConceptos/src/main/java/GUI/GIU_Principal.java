@@ -211,11 +211,26 @@ public class GIU_Principal extends javax.swing.JFrame {
         });
 
         Eliminar_Cursos.setLabel("Eliminar");
+        Eliminar_Cursos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Eliminar_CursosActionPerformed(evt);
+            }
+        });
 
         Actualizar_Cursos.setLabel("Actualizar");
+        Actualizar_Cursos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Actualizar_CursosActionPerformed(evt);
+            }
+        });
 
         toString.setActionCommand("toString");
         toString.setLabel("toString");
+        toString.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                toStringActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout CursosInscritosLayout = new javax.swing.GroupLayout(CursosInscritos);
         CursosInscritos.setLayout(CursosInscritosLayout);
@@ -310,6 +325,21 @@ public class GIU_Principal extends javax.swing.JFrame {
         Inscribir_Inscripcion Panel = new Inscribir_Inscripcion();
         ShowPanel(Panel,content_CusosInscritos);
     }//GEN-LAST:event_Inscribir_CursosActionPerformed
+
+    private void Eliminar_CursosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Eliminar_CursosActionPerformed
+        Eliminar_Inscripcion Panel = new Eliminar_Inscripcion();
+        ShowPanel(Panel,content_CusosInscritos);
+    }//GEN-LAST:event_Eliminar_CursosActionPerformed
+
+    private void Actualizar_CursosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Actualizar_CursosActionPerformed
+        Actualizar_Inscripcion Panel = new Actualizar_Inscripcion();
+        ShowPanel(Panel,content_CusosInscritos);
+    }//GEN-LAST:event_Actualizar_CursosActionPerformed
+
+    private void toStringActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_toStringActionPerformed
+        toString_Inscripcion Panel = new toString_Inscripcion();
+        ShowPanel(Panel,content_CusosInscritos);
+    }//GEN-LAST:event_toStringActionPerformed
 
     /**
      * @param args the command line arguments

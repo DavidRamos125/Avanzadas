@@ -324,17 +324,26 @@
               <Properties>
                 <Property name="label" type="java.lang.String" value="Eliminar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Eliminar_CursosActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="Actualizar_Cursos">
               <Properties>
                 <Property name="label" type="java.lang.String" value="Actualizar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Actualizar_CursosActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="toString">
               <Properties>
                 <Property name="actionCommand" type="java.lang.String" value="toString"/>
                 <Property name="label" type="java.lang.String" value="toString"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="toStringActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
