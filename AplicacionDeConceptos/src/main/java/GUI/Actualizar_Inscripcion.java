@@ -4,6 +4,9 @@
  */
 package GUI;
 
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+
 /**
  *
  * @author getro
@@ -27,19 +30,88 @@ public class Actualizar_Inscripcion extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        Buscar_ID_CursoInscrito = new javax.swing.JButton();
+        ID_CursoInscrito = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        ID_Curso = new javax.swing.JTextField();
+        ID_Estudiante = new javax.swing.JTextField();
+        Semestre = new javax.swing.JTextField();
+        Año = new javax.swing.JTextField();
+        Actualizar = new javax.swing.JButton();
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         jPanel1.setMinimumSize(new java.awt.Dimension(778, 544));
+
+        Buscar_ID_CursoInscrito.setText("Buscar por ID del curso Inscrito");
+
+        jLabel1.setText("ID del curso :");
+
+        jLabel2.setText("ID del Estudiante :");
+
+        jLabel3.setText("Año :");
+
+        jLabel4.setText("Semestre :");
+
+        Actualizar.setText("Actualizar");
+        Actualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ActualizarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 778, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel1)
+                            .addComponent(Buscar_ID_CursoInscrito)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ID_CursoInscrito, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Semestre, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Año, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ID_Estudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ID_Curso, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(293, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 544, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Buscar_ID_CursoInscrito)
+                    .addComponent(ID_CursoInscrito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(ID_Curso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2)
+                    .addComponent(ID_Estudiante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(Año, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(Semestre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Actualizar)
+                .addContainerGap(374, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -54,8 +126,62 @@ public class Actualizar_Inscripcion extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private boolean Revision(JTextField text){
+        boolean valor;
+        valor = true;
+        if(text.getText().equals("")){
+            JOptionPane.showMessageDialog(this,"Por favor llenar correctamente los espacios");
+            valor = false;
+        } 
+    return valor;    
+    }
+    
+    private void ActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarActionPerformed
+        String Id_Curso,año,semestre,Id_Estudiante;
+        boolean vacio = true;
+        
+        Id_Curso = ID_Curso.getText();
+        año = Año.getText();
+        semestre = Semestre.getText();
+        Id_Estudiante = ID_Estudiante.getText();
+        
+        vacio = Revision(ID_Curso);
+        if(vacio == true){
+            vacio = Revision(Semestre);
+            if(vacio == true){
+                vacio = Revision(Año);
+                if(vacio == true){
+                    vacio = Revision(ID_Estudiante);
+                }
+            }
+        }
+        
+        if(vacio == true){
+            int respuesta = JOptionPane.showConfirmDialog(this, "Seguro que quieres proceder ?");
+            if (respuesta == 0 ){
+                //aqui estaria el llamdo a eliminar
+                JOptionPane.showMessageDialog(this , "Se ah actualizado correctamente");
+            }else if(respuesta == 1){
+                JOptionPane.showMessageDialog(this , "Se ah abortado la actualizacion");
+            }else{
+                JOptionPane.showMessageDialog(this , "Se ah cancelado la accion");
+            }
+        }
+    }//GEN-LAST:event_ActualizarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Actualizar;
+    private javax.swing.JTextField Año;
+    private javax.swing.JButton Buscar_ID_CursoInscrito;
+    private javax.swing.JTextField ID_Curso;
+    private javax.swing.JTextField ID_CursoInscrito;
+    private javax.swing.JTextField ID_Estudiante;
+    private javax.swing.JTextField Semestre;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
