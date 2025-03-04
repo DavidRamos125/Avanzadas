@@ -183,6 +183,11 @@ public class Actualizar_Inscripcion extends javax.swing.JPanel {
     private void Buscar_ID_CursoInscritoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Buscar_ID_CursoInscritoActionPerformed
         String Id_CursoInscrito;
         Id_CursoInscrito = ID_CursoInscrito.getText();
+        
+        ID_Curso.setText("");
+        ID_Estudiante.setText("");
+        Semestre.setText("");
+        Año.setText("");
     }//GEN-LAST:event_Buscar_ID_CursoInscritoActionPerformed
 
     private void ID_CursoInscritoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ID_CursoInscritoKeyTyped
