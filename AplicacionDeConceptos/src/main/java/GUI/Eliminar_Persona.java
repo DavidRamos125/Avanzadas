@@ -148,7 +148,7 @@ public class Eliminar_Persona extends javax.swing.JPanel {
         
         vacio = Revision(ID);
         
-        if(vacio == false){
+        if(vacio == true){
             int respuesta = JOptionPane.showConfirmDialog(this, "Seguro que quieres proceder ?"); 
             if (respuesta == 0 ){
                 //aqui estaria el llamdo a eliminar

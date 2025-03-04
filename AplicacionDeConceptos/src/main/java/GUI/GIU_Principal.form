@@ -154,9 +154,6 @@
               <Properties>
                 <Property name="label" type="java.lang.String" value="Eliminar"/>
               </Properties>
-              <AccessibilityProperties>
-                <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Eliminar"/>
-              </AccessibilityProperties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Eliminar_PersonaActionPerformed"/>
               </Events>
@@ -165,9 +162,6 @@
               <Properties>
                 <Property name="label" type="java.lang.String" value="Actualizar"/>
               </Properties>
-              <AccessibilityProperties>
-                <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Actualizar"/>
-              </AccessibilityProperties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Actualizar_PersonaActionPerformed"/>
               </Events>
@@ -238,9 +232,6 @@
               <Properties>
                 <Property name="label" type="java.lang.String" value="Inscribir"/>
               </Properties>
-              <AccessibilityProperties>
-                <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Inscribir"/>
-              </AccessibilityProperties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Inscribir_ProfesoresActionPerformed"/>
               </Events>
@@ -249,9 +240,9 @@
               <Properties>
                 <Property name="label" type="java.lang.String" value="toString"/>
               </Properties>
-              <AccessibilityProperties>
-                <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="toString"/>
-              </AccessibilityProperties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="toString_ProfesoresActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -325,34 +316,25 @@
               <Properties>
                 <Property name="label" type="java.lang.String" value="Inscribir"/>
               </Properties>
-              <AccessibilityProperties>
-                <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Inscribir"/>
-              </AccessibilityProperties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Inscribir_CursosActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="Eliminar_Cursos">
               <Properties>
                 <Property name="label" type="java.lang.String" value="Eliminar"/>
               </Properties>
-              <AccessibilityProperties>
-                <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Eliminar"/>
-              </AccessibilityProperties>
             </Component>
             <Component class="javax.swing.JButton" name="Actualizar_Cursos">
               <Properties>
                 <Property name="label" type="java.lang.String" value="Actualizar"/>
               </Properties>
-              <AccessibilityProperties>
-                <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Actualizar"/>
-              </AccessibilityProperties>
             </Component>
             <Component class="javax.swing.JButton" name="toString">
               <Properties>
                 <Property name="actionCommand" type="java.lang.String" value="toString"/>
                 <Property name="label" type="java.lang.String" value="toString"/>
               </Properties>
-              <AccessibilityProperties>
-                <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="toString"/>
-              </AccessibilityProperties>
             </Component>
           </SubComponents>
         </Container>

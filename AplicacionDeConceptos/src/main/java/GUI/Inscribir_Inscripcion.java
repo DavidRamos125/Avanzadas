@@ -11,12 +11,12 @@ import javax.swing.JTextField;
  *
  * @author getro
  */
-public class Inscribir_Profesores extends javax.swing.JPanel {
+public class Inscribir_Inscripcion extends javax.swing.JPanel {
 
     /**
-     * Creates new form Inscribir_Profesores
+     * Creates new form Inscribir_Cursos
      */
-    public Inscribir_Profesores() {
+    public Inscribir_Inscripcion() {
         initComponents();
     }
 
@@ -32,33 +32,29 @@ public class Inscribir_Profesores extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        ID_Profesor = new javax.swing.JTextField();
-        Semestre = new javax.swing.JTextField();
-        Año = new javax.swing.JTextField();
         ID_Curso = new javax.swing.JTextField();
+        Año = new javax.swing.JTextField();
+        Semestre = new javax.swing.JTextField();
+        ID_Estudiante = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        jPanel1.setPreferredSize(new java.awt.Dimension(788, 544));
+        jPanel1.setMaximumSize(new java.awt.Dimension(778, 544));
+        jPanel1.setMinimumSize(new java.awt.Dimension(778, 544));
 
-        jLabel1.setText("ID del profesor :");
+        jLabel1.setText("ID del Curso");
 
-        jLabel2.setText("Año :");
+        jLabel2.setText("Año del curso");
 
-        jLabel4.setText("ID del Curso :");
+        jLabel3.setText("Semestre");
 
-        jLabel5.setText("Semestre :");
+        jLabel4.setText("ID del estudiante");
 
-        ID_Profesor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ID_ProfesorActionPerformed(evt);
-            }
-        });
-        ID_Profesor.addKeyListener(new java.awt.event.KeyAdapter() {
+        Año.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                ID_ProfesorKeyTyped(evt);
+                AñoKeyTyped(evt);
             }
         });
 
@@ -68,24 +64,7 @@ public class Inscribir_Profesores extends javax.swing.JPanel {
             }
         });
 
-        Año.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AñoActionPerformed(evt);
-            }
-        });
-        Año.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                AñoKeyTyped(evt);
-            }
-        });
-
-        ID_Curso.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                ID_CursoKeyTyped(evt);
-            }
-        });
-
-        jButton1.setText("Inscribir nuevo curso");
+        jButton1.setText("Inscribir");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -97,45 +76,51 @@ public class Inscribir_Profesores extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(39, 39, 39)
+                                .addComponent(jLabel1))
                             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ID_Profesor, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ID_Curso, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Semestre, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Año, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(302, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(ID_Curso)
+                            .addComponent(Año)
+                            .addComponent(Semestre, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton1)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(ID_Estudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(424, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(ID_Profesor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ID_Curso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(Año, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(Semestre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Semestre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(ID_Curso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ID_Estudiante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
-                .addContainerGap(401, Short.MAX_VALUE))
+                .addContainerGap(421, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -150,38 +135,6 @@ public class Inscribir_Profesores extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ID_ProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ID_ProfesorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ID_ProfesorActionPerformed
-
-    private void AñoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AñoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AñoActionPerformed
-
-    private void ID_ProfesorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ID_ProfesorKeyTyped
-        char c = evt.getKeyChar();
-        
-        if(c<'0' || c>'9') evt.consume();
-    }//GEN-LAST:event_ID_ProfesorKeyTyped
-
-    private void AñoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AñoKeyTyped
-        char c = evt.getKeyChar();
-        
-        if(c<'0' || c>'9') evt.consume();
-    }//GEN-LAST:event_AñoKeyTyped
-
-    private void SemestreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SemestreKeyTyped
-        char c = evt.getKeyChar();
-        
-        if(c<'0' || c>'9') evt.consume();
-    }//GEN-LAST:event_SemestreKeyTyped
-
-    private void ID_CursoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ID_CursoKeyTyped
-        char c = evt.getKeyChar();
-        
-        if(c<'0' || c>'9') evt.consume();
-    }//GEN-LAST:event_ID_CursoKeyTyped
-
     private boolean Revision(JTextField text){
         boolean valor;
         valor = true;
@@ -193,21 +146,21 @@ public class Inscribir_Profesores extends javax.swing.JPanel {
     }
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String Id_Profesor,semestre,año,Id_Curso;
-        boolean vacio = false;
+        String Id_Curso,año,semestre,Id_Estudiante;
+        boolean vacio = true;
         
-        Id_Profesor = ID_Profesor.getText();
-        semestre = Semestre.getText();
-        año = Año.getText();
         Id_Curso = ID_Curso.getText();
+        año = Año.getText();
+        semestre = Semestre.getText();
+        Id_Estudiante = ID_Estudiante.getText();
         
-        vacio = Revision(ID_Profesor);
+        vacio = Revision(ID_Curso);
         if(vacio == true){
             vacio = Revision(Semestre);
             if(vacio == true){
                 vacio = Revision(Año);
                 if(vacio == true){
-                    vacio = Revision(ID_Curso);
+                    vacio = Revision(ID_Estudiante);
                 }
             }
         }
@@ -218,24 +171,35 @@ public class Inscribir_Profesores extends javax.swing.JPanel {
                 //aqui estaria el llamdo a eliminar
                 JOptionPane.showMessageDialog(this , "Se ah inscrito correctamente");
             }else if(respuesta == 1){
-                JOptionPane.showMessageDialog(this , "Se ah abortado la inscrito");
+                JOptionPane.showMessageDialog(this , "Se ah abortado la inscripcion");
             }else{
                 JOptionPane.showMessageDialog(this , "Se ah cancelado la accion");
             }
         }
+                
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void AñoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AñoKeyTyped
+        char c = evt.getKeyChar();
+        if(c<'0' || c>'9') evt.consume();
+    }//GEN-LAST:event_AñoKeyTyped
+
+    private void SemestreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SemestreKeyTyped
+        char c = evt.getKeyChar();
+        if(c<'0' || c>'9') evt.consume();
+    }//GEN-LAST:event_SemestreKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Año;
     private javax.swing.JTextField ID_Curso;
-    private javax.swing.JTextField ID_Profesor;
+    private javax.swing.JTextField ID_Estudiante;
     private javax.swing.JTextField Semestre;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

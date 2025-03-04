@@ -179,17 +179,17 @@ public class Incribir_Persona extends javax.swing.JPanel {
         email = Email.getText();
         
         vacio = Revision(ID);
-        if(vacio == false){
+        if(vacio == true){
             vacio = Revision(Nombres);
-            if(vacio == false){
+            if(vacio == true){
                 vacio = Revision(Apellidos);
-                if(vacio == false){
+                if(vacio == true){
                     vacio = Revision(Email);
                 }
             }
         }
         
-        if(vacio == false){
+        if(vacio == true){
             int respuesta = JOptionPane.showConfirmDialog(this, "Seguro que quieres proceder ?");
             if (respuesta == 0 ){
                 //aqui estaria el llamdo a eliminar

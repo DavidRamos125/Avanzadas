@@ -142,17 +142,17 @@ public class Actualizar_Persona extends javax.swing.JPanel {
         vacio = false;
         
         vacio = Revision(ID);
-        if(vacio == false){
+        if(vacio == true){
             vacio = Revision(Nombre);
-            if(vacio == false){
+            if(vacio == true){
                 vacio = Revision(Apellido);
-                if(vacio == false){
+                if(vacio == true){
                     vacio = Revision(Email);
                 }
             }
         }
         
-        if(vacio == false){
+        if(vacio == true){
             int respuesta = JOptionPane.showConfirmDialog(this, "Seguro que quieres proceder ?");
             if (respuesta == 0 ){
                 //aqui estaria el llamdo a eliminar

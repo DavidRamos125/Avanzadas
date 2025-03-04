@@ -133,8 +133,6 @@ public class GIU_Principal extends javax.swing.JFrame {
         );
 
         Inscribir_Persona.getAccessibleContext().setAccessibleName("Inscribir");
-        Eliminar_Persona.getAccessibleContext().setAccessibleName("Eliminar");
-        Actualizar_Persona.getAccessibleContext().setAccessibleName("Actualizar");
 
         HOME.addTab("Personas Inscritas", PersonasInscritas);
 
@@ -159,6 +157,11 @@ public class GIU_Principal extends javax.swing.JFrame {
         });
 
         toString_Profesores.setLabel("toString");
+        toString_Profesores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                toString_ProfesoresActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout CursosProfesoresLayout = new javax.swing.GroupLayout(CursosProfesores);
         CursosProfesores.setLayout(CursosProfesoresLayout);
@@ -185,9 +188,6 @@ public class GIU_Principal extends javax.swing.JFrame {
                 .addContainerGap(480, Short.MAX_VALUE))
         );
 
-        Inscribir_Profesores.getAccessibleContext().setAccessibleName("Inscribir");
-        toString_Profesores.getAccessibleContext().setAccessibleName("toString");
-
         HOME.addTab("Cursos Profesores", CursosProfesores);
 
         content_CusosInscritos.setPreferredSize(new java.awt.Dimension(778, 544));
@@ -204,6 +204,11 @@ public class GIU_Principal extends javax.swing.JFrame {
         );
 
         Inscribir_Cursos.setLabel("Inscribir");
+        Inscribir_Cursos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Inscribir_CursosActionPerformed(evt);
+            }
+        });
 
         Eliminar_Cursos.setLabel("Eliminar");
 
@@ -242,11 +247,6 @@ public class GIU_Principal extends javax.swing.JFrame {
                 .addComponent(toString)
                 .addContainerGap(398, Short.MAX_VALUE))
         );
-
-        Inscribir_Cursos.getAccessibleContext().setAccessibleName("Inscribir");
-        Eliminar_Cursos.getAccessibleContext().setAccessibleName("Eliminar");
-        Actualizar_Cursos.getAccessibleContext().setAccessibleName("Actualizar");
-        toString.getAccessibleContext().setAccessibleName("toString");
 
         HOME.addTab("Cursos Inscritos", CursosInscritos);
 
@@ -300,6 +300,16 @@ public class GIU_Principal extends javax.swing.JFrame {
         Inscribir_Profesores Panel = new Inscribir_Profesores();
         ShowPanel(Panel,content_CursosProfesores);
     }//GEN-LAST:event_Inscribir_ProfesoresActionPerformed
+
+    private void toString_ProfesoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_toString_ProfesoresActionPerformed
+        toString_Profesores Panel = new toString_Profesores();
+        ShowPanel(Panel,content_CursosProfesores);
+    }//GEN-LAST:event_toString_ProfesoresActionPerformed
+
+    private void Inscribir_CursosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Inscribir_CursosActionPerformed
+        Inscribir_Inscripcion Panel = new Inscribir_Inscripcion();
+        ShowPanel(Panel,content_CusosInscritos);
+    }//GEN-LAST:event_Inscribir_CursosActionPerformed
 
     /**
      * @param args the command line arguments
