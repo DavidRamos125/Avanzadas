@@ -21,7 +21,7 @@ public class DBPersona implements CRUD<Persona> {
             statement.setInt(1, objecto.getID());
             statement.setString(2, objecto.getNombre());
             statement.setString(3, objecto.getApellido());
-            statement.setInt(4, objecto.getEmail());
+            statement.setString(4, objecto.getEmail());
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -63,7 +63,7 @@ public class DBPersona implements CRUD<Persona> {
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, objecto.getNombre());
             statement.setString(2, objecto.getApellido());
-            statement.setInt(3, objecto.getEmail());
+            statement.setString(3, objecto.getEmail());
             statement.setInt(4, objecto.getID());
             statement.executeUpdate();
         } catch (SQLException e) {
