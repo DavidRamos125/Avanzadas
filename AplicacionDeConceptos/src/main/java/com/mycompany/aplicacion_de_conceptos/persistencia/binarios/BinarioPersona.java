@@ -8,35 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BinarioPersona implements CRUD<Persona> {
-    @Override
-    public void crear(Persona objecto) {
-
-    }
-
-    @Override
-    public Persona obtener(String id) {
-        return null;
-    }
-
-    @Override
-    public List<Persona> obtenerTodos() {
-        return List.of();
-    }
-
-    @Override
-    public void actualizar(Persona objecto) {
-
-    }
-
-    @Override
-    public void eliminar(String id) {
-
-    }
-
     private static final String FILENAME = "Personas.dat";
 
-    public static void guardarPersona(Persona persona) throws IOException, ClassNotFoundException {
-
+    @Override
+    public void crear(Persona persona) throws IOException, ClassNotFoundException {
         File archivo = new File(FILENAME);
         if (!estaGuardado(persona)) {
             try {
@@ -51,10 +26,25 @@ public class BinarioPersona implements CRUD<Persona> {
         } else {
             System.out.println("el persona ya esta inscrito");
         }
-
     }
 
-    public static List<Persona> extraerListaObjetos() throws IOException, ClassNotFoundException {
+    @Override
+    public Persona obtener(String id) {
+
+        List<Persona> personas = new ArrayList<>();
+        personas = obtenerTodos();
+
+        for (Persona auxiliar : obtenerTodos()) {
+            if (auxiliar.getID() == Double.parseDouble(id)) {
+                return auxiliar;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public List<Persona> obtenerTodos() {
+
         File archivo = new File(FILENAME);
         List<Persona> listaPersonas = new ArrayList<>();
         try {
@@ -68,24 +58,53 @@ public class BinarioPersona implements CRUD<Persona> {
             System.out.println("error: " + e);
         }
         return listaPersonas;
-
     }
 
-    public static boolean estaGuardado(Persona persona) throws IOException, ClassNotFoundException {
-        for(Persona auxiliar : extraerListaObjetos()){
-            if(auxiliar.toString().equals(persona.toString())){
+    @Override
+    public void actualizar(Persona persona) {
+        List<Persona> personas = new ArrayList<>();
+        personas = obtenerTodos();
+
+        for (Persona auxiliar : obtenerTodos()) {
+            if (auxiliar.getID()==persona.getID()) {
+                personas.remove(auxiliar);
+                personas.add(persona);
+                break;
+            }
+        }
+        guardarLista(personas);
+    }
+
+    @Override
+    public void eliminar(String id) {
+        List<Persona> personas = new ArrayList<>();
+        personas = obtenerTodos();
+
+        for (Persona auxiliar : obtenerTodos()) {
+            if (auxiliar.getID() == Double.parseDouble(id)) {
+                personas.remove(auxiliar);
+                break;
+            }
+        }
+        guardarLista(personas);
+    }
+
+
+    public boolean estaGuardado(Persona persona) throws IOException, ClassNotFoundException {
+        for (Persona auxiliar : obtenerTodos()) {
+            if (auxiliar.toString().equals(persona.toString())) {
                 return true;
             }
         }
         return false;
     }
 
-    public static void guardarLista(List<Persona> lista){
+    public static void guardarLista(List<Persona> lista) {
         File archivo = new File(FILENAME);
         try {
             FileOutputStream fos = new FileOutputStream(archivo);
 
-            for(Persona auxiliar : lista){
+            for (Persona auxiliar : lista) {
                 ObjectOutputStream oos = new ObjectOutputStream(fos);
                 oos.writeObject(auxiliar);
             }
@@ -94,19 +113,6 @@ public class BinarioPersona implements CRUD<Persona> {
         } catch (Exception e) {
             System.out.println("error al guardar: " + e);
         }
-    }
-
-    public static void eliminarPersona(Persona persona) throws IOException, ClassNotFoundException {
-        List<Persona> personas= new ArrayList<>();
-        personas = extraerListaObjetos();
-
-        for(Persona auxiliar : extraerListaObjetos()){
-            if(auxiliar.toString().equals(persona.toString())){
-                personas.remove(auxiliar);
-                break;
-            }
-        }
-
     }
 
 }

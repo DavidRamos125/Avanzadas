@@ -5,6 +5,10 @@
 package com.mycompany.aplicacion_de_conceptos.GUI;
 
 import com.mycompany.aplicacion_de_conceptos.dtos.DTOPersona;
+import com.mycompany.aplicacion_de_conceptos.servicios.ServicioPersona;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -195,6 +199,15 @@ public class Incribir_Persona extends javax.swing.JPanel {
             int respuesta = JOptionPane.showConfirmDialog(this, "Seguro que quieres proceder ?");
             if (respuesta == 0 ){
                 DTOPersona persona = new DTOPersona(ID_,nombre,apellido,email);
+                
+                try {
+                    servicio.crearPersona(persona);
+                } catch (IOException ex) {
+                    Logger.getLogger(Incribir_Persona.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(Incribir_Persona.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
                 JOptionPane.showMessageDialog(this , "Se ah inscrito correctamente");
             }else if(respuesta == 1){
                 JOptionPane.showMessageDialog(this , "Se ah abortado la inscripcion");
@@ -222,4 +235,5 @@ public class Incribir_Persona extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
+    private ServicioPersona servicio = new ServicioPersona();
 }

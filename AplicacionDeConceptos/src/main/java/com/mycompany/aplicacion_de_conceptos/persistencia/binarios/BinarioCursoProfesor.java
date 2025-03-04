@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BinarioCursoProfesor implements CRUD<CursoProfesor> {
+    private static final String FILENAME = "CursosProfesores.dat";
     @Override
     public void crear(CursoProfesor objecto) {
 
@@ -33,7 +34,7 @@ public class BinarioCursoProfesor implements CRUD<CursoProfesor> {
 
     }
 
-    private static final String FILENAME = "CursosProfesores.dat";
+
 
     public static void guardarCursoProfesor(CursoProfesor cursoProfesor) throws IOException, ClassNotFoundException {
 
