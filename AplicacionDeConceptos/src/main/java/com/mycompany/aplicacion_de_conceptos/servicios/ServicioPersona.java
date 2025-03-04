@@ -9,14 +9,21 @@ public class ServicioPersona {
     private CRUD<Persona> crud;
 
     public ServicioPersona() {
-
+        crud = new DBPersona();
     }
 
     public void crearPersona(DTOPersona dtoPersona) {
         Persona persona = new Persona(dtoPersona.getId(), dtoPersona.getNombres(), dtoPersona.getApellidos(), dtoPersona.getEmail());
-        crud = new DBPersona();
         crud.crear(persona);
-        crud = new DBPersona();
-        crud.crear(persona);
+    }
+
+    public DTOPersona getPersona(String id) {
+        Persona persona = crud.obtener(id);
+        DTOPersona dtoPersona = new DTOPersona(persona.getID(), persona.getNombres(), persona.getApellidos(), persona.getEmail());
+        return dtoPersona;
+    }
+
+    public void eliminarPersona(String id) {
+        crud.eliminar(id);
     }
 }

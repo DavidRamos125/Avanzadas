@@ -7,8 +7,16 @@ public class Persona implements Serializable{
     private String nombres;
     private String apellidos;
     private String email;
-    
- public Persona(double ID, String nombres, String apellidos, String email) {
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getApellidos() {
+        return apellidos;
+    }
+
+    public Persona(double ID, String nombres, String apellidos, String email) {
     this.ID = ID;
     this.nombres = nombres;
     this.apellidos = apellidos;

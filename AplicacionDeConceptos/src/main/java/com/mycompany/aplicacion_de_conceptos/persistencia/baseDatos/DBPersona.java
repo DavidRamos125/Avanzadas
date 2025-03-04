@@ -3,7 +3,6 @@ package com.mycompany.aplicacion_de_conceptos.persistencia.baseDatos;
 import com.mycompany.aplicacion_de_conceptos.entidades.Persona;
 import com.mycompany.aplicacion_de_conceptos.persistencia.CRUD;
 
-import java.io.Serializable;
 import java.util.List;
 
 public class DBPersona implements CRUD<Persona> {
