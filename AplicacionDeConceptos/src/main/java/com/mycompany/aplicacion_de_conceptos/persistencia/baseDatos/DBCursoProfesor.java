@@ -6,6 +6,8 @@ import com.mycompany.aplicacion_de_conceptos.entidades.Profesor;
 import com.mycompany.aplicacion_de_conceptos.persistencia.CRUD;
 
 import java.util.List;
+import java.util.ArrayList;
+import java.sql.*;
 
 public class DBCursoProfesor implements CRUD<CursoProfesor> {
     private Connection connection;
