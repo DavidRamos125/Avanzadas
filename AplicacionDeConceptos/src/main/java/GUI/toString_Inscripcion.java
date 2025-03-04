@@ -136,6 +136,8 @@ public class toString_Inscripcion extends javax.swing.JPanel {
     private void Buscar_IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Buscar_IDActionPerformed
         String Id_CursoInscrito;
         Id_CursoInscrito = ID_CursoInscrito.getText();
+        
+        ID_Curso.setText("");
     }//GEN-LAST:event_Buscar_IDActionPerformed
 
     private void Buscar_IDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Buscar_IDKeyTyped
