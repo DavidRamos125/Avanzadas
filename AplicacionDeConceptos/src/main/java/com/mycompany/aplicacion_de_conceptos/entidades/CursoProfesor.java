@@ -23,4 +23,20 @@ public class CursoProfesor implements Serializable {
                "Semestre:"+semestre+"\n"+
                "Curso: "+curso.toString();
     }
+
+    public Profesor getProfesor() {
+        return profesor;
+    }
+
+    public Integer getAño() {
+        return año;
+    }
+
+    public Integer getSemestre() {
+        return semestre;
+    }
+
+    public Curso getCurso() {
+        return curso;
+    }
 }

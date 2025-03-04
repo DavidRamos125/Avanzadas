@@ -6,6 +6,18 @@ public class Inscripcion implements Serializable{
         private Curso curso;
         private int año;
         private int semestre;
+
+    public Curso getCurso() {
+        return curso;
+    }
+
+    public int getAño() {
+        return año;
+    }
+
+    public int getSemestre() {
+        return semestre;
+    }
         private Estudiante estudiante;
     
     public Inscripcion(Curso curso, int año, int semestre, Estudiante estudiante) {

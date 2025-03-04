@@ -65,8 +65,8 @@ public class BinarioPersona implements CRUD<Persona> {
         List<Persona> personas = new ArrayList<>();
         personas = obtenerTodos();
 
-        for (Persona auxiliar : obtenerTodos()) {
-            if (auxiliar.getID()==persona.getID()) {
+        for (Persona auxiliar : personas) {
+            if (auxiliar.getID() == persona.getID()) {
                 personas.remove(auxiliar);
                 personas.add(persona);
                 break;
@@ -80,7 +80,7 @@ public class BinarioPersona implements CRUD<Persona> {
         List<Persona> personas = new ArrayList<>();
         personas = obtenerTodos();
 
-        for (Persona auxiliar : obtenerTodos()) {
+        for (Persona auxiliar : personas) {
             if (auxiliar.getID() == Double.parseDouble(id)) {
                 personas.remove(auxiliar);
                 break;

@@ -12,8 +12,8 @@ import java.util.List;
 public class DBCursoInscrito implements CRUD<Inscripcion> {
     private Connection connection;
     
-    public DBCursoInscrito(Connection connection) {
-        this.connection = connection;
+    public DBCursoInscrito() throws SQLException {
+        this.connection = DBConexion.conectar();
     }
     
     @Override
@@ -37,7 +37,7 @@ public class DBCursoInscrito implements CRUD<Inscripcion> {
             statement.setString(1, id);
             ResultSet rs = statement.executeQuery();
             if (rs.next()) {
-                Curso curso = new Curso(rs.getInt("cursoID"), null, true);
+                Curso curso = new Curso(rs.getInt("cursoID"),"", null, true);
                 Estudiante estudiante = new Estudiante(rs.getDouble("estudianteID"), "", "", "", 0, null, true, 0);
                 return new Inscripcion(curso, rs.getInt("año"), rs.getInt("semestre"), estudiante);
             }
@@ -53,7 +53,7 @@ public class DBCursoInscrito implements CRUD<Inscripcion> {
         String sql = "SELECT * FROM Inscripcion";
         try (Statement statement = connection.createStatement(); ResultSet rs = statement.executeQuery(sql)) {
             while (rs.next()) {
-                Curso curso = new Curso(rs.getInt("cursoID"), null, true);
+                Curso curso = new Curso(rs.getInt("cursoID"),"", null, true);
                 Estudiante estudiante = new Estudiante(rs.getDouble("estudianteID"), "", "", "", 0, null, true, 0);
                 lista.add(new Inscripcion(curso, rs.getInt("año"), rs.getInt("semestre"), estudiante));
             }

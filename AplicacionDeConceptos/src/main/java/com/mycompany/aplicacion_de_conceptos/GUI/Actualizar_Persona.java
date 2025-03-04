@@ -4,6 +4,8 @@
  */
 package com.mycompany.aplicacion_de_conceptos.GUI;
 
+import com.mycompany.aplicacion_de_conceptos.dtos.DTOPersona;
+import com.mycompany.aplicacion_de_conceptos.servicios.ServicioPersona;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -136,10 +138,11 @@ public class Actualizar_Persona extends javax.swing.JPanel {
     }
     
     private void ActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarActionPerformed
-        String nombre,apellido,email,Id;
+        String nombre,apellido,email;
+        double Id;
         boolean vacio;
         
-        Id = ID.getText();
+        Id = Double.parseDouble(ID.getText());
         nombre = Nombre.getText();
         apellido = Apellido.getText();
         email = Email.getText();
@@ -159,7 +162,8 @@ public class Actualizar_Persona extends javax.swing.JPanel {
         if(vacio == true){
             int respuesta = JOptionPane.showConfirmDialog(this, "Seguro que quieres proceder ?");
             if (respuesta == 0 ){
-                //aqui estaria el llamdo a eliminar
+                DTOPersona persona = new DTOPersona(Id, nombre, apellido, email);
+                servicio.actualizarPersona(persona);
                 JOptionPane.showMessageDialog(this , "Se ah actualizado correctamente");
             }else if(respuesta == 1){
                 JOptionPane.showMessageDialog(this , "Se ah abortado la actualizacion");
@@ -201,4 +205,5 @@ public class Actualizar_Persona extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
+    ServicioPersona servicio = new ServicioPersona();
 }
