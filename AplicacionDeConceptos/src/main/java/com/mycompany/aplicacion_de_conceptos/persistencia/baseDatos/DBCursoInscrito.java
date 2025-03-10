@@ -20,10 +20,10 @@ public class DBCursoInscrito implements CRUD<Inscripcion> {
     public void crear(Inscripcion objecto) {
         String sql = "INSERT INTO Inscripcion (cursoID, año, semestre, estudianteID) VALUES (BIGINT, INT, INT, BIGINT)";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setInt(1, objecto.getCurso().getID());
-            statement.setInt(2, objecto.getAño());
-            statement.setInt(3, objecto.getSemestre());
-            statement.setDouble(4, objecto.getEstudiante().getID());
+            statement.setInt(1, objecto.cursoID());
+            statement.setInt(2, objecto.año());
+            statement.setInt(3, objecto.semestre());
+            statement.setDouble(4, objecto.estudianteID());
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
