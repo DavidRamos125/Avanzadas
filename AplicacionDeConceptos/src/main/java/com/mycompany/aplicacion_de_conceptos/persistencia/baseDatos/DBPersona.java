@@ -10,15 +10,20 @@ import java.sql.*;
 public class DBPersona implements CRUD<Persona> {
     private Connection connection;
 
-    public DBPersona(Connection connection) {
-        this.connection = connection;
+    public DBPersona() {
+        try {
+            this.connection = DBConexion.conectar();
+        }catch (SQLException ex) {
+            System.out.println("error en la conexion: " + ex.getMessage());
+        }
+
     }
 
     @Override
     public void crear(Persona objecto) {
         String sql = "INSERT INTO Persona (id, nombre, apellido, email) VALUES (BIGINT, VARCHAR, VARCHAR, VARCHAR)";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setInt(1, objecto.getID());
+            statement.setDouble(1, objecto.getID());
             statement.setString(2, objecto.getNombre());
             statement.setString(3, objecto.getApellido());
             statement.setString(4, objecto.getEmail());
@@ -35,7 +40,7 @@ public class DBPersona implements CRUD<Persona> {
             statement.setString(1, id);
             ResultSet rs = statement.executeQuery();
             if (rs.next()) {
-                return new Persona(rs.getInt("id"), rs.getString("nombre"), rs.getString("apellido"), rs.getInt("email"));
+                return new Persona(rs.getInt("id"), rs.getString("nombre"), rs.getString("apellido"), rs.getString("email"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -49,7 +54,7 @@ public class DBPersona implements CRUD<Persona> {
         String sql = "SELECT * FROM Persona";
         try (Statement statement = connection.createStatement(); ResultSet rs = statement.executeQuery(sql)) {
             while (rs.next()) {
-                lista.add(new Persona(rs.getInt("id"), rs.getString("nombre"), rs.getString("apellido"), rs.getInt("edad")));
+                lista.add(new Persona(rs.getInt("id"), rs.getString("nombre"), rs.getString("apellido"), rs.getString("email")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -64,7 +69,7 @@ public class DBPersona implements CRUD<Persona> {
             statement.setString(1, objecto.getNombre());
             statement.setString(2, objecto.getApellido());
             statement.setString(3, objecto.getEmail());
-            statement.setInt(4, objecto.getID());
+            statement.setDouble(4, objecto.getID());
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

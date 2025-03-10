@@ -40,4 +40,12 @@ public class Persona implements Serializable{
                 "Apellidos :"+apellidos+"\n"+
                 "Email :"+email;
     }
+
+    public String getNombre() {
+        return nombres;
+    }
+
+    public String getApellido() {
+        return apellidos;
+    }
 }

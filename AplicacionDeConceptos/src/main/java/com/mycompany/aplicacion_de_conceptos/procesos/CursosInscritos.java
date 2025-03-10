@@ -1,18 +1,28 @@
 package com.mycompany.aplicacion_de_conceptos.procesos;
 
 import com.mycompany.aplicacion_de_conceptos.entidades.Inscripcion;
+import com.mycompany.aplicacion_de_conceptos.persistencia.CRUD;
+import com.mycompany.aplicacion_de_conceptos.persistencia.baseDatos.DBCursoInscrito;
 import com.mycompany.aplicacion_de_conceptos.persistencia.binarios.BinarioCursoInscrito;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CursosInscritos implements Servicios{
 
     private List<Inscripcion> listado ;
+    private CRUD<Inscripcion> crud;
     
     public CursosInscritos(){
-        listado = new ArrayList<>();
+        this.listado = new ArrayList<>();
+        try {
+            this.crud = new DBCursoInscrito();
+        } catch (SQLException e) {
+            System.out.println("error " + e.getMessage());
+        }
+
     }
 
     public void inscribirCurso(Inscripcion inscripcion) {

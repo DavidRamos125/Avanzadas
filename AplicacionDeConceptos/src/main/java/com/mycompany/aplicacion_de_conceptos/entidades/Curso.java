@@ -6,6 +6,7 @@ public class Curso implements Serializable{
     private int ID;
     private String nombre;
     private Programa programa;
+    private boolean activo;
 
     public int getID() {
         return ID;
@@ -22,7 +23,6 @@ public class Curso implements Serializable{
     public boolean isActivo() {
         return activo;
     }
-    private boolean activo;
     
     public Curso(int ID,String nombre ,Programa programa, boolean activo) {
         this.ID = ID;

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CursosProfesores implements Servicios{
+
     private List<CursoProfesor> listado = new ArrayList<>();
     
     public void inscribir(CursoProfesor cursoProfesor){

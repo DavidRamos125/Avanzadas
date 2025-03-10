@@ -6,6 +6,15 @@ public class Inscripcion implements Serializable{
         private Curso curso;
         private int año;
         private int semestre;
+        private Estudiante estudiante;
+
+
+    public Inscripcion(Curso curso, int año, int semestre, Estudiante estudiante) {
+        this.curso = curso;
+        this.año = año;
+        this.semestre = semestre;
+        this.estudiante = estudiante;
+    }
 
     public Curso getCurso() {
         return curso;
@@ -17,14 +26,6 @@ public class Inscripcion implements Serializable{
 
     public int getSemestre() {
         return semestre;
-    }
-        private Estudiante estudiante;
-    
-    public Inscripcion(Curso curso, int año, int semestre, Estudiante estudiante) {
-        this.curso = curso;
-        this.año = año;
-        this.semestre = semestre;
-        this.estudiante = estudiante;
     }
     
     public Estudiante getEstudiante(){
@@ -39,6 +40,5 @@ public class Inscripcion implements Serializable{
     public String toString() {
         return "Inscripcion{" + "curso=" + curso + ", ano=" + año + ", semestre=" + semestre + ", estudiante=" + estudiante + '}';
     }
-    
-    
+
 }
