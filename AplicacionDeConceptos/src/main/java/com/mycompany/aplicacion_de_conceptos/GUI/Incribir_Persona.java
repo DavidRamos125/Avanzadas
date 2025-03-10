@@ -5,7 +5,7 @@
 package com.mycompany.aplicacion_de_conceptos.GUI;
 
 import com.mycompany.aplicacion_de_conceptos.dtos.DTOPersona;
-import com.mycompany.aplicacion_de_conceptos.servicios.ServicioPersona;
+
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;

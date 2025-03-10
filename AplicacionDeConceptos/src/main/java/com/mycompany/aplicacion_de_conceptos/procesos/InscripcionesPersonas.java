@@ -1,17 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.aplicacion_de_conceptos.procesos;
 import com.mycompany.aplicacion_de_conceptos.entidades.Persona;
 import com.mycompany.aplicacion_de_conceptos.persistencia.binarios.BinarioPersona;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-/**
- *
- * @author Estudiante_MCA
- */
+
 public class InscripcionesPersonas {
     private List<Persona> listado = new ArrayList<>();
     private BinarioPersona binario = new BinarioPersona();

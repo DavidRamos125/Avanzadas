@@ -50,7 +50,7 @@ public class DBCursoInscrito implements CRUD<Inscripcion> {
     @Override
     public List<Inscripcion> obtenerTodos() {
         List<Inscripcion> lista = new ArrayList<>();
-        String sql = "SELECT * FROM Inscripcion";
+        String sql = "SELECT * FROM Inscripcion i, Estudiante e, Curso c WHERE i.cursoID = e.ID AND i.cursoID = c.ID";
         try (Statement statement = connection.createStatement(); ResultSet rs = statement.executeQuery(sql)) {
             while (rs.next()) {
                 Curso curso = new Curso(rs.getInt("cursoID"),"", null, true);

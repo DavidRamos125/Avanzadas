@@ -73,7 +73,7 @@ public class DBCursoProfesor implements CRUD<CursoProfesor> {
     public void actualizar(CursoProfesor objecto) {
         String sql = "UPDATE CursoProfesor SET cursoID = BIGINT WHERE profesorID = BIGINT";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setInt(1, objecto.getCurso().getID());
+            statement.setDouble(1, objecto.getCurso().getID());
             statement.setDouble(2, objecto.getProfesor().getID());
             statement.executeUpdate();
         } catch (SQLException e) {

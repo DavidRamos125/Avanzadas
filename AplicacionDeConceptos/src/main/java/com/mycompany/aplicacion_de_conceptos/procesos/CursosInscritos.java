@@ -28,25 +28,25 @@ public class CursosInscritos implements Servicios{
     public void inscribirCurso(Inscripcion inscripcion) {
         listado.add(inscripcion);
         try {
-            BinarioCursoInscrito.guardarInscripcion(inscripcion);
-        } catch (IOException e) {
-            System.out.println("Error" + e.getMessage());
+            crud.crear(inscripcion);
         } catch (ClassNotFoundException e) {
             System.out.println("Error" + e.getMessage());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
     public void eliminar(Inscripcion inscripcion) {
         listado.remove(inscripcion);
-        BinarioCursoInscrito.guardarLista(listado);
+        String id = String.valueOf(inscripcion.getEstudiante().getID() +","+ inscripcion.getCurso().getID() +","+ inscripcion.getAño() +","+ inscripcion.getSemestre());
+        crud.eliminar(id);
     }
 
     public void actualizar(Inscripcion inscripcion) {
-    // Recorremos la lista en busca de la inscripción que coincida
     for (int i = 0; i < listado.size(); i++) {
         if (listado.get(i).getEstudiante().getCodigo() == inscripcion.getEstudiante().getCodigo()){
             listado.get(i).setEstudiante(inscripcion.getEstudiante());
-            BinarioCursoInscrito.guardarLista(listado);
+            crud.actualizar(inscripcion);
             break;
         }
     }
@@ -54,7 +54,7 @@ public class CursosInscritos implements Servicios{
 
     public void guardarInformacion(Inscripcion inscripcion) {
         try {
-            BinarioCursoInscrito.guardarInscripcion(inscripcion);
+            crud.crear(inscripcion);
             System.out.println("Guardando informacion de la inscripcion: " + inscripcion.toString());
         } catch (IOException | ClassNotFoundException e) {
             System.out.println("Error al guardar la informacion: " + e.getMessage());
@@ -71,9 +71,8 @@ public class CursosInscritos implements Servicios{
         return sb.toString();
     }
 
-    public void cargarDatos() throws IOException, ClassNotFoundException {
-
-        listado = BinarioCursoInscrito.extraerListaObjetos();
+    public void cargarDatos()  {
+        listado = crud.obtenerTodos();
     }
 
     public String imprimirPosicion(int posicion){

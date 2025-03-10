@@ -5,7 +5,7 @@
 package com.mycompany.aplicacion_de_conceptos.GUI;
 
 import com.mycompany.aplicacion_de_conceptos.dtos.DTOPersona;
-import com.mycompany.aplicacion_de_conceptos.servicios.ServicioPersona;
+
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
