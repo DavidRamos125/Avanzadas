@@ -39,7 +39,7 @@ public class DBEstudiante implements CRUD<Estudiante> {
     @Override 
     public Estudiante obtener(String id) {
         String sql = "SELECT e.*, p.nombre AS programa_nombre, p.duracion, p.registro FROM Estudiante e " +
-                     "JOIN Programa p ON e.programa_id = p.ID WHERE e.ID = ?";
+                     "JOIN Programa p ON e.programa_id = p.ID WHERE e.ID = BIGINT";
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setLong(1, Long.parseLong(id));
             ResultSet rs = pstmt.executeQuery();
