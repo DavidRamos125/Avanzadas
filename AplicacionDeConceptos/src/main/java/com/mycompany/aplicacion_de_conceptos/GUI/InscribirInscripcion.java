@@ -4,6 +4,11 @@
  */
 package com.mycompany.aplicacion_de_conceptos.GUI;
 
+import com.mycompany.aplicacion_de_conceptos.dtos.DTOCurso;
+import com.mycompany.aplicacion_de_conceptos.dtos.DTOCursoInscrito;
+import com.mycompany.aplicacion_de_conceptos.dtos.DTOEstudiante;
+import com.mycompany.aplicacion_de_conceptos.procesos.ServicioCurso;
+import com.mycompany.aplicacion_de_conceptos.procesos.ServicioEstudiante;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -11,12 +16,12 @@ import javax.swing.JTextField;
  *
  * @author getro
  */
-public class Inscribir_Inscripcion extends javax.swing.JPanel {
+public class InscribirInscripcion extends javax.swing.JPanel {
 
     /**
      * Creates new form Inscribir_Cursos
      */
-    public Inscribir_Inscripcion() {
+    public InscribirInscripcion() {
         initComponents();
     }
 
@@ -38,7 +43,7 @@ public class Inscribir_Inscripcion extends javax.swing.JPanel {
         Año = new javax.swing.JTextField();
         Semestre = new javax.swing.JTextField();
         ID_Estudiante = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        Inscribir = new javax.swing.JButton();
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         jPanel1.setMaximumSize(new java.awt.Dimension(778, 544));
@@ -76,10 +81,10 @@ public class Inscribir_Inscripcion extends javax.swing.JPanel {
             }
         });
 
-        jButton1.setText("Inscribir");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Inscribir.setText("Inscribir");
+        Inscribir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                InscribirActionPerformed(evt);
             }
         });
 
@@ -104,7 +109,7 @@ public class Inscribir_Inscripcion extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(12, 12, 12)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton1)
+                            .addComponent(Inscribir)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -131,7 +136,7 @@ public class Inscribir_Inscripcion extends javax.swing.JPanel {
                     .addComponent(ID_Estudiante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addComponent(Inscribir)
                 .addContainerGap(421, Short.MAX_VALUE))
         );
 
@@ -157,30 +162,28 @@ public class Inscribir_Inscripcion extends javax.swing.JPanel {
     return valor;    
     }
     
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void InscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InscribirActionPerformed
         String Id_Curso,año,semestre,Id_Estudiante;
         boolean vacio = true;
         
         Id_Curso = ID_Curso.getText();
         año = Año.getText();
+        int Año = Integer.parseInt(año);
         semestre = Semestre.getText();
+        int semestre_ = Integer.parseInt(semestre);
         Id_Estudiante = ID_Estudiante.getText();
+        DTOEstudiante estudiante = null;
+        DTOCurso curso = null;
         
         vacio = Revision(ID_Curso);
         if(vacio == true){
             vacio = Revision(Semestre);
-            if(vacio == true){
-                vacio = Revision(Año);
-                if(vacio == true){
-                    vacio = Revision(ID_Estudiante);
-                }
-            }
         }
         
         if(vacio == true){
             int respuesta = JOptionPane.showConfirmDialog(this, "Seguro que quieres proceder ?");
             if (respuesta == 0 ){
-                //aqui estaria el llamdo a eliminar
+                DTOCursoInscrito cursoInscrito = new DTOCursoInscrito(curso,Año,semestre_,estudiante);
                 JOptionPane.showMessageDialog(this , "Se ah inscrito correctamente");
             }else if(respuesta == 1){
                 JOptionPane.showMessageDialog(this , "Se ah abortado la inscripcion");
@@ -189,7 +192,7 @@ public class Inscribir_Inscripcion extends javax.swing.JPanel {
             }
         }
                 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_InscribirActionPerformed
 
     private void AñoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AñoKeyTyped
         char c = evt.getKeyChar();
@@ -218,12 +221,14 @@ public class Inscribir_Inscripcion extends javax.swing.JPanel {
     private javax.swing.JTextField Año;
     private javax.swing.JTextField ID_Curso;
     private javax.swing.JTextField ID_Estudiante;
+    private javax.swing.JButton Inscribir;
     private javax.swing.JTextField Semestre;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
+   ServicioCurso servicioCurso;
+   ServicioEstudiante servicioEstudiante;
 }

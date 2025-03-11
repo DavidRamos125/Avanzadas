@@ -4,7 +4,11 @@
  */
 package com.mycompany.aplicacion_de_conceptos.GUI;
 
+import com.mycompany.aplicacion_de_conceptos.dtos.DTOFacultad;
 import com.mycompany.aplicacion_de_conceptos.dtos.DTOPersona;
+import com.mycompany.aplicacion_de_conceptos.dtos.DTOProfesor;
+import com.mycompany.aplicacion_de_conceptos.procesos.InscripcionesPersonas;
+import com.mycompany.aplicacion_de_conceptos.procesos.ServicioFacultad;
 
 import java.io.IOException;
 import java.util.logging.Level;
@@ -16,12 +20,12 @@ import javax.swing.JTextField;
  *
  * @author getro
  */
-public class Incribir_Persona extends javax.swing.JPanel {
+public class IncribirFacultad extends javax.swing.JPanel {
 
     /**
      * Creates new form Incribir_Persona
      */
-    public Incribir_Persona() {
+    public IncribirFacultad() {
         initComponents();
     }
 
@@ -34,24 +38,22 @@ public class Incribir_Persona extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Caja_Texto = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jToggleButton1 = new javax.swing.JToggleButton();
-        Apellidos = new javax.swing.JTextField();
+        idDecano = new javax.swing.JTextField();
         Nombres = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        Email = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         ID = new javax.swing.JTextField();
-        Caja_Texto = new javax.swing.JTextField();
 
         setPreferredSize(new java.awt.Dimension(778, 544));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         jPanel1.setPreferredSize(new java.awt.Dimension(778, 544));
 
-        jLabel1.setText("Nombres :");
+        jLabel1.setText("Nombre :");
 
         jToggleButton1.setLabel("Inscribir");
         jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -60,15 +62,13 @@ public class Incribir_Persona extends javax.swing.JPanel {
             }
         });
 
-        Apellidos.addActionListener(new java.awt.event.ActionListener() {
+        idDecano.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ApellidosActionPerformed(evt);
+                idDecanoActionPerformed(evt);
             }
         });
 
-        jLabel2.setText("Apellidos :");
-
-        jLabel3.setText("Email :");
+        jLabel2.setText("ID del Decano :");
 
         jLabel4.setText("ID:");
 
@@ -83,61 +83,46 @@ public class Incribir_Persona extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jToggleButton1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(16, 16, 16)
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jLabel1)
+                                .addGap(4, 4, 4))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addContainerGap(31, Short.MAX_VALUE)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel4)
-                                        .addGap(8, 8, 8))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel2)
-                                            .addComponent(jLabel3))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Apellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Nombres, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Email, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ID, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18)
-                .addComponent(Caja_Texto, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(Nombres, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE)
+                            .addComponent(ID, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE)
+                            .addComponent(idDecano, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE))))
+                .addContainerGap(356, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Nombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Apellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4)))
-                    .addComponent(Caja_Texto))
-                .addGap(18, 18, 18)
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Nombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(idDecano, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jToggleButton1)
-                .addContainerGap(375, Short.MAX_VALUE))
+                .addContainerGap(429, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -175,39 +160,28 @@ public class Incribir_Persona extends javax.swing.JPanel {
     }
     
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        String Id,nombre,apellido,email;
+        String Id,nombre,apellido,IdDecano,tipocontrato;
         boolean vacio = false;
         
         Id = ID.getText();
         double ID_ = Double.parseDouble(Id);
         nombre = Nombres.getText();
-        apellido = Apellidos.getText();
-        email = Email.getText();
+        IdDecano = idDecano.getText();
+        DTOPersona persona = null;
+        
         
         vacio = Revision(ID);
         if(vacio == true){
             vacio = Revision(Nombres);
             if(vacio == true){
-                vacio = Revision(Apellidos);
-                if(vacio == true){
-                    vacio = Revision(Email);
-                }
+                vacio = Revision(idDecano);
             }
         }
         
         if(vacio == true){
             int respuesta = JOptionPane.showConfirmDialog(this, "Seguro que quieres proceder ?");
             if (respuesta == 0 ){
-                DTOPersona persona = new DTOPersona(ID_,nombre,apellido,email);
-                
-                try {
-                    servicio.crearPersona(persona);
-                } catch (IOException ex) {
-                    Logger.getLogger(Incribir_Persona.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(Incribir_Persona.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                
+                DTOFacultad facultad = new DTOFacultad(ID_,nombre,persona);
                 JOptionPane.showMessageDialog(this , "Se ah inscrito correctamente");
             }else if(respuesta == 1){
                 JOptionPane.showMessageDialog(this , "Se ah abortado la inscripcion");
@@ -217,23 +191,22 @@ public class Incribir_Persona extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
-    private void ApellidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ApellidosActionPerformed
+    private void idDecanoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idDecanoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ApellidosActionPerformed
+    }//GEN-LAST:event_idDecanoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField Apellidos;
     private javax.swing.JTextField Caja_Texto;
-    private javax.swing.JTextField Email;
     private javax.swing.JTextField ID;
     private javax.swing.JTextField Nombres;
+    private javax.swing.JTextField idDecano;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
-    private ServicioPersona servicio = new ServicioPersona();
+    InscripcionesPersonas servicioPersona;
+    ServicioFacultad servicioFacultad;
 }
