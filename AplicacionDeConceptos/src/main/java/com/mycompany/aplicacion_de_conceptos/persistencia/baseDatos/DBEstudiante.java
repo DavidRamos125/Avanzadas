@@ -1,4 +1,4 @@
-package com.mycompany.aplicacion_de_conceptos.procesos;
+package com.mycompany.aplicacion_de_conceptos.persistencia.baseDatos;
 
 import com.mycompany.aplicacion_de_conceptos.entidades.Estudiante;
 
