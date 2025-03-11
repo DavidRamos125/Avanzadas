@@ -6,6 +6,7 @@ package com.mycompany.aplicacion_de_conceptos.GUI;
 
 import com.mycompany.aplicacion_de_conceptos.dtos.DTOPersona;
 import com.mycompany.aplicacion_de_conceptos.dtos.DTOProfesor;
+import com.mycompany.aplicacion_de_conceptos.procesos.ServicioProfesor;
 
 import java.io.IOException;
 import java.util.logging.Level;
@@ -205,6 +206,7 @@ public class IncribirProfesor extends javax.swing.JPanel {
             int respuesta = JOptionPane.showConfirmDialog(this, "Seguro que quieres proceder ?");
             if (respuesta == 0 ){
                 DTOProfesor persona = new DTOProfesor(ID_,nombre,apellido,email,tipocontrato);
+                servicioProfesor.inscribir(persona);
                 JOptionPane.showMessageDialog(this , "Se ah inscrito correctamente");
             }else if(respuesta == 1){
                 JOptionPane.showMessageDialog(this , "Se ah abortado la inscripcion");
@@ -234,5 +236,5 @@ public class IncribirProfesor extends javax.swing.JPanel {
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JTextField tipoContrato;
     // End of variables declaration//GEN-END:variables
-    
+    ServicioProfesor servicioProfesor;
 }
