@@ -1,4 +1,5 @@
 package com.mycompany.aplicacion_de_conceptos.procesos;
+import com.mycompany.aplicacion_de_conceptos.dtos.DTOCursoProfesor;
 import com.mycompany.aplicacion_de_conceptos.entidades.CursoProfesor;
 import com.mycompany.aplicacion_de_conceptos.persistencia.binarios.BinarioCursoProfesor;
 import java.io.IOException;
@@ -61,5 +62,23 @@ public class CursosProfesores implements Servicios{
             listaString.add(auxiliar.toString());
         }
         return listaString;
+    }
+
+    public static CursoProfesor deserializar(DTOCursoProfesor dtoCursoProfesor) {
+        return new CursoProfesor(
+                ServicioProfesor.deserializar(dtoCursoProfesor.getProfesor()),
+                dtoCursoProfesor.getAño(),
+                dtoCursoProfesor.getSemestre(),
+                ServicioCurso.deserializar(dtoCursoProfesor.getCurso())
+        );
+    }
+
+    public static DTOCursoProfesor serializar(CursoProfesor cursoProfesor) {
+        return new DTOCursoProfesor(
+                ServicioProfesor.serializar(cursoProfesor.getProfesor()),
+                cursoProfesor.getAño(),
+                cursoProfesor.getSemestre(),
+                ServicioCurso.serializar(cursoProfesor.getCurso())
+        );
     }
 }

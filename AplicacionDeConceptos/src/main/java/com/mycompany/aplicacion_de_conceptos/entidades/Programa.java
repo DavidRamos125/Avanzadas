@@ -9,7 +9,27 @@ public class Programa implements Serializable{
     private double duracion;
     private String registro;
     private Facultad facultad;
-    
+
+    public double getID() {
+        return ID;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public double getDuracion() {
+        return duracion;
+    }
+
+    public String getRegistro() {
+        return registro;
+    }
+
+    public Facultad getFacultad() {
+        return facultad;
+    }
+
     public Programa(double ID, String nombre, double duracion, String registro, Facultad facultad) {
         this.ID = ID;
         this.nombre = nombre;

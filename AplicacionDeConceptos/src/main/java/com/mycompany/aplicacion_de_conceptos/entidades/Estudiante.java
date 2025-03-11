@@ -8,8 +8,24 @@ public class Estudiante extends Persona implements Serializable{
     private boolean activo;
     private double promedio;
     private Persona persona;
-    
-    public Estudiante(double ID, String nombres, String apellidos, String email,double codigo, Programa programa, boolean activo, double promedio) {
+
+    public Programa getPrograma() {
+        return programa;
+    }
+
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public double getPromedio() {
+        return promedio;
+    }
+
+    public Persona getPersona() {
+        return persona;
+    }
+
+    public Estudiante(double ID, String nombres, String apellidos, String email, double codigo, Programa programa, boolean activo, double promedio) {
         super(ID, nombres, apellidos, email);
         this.codigo = codigo;
         this.programa = programa;

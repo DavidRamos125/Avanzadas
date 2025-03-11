@@ -1,5 +1,6 @@
 package com.mycompany.aplicacion_de_conceptos.procesos;
 
+import com.mycompany.aplicacion_de_conceptos.dtos.DTOCursoInscrito;
 import com.mycompany.aplicacion_de_conceptos.entidades.Inscripcion;
 import com.mycompany.aplicacion_de_conceptos.persistencia.CRUD;
 import com.mycompany.aplicacion_de_conceptos.persistencia.baseDatos.DBCursoInscrito;
@@ -87,5 +88,23 @@ public class CursosInscritos implements Servicios{
             listaString.add(auxiliar.toString());
         }
         return listaString;
+    }
+
+    public static DTOCursoInscrito serializar(Inscripcion inscripcion) {
+        return new DTOCursoInscrito(
+                ServicioCurso.serializar(inscripcion.getCurso()),
+                inscripcion.getAño(),
+                inscripcion.getSemestre(),
+                ServicioEstudiante.serializar(inscripcion.getEstudiante())
+        );
+    }
+
+    public static Inscripcion deserializar(DTOCursoInscrito dtoCursoInscrito) {
+        return new Inscripcion(
+                ServicioCurso.deserializar(dtoCursoInscrito.getCurso()),
+                dtoCursoInscrito.getAño(),
+                dtoCursoInscrito.getSemestre(),
+                ServicioEstudiante.deserializar(dtoCursoInscrito.getEstudiante())
+        );
     }
 }

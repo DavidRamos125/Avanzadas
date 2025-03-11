@@ -7,6 +7,13 @@ public class Curso implements Serializable{
     private String nombre;
     private Programa programa;
     private boolean activo;
+    
+    public Curso(int ID,String nombre ,Programa programa, boolean activo) {
+        this.ID = ID;
+        this.nombre=nombre;
+        this.programa = programa;
+        this.activo = activo;
+    }
 
     public int getID() {
         return ID;
@@ -22,13 +29,6 @@ public class Curso implements Serializable{
 
     public boolean isActivo() {
         return activo;
-    }
-    
-    public Curso(int ID,String nombre ,Programa programa, boolean activo) {
-        this.ID = ID;
-        this.nombre=nombre;
-        this.programa = programa;
-        this.activo = activo;
     }
     
     public String toString(){

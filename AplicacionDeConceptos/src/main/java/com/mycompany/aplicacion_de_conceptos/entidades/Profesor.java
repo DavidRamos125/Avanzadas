@@ -17,8 +17,12 @@ public class Profesor extends Persona implements Serializable{
        super(ID, nombres, apellidos, email);
        this.TipoContrato = TipoContrato;
    }
-   
-   public String toString(){
+
+    public String getTipoContrato() {
+        return TipoContrato;
+    }
+
+    public String toString(){
        return super.toString() + ", tipo de contrato: " + TipoContrato;
    }
 }

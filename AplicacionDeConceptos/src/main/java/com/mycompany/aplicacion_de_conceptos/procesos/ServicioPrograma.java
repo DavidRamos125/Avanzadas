@@ -17,4 +17,25 @@ public class ServicioPrograma {
     public List<DTOPrograma> obtenerTodos(){
         return List.of();
     }
+
+    public static DTOPrograma serializar(Programa programa) {
+        return new DTOPrograma(
+                programa.getID(),
+                programa.getNombre(),
+                programa.getDuracion(),
+                programa.getRegistro(),
+                ServicioFacultad.serializar(programa.getFacultad())
+        );
+    }
+
+    public static Programa deserializar(DTOPrograma dtoPrograma) {
+        return new Programa(
+                dtoPrograma.getId(),
+                dtoPrograma.getNombre(),
+                dtoPrograma.getDuracion(),
+                dtoPrograma.getRegistro(),
+                ServicioFacultad.deserializar(dtoPrograma.getFacultad()) // Conversión de DTOFacultad -> Facultad
+        );
+    }
+
 }

@@ -13,6 +13,36 @@ public class ServicioEstudiante {
     }
 
     public void InscribirEstudiante(DTOEstudiante estudiante) {
+        try {
+            crud.crear(this.deserializar(estudiante));
+        }catch (Exception e) {
+            System.out.println("error: "+e.getMessage());
+        }
+    }
 
+    public static DTOEstudiante serializar(Estudiante estudiante) {
+        return new DTOEstudiante(
+                estudiante.getID(),
+                estudiante.getNombres(),
+                estudiante.getApellidos(),
+                estudiante.getEmail(),
+                estudiante.getCodigo(),
+                ServicioPrograma.serializar(estudiante.getPrograma()), // Conversión del programa
+                estudiante.isActivo(),
+                estudiante.getPromedio()
+        );
+    }
+
+    public static Estudiante deserializar(DTOEstudiante dtoEstudiante) {
+        return new Estudiante(
+                dtoEstudiante.getId(),
+                dtoEstudiante.getNombres(),
+                dtoEstudiante.getApellidos(),
+                dtoEstudiante.getEmail(),
+                dtoEstudiante.getCodigo(),
+                ServicioPrograma.deserializar(dtoEstudiante.getPrograma()),
+                dtoEstudiante.isActivo(),
+                dtoEstudiante.getPromedio()
+        );
     }
 }

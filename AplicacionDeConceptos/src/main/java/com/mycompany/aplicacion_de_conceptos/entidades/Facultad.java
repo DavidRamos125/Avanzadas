@@ -12,7 +12,19 @@ public class Facultad implements Serializable{
         this.nombre = nombre;
         this.decano = decano;
     }
-    
+
+    public Persona getDecano() {
+        return decano;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public double getID() {
+        return ID;
+    }
+
     public String toString(){
         return "Id :"+ID+"\n"+
                 "Nombre :"+nombre+"\n"+

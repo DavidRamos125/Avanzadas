@@ -1,4 +1,5 @@
 package com.mycompany.aplicacion_de_conceptos.procesos;
+import com.mycompany.aplicacion_de_conceptos.dtos.DTOPersona;
 import com.mycompany.aplicacion_de_conceptos.entidades.Persona;
 import com.mycompany.aplicacion_de_conceptos.persistencia.CRUD;
 import com.mycompany.aplicacion_de_conceptos.persistencia.baseDatos.DBPersona;
@@ -45,7 +46,17 @@ public class InscripcionesPersonas {
     } 
     public void cargarDatos() {
             List<Persona> personasGuardadas = crud.obtenerTodos();
-            listado.addAll(personasGuardadas); // Cargar todos los cursos guardados en el archivo a la lista
+            listado.addAll(personasGuardadas);
             System.out.println("Datos cargados: " + personasGuardadas.size() + " personas.");
     }
+
+    public static Persona deserializar(DTOPersona dto) {
+        return new Persona(dto.getId(), dto.getNombres(), dto.getApellidos(), dto.getEmail());
+    }
+
+    public static DTOPersona serializar(Persona persona) {
+        return new DTOPersona(persona.getID(), persona.getNombres(), persona.getApellidos(), persona.getEmail());
+    }
+
+
 }
