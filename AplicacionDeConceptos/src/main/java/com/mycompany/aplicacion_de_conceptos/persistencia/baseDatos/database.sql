@@ -11,11 +11,12 @@ CREATE TABLE Profesor (
     FOREIGN KEY (ID) REFERENCES Persona(ID)
 );
 
+-- Tabla Facultad
 CREATE TABLE Facultad (
     ID BIGINT PRIMARY KEY,
     nombre VARCHAR(100),
     decano_id BIGINT,
-    FOREIGN KEY (decano_id) REFERENCES Persona(ID)
+    FOREIGN KEY (decano_id) REFERENCES Persona(ID) 
 );
 
 CREATE TABLE Programa (
@@ -29,15 +30,15 @@ CREATE TABLE Programa (
 
 CREATE TABLE Curso (
     ID BIGINT PRIMARY KEY,
-    programa_id BIGINT,
+    programa_id BIGINT NOT NULL,
     activo BOOLEAN,
-    FOREIGN KEY (programa_id) REFERENCES Programa(ID)
+    FOREIGN KEY (programa_id) REFERENCES Programa(ID) 
 );
 
 CREATE TABLE Estudiante (
     ID BIGINT PRIMARY KEY,
     codigo BIGINT UNIQUE,
-    programa_id BIGINT,
+    programa_id BIGINT NOT NULL,
     activo BOOLEAN,
     promedio DOUBLE,
     FOREIGN KEY (ID) REFERENCES Persona(ID),
@@ -45,21 +46,20 @@ CREATE TABLE Estudiante (
 );
 
 CREATE TABLE Inscripcion (
-    ID BIGINT AUTO_INCREMENT PRIMARY KEY,
-    curso_id BIGINT,
-    anio INT,
+    estudianteID BIGINT,
+    cursoID BIGINT,
+    año INT,
     semestre INT,
-    estudiante_id BIGINT,
-    FOREIGN KEY (curso_id) REFERENCES Curso(ID),
-    FOREIGN KEY (estudiante_id) REFERENCES Estudiante(ID)
+    PRIMARY KEY (estudianteID, cursoID, año, semestre),
+    FOREIGN KEY (estudianteID) REFERENCES Estudiante(ID),
+    FOREIGN KEY (cursoID) REFERENCES Curso(ID)
 );
 
 CREATE TABLE CursoProfesor (
-    ID BIGINT AUTO_INCREMENT PRIMARY KEY,
-    profesor_id BIGINT,
-    año INT,
-    semestre INT,
-    curso_id BIGINT,
-    FOREIGN KEY (profesor_id) REFERENCES Profesor(ID),
-    FOREIGN KEY (curso_id) REFERENCES Curso(ID)
+    cursoID BIGINT,
+    profesorID BIGINT,
+    fechaAsignacion DATE,
+    PRIMARY KEY (cursoID, profesorID, fechaAsignacion),
+    FOREIGN KEY (cursoID) REFERENCES Curso(ID),
+    FOREIGN KEY (profesorID) REFERENCES Profesor(ID)
 );

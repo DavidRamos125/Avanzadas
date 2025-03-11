@@ -1,9 +1,9 @@
-package com.mycompany.aplicacion_de_conceptos.entidades;
+ package com.mycompany.aplicacion_de_conceptos.entidades;
 
 import java.io.Serializable;
 
-public class Estudiante extends Persona implements Serializable{
-    private double codigo;
+public class Estudiante extends Persona implements Serializable {
+    private double codigo; 
     private Programa programa;
     private boolean activo;
     private double promedio;
@@ -33,14 +33,19 @@ public class Estudiante extends Persona implements Serializable{
         this.promedio = promedio;
     }
     
-    public String toString(){
-        return "Codigo :"+codigo+"\n"+
-                "Programa :"+programa.toString()+"\n"+
-                "Estado :"+activo+"\n"+
-                "Promedio :"+promedio;
-    }
-    
-    public double getCodigo(){
+        public double getCodigo() {
         return codigo;
+    }
+
+    @Override
+    public String toString() {
+        return "Código: " + codigo + "\n" +
+               "Programa: " + (programa != null ? programa.toString() : "No asignado") + "\n" +
+               "Estado: " + (activo ? "Activo" : "Inactivo") + "\n" +
+               "Promedio: " + promedio;
+    }
+
+    public long getId() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
