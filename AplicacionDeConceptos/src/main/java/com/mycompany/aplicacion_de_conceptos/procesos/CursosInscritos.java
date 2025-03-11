@@ -37,9 +37,25 @@ public class CursosInscritos implements Servicios{
         }
     }
 
-    public void eliminar(Inscripcion inscripcion) {
-        listado.remove(inscripcion);
-        String id = String.valueOf(inscripcion.getEstudiante().getID() +","+ inscripcion.getCurso().getID() +","+ inscripcion.getAño() +","+ inscripcion.getSemestre());
+    public void inscribirCurso(DTOCursoInscrito inscripcion) {
+        listado.add(deserializar(inscripcion));
+        try {
+            crud.crear(deserializar(inscripcion));
+        } catch (ClassNotFoundException e) {
+            System.out.println("Error" + e.getMessage());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void eliminar(DTOCursoInscrito inscripcion) {
+        Inscripcion inscrito = deserializar(inscripcion);
+        listado.remove(inscrito);
+        String id = String.valueOf(
+                inscrito.getEstudiante().getID() +","
+                        + inscrito.getCurso().getID() +","
+                        + inscrito.getAño() +","
+                        + inscrito.getSemestre());
         crud.eliminar(id);
     }
 

@@ -1,19 +1,32 @@
 package com.mycompany.aplicacion_de_conceptos.procesos;
 import com.mycompany.aplicacion_de_conceptos.dtos.DTOCursoProfesor;
 import com.mycompany.aplicacion_de_conceptos.entidades.CursoProfesor;
+import com.mycompany.aplicacion_de_conceptos.persistencia.CRUD;
+import com.mycompany.aplicacion_de_conceptos.persistencia.baseDatos.DBCursoProfesor;
 import com.mycompany.aplicacion_de_conceptos.persistencia.binarios.BinarioCursoProfesor;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CursosProfesores implements Servicios{
 
-    private List<CursoProfesor> listado = new ArrayList<>();
-    
-    public void inscribir(CursoProfesor cursoProfesor){
-        listado.add(cursoProfesor);
+    private List<CursoProfesor> listado;
+    private CRUD<CursoProfesor> crud;
+
+    public CursosProfesores() {
+        listado = new ArrayList<>();
         try {
-            BinarioCursoProfesor.guardarCursoProfesor(cursoProfesor);
+            crud = new DBCursoProfesor();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    
+    public void inscribir(DTOCursoProfesor cursoProfesor){
+        listado.add(deserializar(cursoProfesor));
+        try {
+           crud.crear(deserializar(cursoProfesor));
         } catch (IOException e) {
             System.out.println("Error" + e.getMessage());
         } catch (ClassNotFoundException e) {
@@ -23,7 +36,7 @@ public class CursosProfesores implements Servicios{
     
     public void guardarInformacion(CursoProfesor cursoProfesor) {
         try {
-            BinarioCursoProfesor.guardarCursoProfesor(cursoProfesor);
+            crud.crear(cursoProfesor);
             System.out.println("Guardando informacion del curso: " + cursoProfesor.toString());
         } catch (IOException | ClassNotFoundException e) {
             System.out.println("Error al guardar la informacion: " + e.getMessage());
@@ -40,13 +53,9 @@ public class CursosProfesores implements Servicios{
     }
 
     public void cargarDatos() {
-        try {
-            List<CursoProfesor> cursosGuardados = BinarioCursoProfesor.extraerListaObjetos();
-            listado.addAll(cursosGuardados); // Cargar todos los cursos guardados en el archivo a la lista
-            System.out.println("Datos cargados: " + cursosGuardados.size() + " cursos.");
-        } catch (IOException | ClassNotFoundException e) {
-            System.out.println("Error al cargar los datos: " + e.getMessage());
-        }
+        List<CursoProfesor> cursosGuardados = crud.obtenerTodos();
+        listado.addAll(cursosGuardados); // Cargar todos los cursos guardados en el archivo a la lista
+        System.out.println("Datos cargados: " + cursosGuardados.size() + " cursos.");
     }
 
     //implementacion de servicios

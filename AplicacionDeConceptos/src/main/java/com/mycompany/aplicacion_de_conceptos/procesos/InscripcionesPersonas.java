@@ -12,27 +12,29 @@ public class InscripcionesPersonas {
     private List<Persona> listado = new ArrayList<>();
     private CRUD<Persona> crud= new DBPersona();
     
-    public void inscribir(Persona persona){
-        listado.add(persona);
+    public void inscribir(DTOPersona persona){
+        listado.add(deserializar(persona));
         try {
-            crud.crear(persona);
+            crud.crear(deserializar(persona));
         } catch (IOException e) {
             System.out.println("Error" + e.getMessage());
         } catch (ClassNotFoundException e) {
             System.out.println("Error" + e.getMessage());
         }
     }
-    public void eliminar(Persona persona){
-        if(listado.contains(persona)){
-            listado.remove(persona);
-            BinarioPersona.guardarLista(listado);
+    public void eliminar(DTOPersona persona){
+        Persona aEliminar = deserializar(persona);
+        if(listado.contains(aEliminar)){
+            listado.remove(aEliminar);
+            crud.eliminar(String.valueOf(aEliminar.getID()));
         }
     }
-    public void actualizar(Persona persona){
+    public void actualizar(DTOPersona persona){
+        Persona aActualizar = deserializar(persona);
         for(int i=0; i<listado.size(); i++){
-            if(listado.get(i).getID() == persona.getID()){
-                listado.set(i, persona);
-                BinarioPersona.guardarLista(listado);
+            if(listado.get(i).getID() == aActualizar.getID()){
+                listado.set(i, aActualizar);
+                crud.actualizar(aActualizar);
             }
         }
     }
