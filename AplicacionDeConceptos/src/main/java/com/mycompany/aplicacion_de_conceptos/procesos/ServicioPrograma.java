@@ -5,6 +5,7 @@ import com.mycompany.aplicacion_de_conceptos.entidades.Programa;
 import com.mycompany.aplicacion_de_conceptos.persistencia.CRUD;
 import com.mycompany.aplicacion_de_conceptos.persistencia.baseDatos.DBPrograma;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ServicioPrograma {
@@ -14,8 +15,29 @@ public class ServicioPrograma {
         this.crud = new DBPrograma();
     }
 
-    public List<DTOPrograma> obtenerTodos(){
-        return List.of();
+    public void insertarPrograma(DTOPrograma programa){
+        try {
+            crud.crear(deserializar(programa));
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void eliminarPrograma(String id){
+        crud.eliminar(id);
+    }
+
+    public DTOPrograma obtenerPrograma(String id){
+        return serializar(crud.obtener(id));
+    }
+
+    public List<DTOPrograma> obtenerProgramas(){
+        List<Programa> programas= crud.obtenerTodos();
+        List<DTOPrograma> dtoProgramas= new ArrayList<>();
+        for(Programa programa: programas){
+            dtoProgramas.add(serializar(programa));
+        }
+        return dtoProgramas;
     }
 
     public static DTOPrograma serializar(Programa programa) {

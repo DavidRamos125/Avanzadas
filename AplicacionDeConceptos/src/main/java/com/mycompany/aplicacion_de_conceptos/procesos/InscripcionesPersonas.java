@@ -22,12 +22,8 @@ public class InscripcionesPersonas {
             System.out.println("Error" + e.getMessage());
         }
     }
-    public void eliminar(DTOPersona persona){
-        Persona aEliminar = deserializar(persona);
-        if(listado.contains(aEliminar)){
-            listado.remove(aEliminar);
-            crud.eliminar(String.valueOf(aEliminar.getID()));
-        }
+    public void eliminar(String id){
+        crud.eliminar(id);
     }
     public void actualizar(DTOPersona persona){
         Persona aActualizar = deserializar(persona);

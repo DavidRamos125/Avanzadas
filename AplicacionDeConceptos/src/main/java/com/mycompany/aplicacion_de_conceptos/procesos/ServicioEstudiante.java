@@ -20,6 +20,10 @@ public class ServicioEstudiante {
         }
     }
 
+    public void eliminarEstudiante(String id) {
+        crud.eliminar(id);
+    }
+
     public static DTOEstudiante serializar(Estudiante estudiante) {
         return new DTOEstudiante(
                 estudiante.getID(),

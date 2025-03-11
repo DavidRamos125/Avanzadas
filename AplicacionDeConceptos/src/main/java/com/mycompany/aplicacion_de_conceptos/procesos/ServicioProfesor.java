@@ -12,6 +12,20 @@ public class ServicioProfesor {
         this.crud = new DBProfesor();
     }
 
+    public void inscribir(DTOProfesor profesor) {
+        try {
+            crud.crear(deserializar(profesor));
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+    }
+
+    public void eliminar(String id) {
+        crud.eliminar(id);
+    }
+    
+
     public static DTOProfesor serializar(Profesor profesor) {
         return new DTOProfesor(
                 profesor.getID(),
