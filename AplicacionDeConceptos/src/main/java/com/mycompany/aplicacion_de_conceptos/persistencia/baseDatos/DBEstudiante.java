@@ -1,11 +1,12 @@
 package com.mycompany.aplicacion_de_conceptos.persistencia.baseDatos;
 
 import com.mycompany.aplicacion_de_conceptos.entidades.Estudiante;
+import com.mycompany.aplicacion_de_conceptos.persistencia.CRUD;
 
 import java.io.IOException;
 import java.util.List;
 
-public class DBEstudiante implements com.mycompany.aplicacion_de_conceptos.persistencia.CRUD<com.mycompany.aplicacion_de_conceptos.entidades.Estudiante> {
+public class DBEstudiante implements CRUD<Estudiante> {
     @Override
     public void crear(Estudiante objecto) throws IOException, ClassNotFoundException {
 
