@@ -39,6 +39,15 @@ public class InscripcionesPersonas {
         return serializar(crud.obtener(id));
     }
 
+    public List<DTOPersona> obtenerPersonas(){
+        List<Persona> lista = crud.obtenerTodos();
+        List<DTOPersona> personas = new ArrayList<>();
+        for(Persona persona: lista){
+            personas.add(serializar(persona));
+        }
+        return personas;
+    }
+
 
     public void guardarInformacion(Persona persona) {
         try {
