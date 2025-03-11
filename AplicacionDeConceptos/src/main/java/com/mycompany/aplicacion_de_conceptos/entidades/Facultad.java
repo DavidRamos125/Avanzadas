@@ -3,7 +3,7 @@ package com.mycompany.aplicacion_de_conceptos.entidades;
 import java.io.Serializable;
 
 public class Facultad implements Serializable{
-    private long ID;
+    private double ID;
     private String nombre;
     private Persona decano;
     
@@ -21,7 +21,7 @@ public class Facultad implements Serializable{
         return nombre;
     }
 
-    public long getID() {
+    public double getID() {
         return ID;
     }
 

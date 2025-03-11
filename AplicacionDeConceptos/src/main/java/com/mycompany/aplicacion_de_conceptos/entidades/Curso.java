@@ -3,7 +3,7 @@ package com.mycompany.aplicacion_de_conceptos.entidades;
 import java.io.Serializable;
 
 public class Curso implements Serializable{
-    private long ID;
+    private double ID;
     private String nombre;
     private Programa programa;
     private boolean activo;
@@ -15,7 +15,7 @@ public class Curso implements Serializable{
         this.activo = activo;
     }
 
-    public long getID() {
+    public double getID() {
         return ID;
     }
 

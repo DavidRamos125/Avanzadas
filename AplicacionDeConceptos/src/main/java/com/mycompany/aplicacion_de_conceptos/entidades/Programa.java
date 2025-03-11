@@ -4,13 +4,17 @@ import java.io.Serializable;
 
 
 public class Programa implements Serializable{
-    private long ID;
+    private double ID;
     private String nombre;
     private double duracion;
     private String registro;
     private Facultad facultad;
 
-    public long getID() {
+    public Programa(long aLong, String string, int aInt, String string0) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public double getID() {
         return ID;
     }
 
