@@ -3,11 +3,11 @@ package com.mycompany.aplicacion_de_conceptos.entidades;
 import java.io.Serializable;
 
 public class Facultad implements Serializable{
-    private double ID;
+    private long ID;
     private String nombre;
     private Persona decano;
     
-    public Facultad(double ID, String nombre, Persona decano) {
+    public Facultad(long ID, String nombre, Persona decano) {
         this.ID = ID;
         this.nombre = nombre;
         this.decano = decano;
@@ -21,13 +21,13 @@ public class Facultad implements Serializable{
         return nombre;
     }
 
-    public double getID() {
+    public long getID() {
         return ID;
     }
 
     public String toString(){
         return "Id :"+ID+"\n"+
                 "Nombre :"+nombre+"\n"+
-                "Decano : "+decano.toString();
+                "Decano : "+(decano != null ? decano.toString() : "No asignado");
     }
 }

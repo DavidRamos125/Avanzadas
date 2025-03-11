@@ -20,7 +20,7 @@ public class DBCursoInscrito implements CRUD<Inscripcion> {
     public void crear(Inscripcion objecto) {
         String sql = "INSERT INTO Inscripcion (cursoID, año, semestre, estudianteID) VALUES (BIGINT, INT, INT, BIGINT)";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setInt(1, objecto.getCurso().getID());
+            statement.setInt(1, (int) objecto.getCurso().getID());
             statement.setInt(2, objecto.getAño());
             statement.setInt(3, objecto.getSemestre());
             statement.setDouble(4, objecto.getEstudiante().getID());
@@ -67,7 +67,7 @@ public class DBCursoInscrito implements CRUD<Inscripcion> {
     public void actualizar(Inscripcion objecto) {
         String sql = "UPDATE Inscripcion SET cursoID = BIGINT, año = INT , semestre = INT WHERE estudianteID = BIGINT";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setInt(1, objecto.getCurso().getID());
+            statement.setInt(1, (int) objecto.getCurso().getID());
             statement.setInt(2, objecto.getAño());
             statement.setInt(3, objecto.getSemestre());
             statement.setDouble(4, objecto.getEstudiante().getID());

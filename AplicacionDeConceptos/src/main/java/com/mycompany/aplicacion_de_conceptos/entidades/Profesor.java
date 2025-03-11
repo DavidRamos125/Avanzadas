@@ -1,15 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.aplicacion_de_conceptos.entidades;
 
 import java.io.Serializable;
 
-/**
- *
- * @author Estudiante_MCA
- */
 public class Profesor extends Persona implements Serializable{
    private String TipoContrato;
    
@@ -25,4 +17,8 @@ public class Profesor extends Persona implements Serializable{
     public String toString(){
        return super.toString() + ", tipo de contrato: " + TipoContrato;
    }
+
+    public long getId() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
