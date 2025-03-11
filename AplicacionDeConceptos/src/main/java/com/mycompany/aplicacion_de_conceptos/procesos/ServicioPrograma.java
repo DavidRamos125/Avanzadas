@@ -52,7 +52,7 @@ public class ServicioPrograma {
 
     public static Programa deserializar(DTOPrograma dtoPrograma) {
         return new Programa(
-                dtoPrograma.getId(),
+                (long) dtoPrograma.getId(),
                 dtoPrograma.getNombre(),
                 dtoPrograma.getDuracion(),
                 dtoPrograma.getRegistro(),

@@ -44,7 +44,7 @@ public class ServicioFacultad {
 
     public static Facultad deserializar(DTOFacultad dtoFacultad) {
         return new Facultad(
-                dtoFacultad.getId(),
+                (long) dtoFacultad.getId(),
                 dtoFacultad.getNombre(),
                 InscripcionesPersonas.deserializar(dtoFacultad.getDecano())
         );

@@ -22,7 +22,7 @@ public class DBFacultad implements CRUD<Facultad> {
     public void crear(Facultad objecto) {
         String sql = "INSERT INTO Facultad (ID, nombre, decano_id) VALUES (BIGINT, VARCHAR, BIGINT)";
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
-            pstmt.setLong(1, objecto.getID());
+            pstmt.setLong(1, (long) objecto.getID());
             pstmt.setString(2, objecto.getNombre());
             if (objecto.getDecano() != null) {
                 pstmt.setLong(3, (long) objecto.getDecano().getID()); 
@@ -101,7 +101,7 @@ public class DBFacultad implements CRUD<Facultad> {
             } else {
                 pstmt.setNull(2, Types.BIGINT);
             }
-            pstmt.setLong(3, objecto.getID());
+            pstmt.setLong(3, (long) objecto.getID());
             pstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

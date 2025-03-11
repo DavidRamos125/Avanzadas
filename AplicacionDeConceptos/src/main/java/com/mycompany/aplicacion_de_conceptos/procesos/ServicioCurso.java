@@ -47,7 +47,7 @@ public class ServicioCurso {
 
     public static DTOCurso serializar(Curso curso) {
         return new DTOCurso(
-                curso.getID(),
+                (int) curso.getID(),
                 curso.getNombre(),
                 ServicioPrograma.serializar(curso.getPrograma()),
                 curso.isActivo()

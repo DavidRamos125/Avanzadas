@@ -23,7 +23,7 @@ public class DBCurso implements CRUD<Curso> {
     public void crear(Curso objecto) {
         String sql = "INSERT INTO Curso (ID, nombre, programa_id, activo) VALUES (?, ?, ?, ?)";
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
-            pstmt.setLong(1, objecto.getID());
+            pstmt.setLong(1, (long) objecto.getID());
             pstmt.setString(2, objecto.getNombre());
             pstmt.setLong(3, (long) objecto.getPrograma().getID());
             pstmt.setBoolean(4, objecto.isActivo());
@@ -96,7 +96,7 @@ public class DBCurso implements CRUD<Curso> {
             pstmt.setString(1, objecto.getNombre());
             pstmt.setLong(2, (long) objecto.getPrograma().getID());
             pstmt.setBoolean(3, objecto.isActivo());
-            pstmt.setLong(4, objecto.getID());
+            pstmt.setLong(4, (long) objecto.getID());
             pstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

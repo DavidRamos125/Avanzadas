@@ -23,7 +23,7 @@ public class DBPrograma implements CRUD<Programa> {
     public void crear(Programa objecto) {
         String sql = "INSERT INTO Programa (ID, nombre, duracion, registro, facultad_id) VALUES (BIGINT, VARCHAR, INT, VARCHAR, BIGINT)";
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
-            pstmt.setLong(1, objecto.getID());
+            pstmt.setLong(1, (long) objecto.getID());
             pstmt.setString(2, objecto.getNombre());
             pstmt.setInt(3, (int) objecto.getDuracion());
             pstmt.setString(4, objecto.getRegistro());
@@ -98,7 +98,7 @@ public class DBPrograma implements CRUD<Programa> {
             pstmt.setInt(2, (int) objecto.getDuracion());
             pstmt.setString(3, objecto.getRegistro());
             pstmt.setLong(4, (long) objecto.getFacultad().getID()); // FK de Facultad
-            pstmt.setLong(5, objecto.getID());
+            pstmt.setLong(5, (long) objecto.getID());
             pstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

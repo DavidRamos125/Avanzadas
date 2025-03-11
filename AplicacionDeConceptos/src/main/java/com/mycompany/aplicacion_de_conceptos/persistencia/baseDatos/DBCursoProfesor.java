@@ -26,7 +26,7 @@ public class DBCursoProfesor implements CRUD<CursoProfesor> {
     public void crear(CursoProfesor objecto) {
         String sql = "INSERT INTO CursoProfesor (cursoID, profesorID) VALUES (BIGINT, BIGINT)";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setInt(1, objecto.getCurso().getID());
+            statement.setInt(1, (int) objecto.getCurso().getID());
             statement.setDouble(2, objecto.getProfesor().getID());
             statement.executeUpdate();
         } catch (SQLException e) {
