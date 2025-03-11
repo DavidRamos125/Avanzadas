@@ -8,6 +8,7 @@ import com.mycompany.aplicacion_de_conceptos.dtos.DTOCurso;
 import com.mycompany.aplicacion_de_conceptos.dtos.DTOCursoInscrito;
 import com.mycompany.aplicacion_de_conceptos.dtos.DTOEstudiante;
 import com.mycompany.aplicacion_de_conceptos.dtos.DTOPrograma;
+import com.mycompany.aplicacion_de_conceptos.procesos.CursosInscritos;
 import com.mycompany.aplicacion_de_conceptos.procesos.ServicioCurso;
 import com.mycompany.aplicacion_de_conceptos.procesos.ServicioEstudiante;
 import java.util.List;
@@ -233,8 +234,6 @@ public class ManejoInscripcion extends javax.swing.JPanel {
     private void BuscarPorCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarPorCursoActionPerformed
         String IdCurso = ID_Curso.getText();
         int id = Integer.parseInt(IdCurso);
-        
-        
     }//GEN-LAST:event_BuscarPorCursoActionPerformed
 
     private void ActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarActionPerformed
@@ -264,6 +263,7 @@ public class ManejoInscripcion extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
    ServicioCurso servicioCurso;
+   CursosInscritos servicioCursosInscritos;
    ServicioEstudiante servicioEstudiante;
    List<DTOEstudiante> listaEstudiante;
 }

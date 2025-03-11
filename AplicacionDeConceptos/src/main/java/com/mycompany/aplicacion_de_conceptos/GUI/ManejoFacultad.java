@@ -191,17 +191,21 @@ public class ManejoFacultad extends javax.swing.JPanel {
     }//GEN-LAST:event_idDecanoActionPerformed
 
     private void BuscarIDFacultadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarIDFacultadActionPerformed
-        double Id;
-        Id = Double.parseDouble(ID.getText());
+        String Id;
+        Id = ID.getText();
         
-        Nombres.setText("");
-        idDecano.setText("");
-        nombreDecano.setText("");
+        DTOFacultad facultad = servicioFaculdad.obtenerFacultad(Id);
+        
+        Nombres.setText(facultad.getNombre());
+        idDecano.setText(String.valueOf(facultad.getDecano().getId()));
+        nombreDecano.setText(facultad.getDecano().getNombres());
     }//GEN-LAST:event_BuscarIDFacultadActionPerformed
 
     private void EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarActionPerformed
-        double Id;
-        Id = Double.parseDouble(ID.getText());
+        String Id;
+        Id = ID.getText();
+        
+        servicioFaculdad.eliminarFacultad(Id);
     }//GEN-LAST:event_EliminarActionPerformed
 
     private void ActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarActionPerformed
@@ -212,7 +216,7 @@ public class ManejoFacultad extends javax.swing.JPanel {
         double ID_ = Double.parseDouble(Id);
         nombre = Nombres.getText();
         IdDecano = idDecano.getText();
-        DTOPersona persona = null;
+        DTOPersona persona = servicioPersona.obtener(Id);
         
         
         vacio = Revision(ID);

@@ -232,7 +232,7 @@ public class ManejoPrograma extends javax.swing.JPanel {
         Registro = registro.getText();
         IdFacultad = idFacultad.getText();
         double IDfacultad = Double.parseDouble(IdFacultad);
-        DTOFacultad Facultad = null;
+        DTOFacultad Facultad = servicioFacultad.obtenerFacultad(Id);
         
         
         vacio = Revision(ID);
@@ -268,16 +268,20 @@ public class ManejoPrograma extends javax.swing.JPanel {
     private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
         String id = ID.getText();
         double ID_ = Double.parseDouble(id);
+        
+        servicioPrograma.eliminarPrograma(id);
     }//GEN-LAST:event_eliminarActionPerformed
 
     private void buscarPorIdProgramaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarPorIdProgramaActionPerformed
         String id = ID.getText();
         double ID_ = Double.parseDouble(id);
         
-        Nombre.setText("");
-        duracion.setText("");
-        idFacultad.setText("");
-        nombreFacultad.setText("");
+        DTOPrograma programa = servicioPrograma.obtenerPrograma(id);
+        
+        Nombre.setText(programa.getNombre());
+        duracion.setText(String.valueOf(programa.getDuracion()));
+        idFacultad.setText(String.valueOf(programa.getFacultad().getId()));
+        nombreFacultad.setText(programa.getFacultad().getNombre());
     }//GEN-LAST:event_buscarPorIdProgramaActionPerformed
 
 

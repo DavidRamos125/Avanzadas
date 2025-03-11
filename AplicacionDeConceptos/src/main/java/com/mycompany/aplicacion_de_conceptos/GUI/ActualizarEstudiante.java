@@ -7,6 +7,9 @@ package com.mycompany.aplicacion_de_conceptos.GUI;
 import com.mycompany.aplicacion_de_conceptos.dtos.DTOEstudiante;
 import com.mycompany.aplicacion_de_conceptos.dtos.DTOPersona;
 import com.mycompany.aplicacion_de_conceptos.dtos.DTOProfesor;
+import com.mycompany.aplicacion_de_conceptos.dtos.DTOPrograma;
+import com.mycompany.aplicacion_de_conceptos.procesos.ServicioEstudiante;
+import com.mycompany.aplicacion_de_conceptos.procesos.ServicioPrograma;
 
 import java.io.IOException;
 import java.util.List;
@@ -241,7 +244,15 @@ public class ActualizarEstudiante extends javax.swing.JPanel {
         promed = promedio.getText();
         double promed_ = Double.parseDouble(promed);
         program = programa.getSelectedItem().toString();
-        //como arrastro con solo el nombre el DTO de programa ?
+        DTOPrograma programaSeleccionado = null;
+        
+        if(listaPrograma != null){
+           for (DTOPrograma item : listaPrograma) {
+            if(item.getNombre() == program){
+                    programaSeleccionado = item;
+                }
+            } 
+        }
         activ = activo.getSelectedItem().toString();
         
         if(activ == "Activo"){
@@ -264,7 +275,8 @@ public class ActualizarEstudiante extends javax.swing.JPanel {
         if(vacio == true){
             int respuesta = JOptionPane.showConfirmDialog(this, "Seguro que quieres proceder ?");
             if (respuesta == 0 ){
-                //DTOEstudiante persona = new DTOEstudiante(ID_,nombre,apellido,email,codig_,DTOPrograma,activBoolean,promed_);
+                DTOEstudiante persona = new DTOEstudiante(ID_,nombre,apellido,email,codig_,programaSeleccionado,activBoolean,promed_);
+                servicioEstudiante.InscribirEstudiante(persona);
                 JOptionPane.showMessageDialog(this , "Se ah inscrito correctamente");
             }else if(respuesta == 1){
                 JOptionPane.showMessageDialog(this , "Se ah abortado la inscripcion");
@@ -279,12 +291,11 @@ public class ActualizarEstudiante extends javax.swing.JPanel {
     }//GEN-LAST:event_ApellidosActionPerformed
 
     private void actualizarProgramaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarProgramaActionPerformed
-//        List<String> listaProgramas;
-//        programa.removeAllItems();
-//        listaProgramas = obtenerListaProgramas();
-//        for (String item : listaProgramas) {
-//            programa.addItem(item);
-//        }
+        listaPrograma = servicioPrograma.obtenerProgramas();
+        programa.removeAllItems();
+        for (DTOPrograma item : listaPrograma) {
+            programa.addItem(item.getNombre());
+        }
     }//GEN-LAST:event_actualizarProgramaActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -322,5 +333,7 @@ public class ActualizarEstudiante extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> programa;
     private javax.swing.JTextField promedio;
     // End of variables declaration//GEN-END:variables
-    
+    List<DTOPrograma> listaPrograma;
+    ServicioPrograma servicioPrograma;
+    ServicioEstudiante servicioEstudiante;
 }

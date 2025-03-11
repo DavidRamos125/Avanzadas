@@ -11,6 +11,7 @@ import com.mycompany.aplicacion_de_conceptos.dtos.DTOPersona;
 import com.mycompany.aplicacion_de_conceptos.dtos.DTOProfesor;
 import com.mycompany.aplicacion_de_conceptos.dtos.DTOPrograma;
 import com.mycompany.aplicacion_de_conceptos.procesos.InscripcionesPersonas;
+import com.mycompany.aplicacion_de_conceptos.procesos.ServicioCurso;
 import com.mycompany.aplicacion_de_conceptos.procesos.ServicioFacultad;
 import com.mycompany.aplicacion_de_conceptos.procesos.ServicioPrograma;
 
@@ -243,7 +244,7 @@ public class ManejoCurso extends javax.swing.JPanel {
     }//GEN-LAST:event_ActualizarActionPerformed
 
     private void actualizarProgramaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarProgramaActionPerformed
-        listaPrograma = servicioPrograma.obtenerTodos();
+        listaPrograma = servicioPrograma.obtenerProgramas();
         programa.removeAllItems();
         for (DTOPrograma item : listaPrograma) {
             programa.addItem(item.getNombre());
@@ -251,10 +252,11 @@ public class ManejoCurso extends javax.swing.JPanel {
     }//GEN-LAST:event_actualizarProgramaActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        double Id;
-        Id = Double.parseDouble(ID.getText());
+        String Id;
+        Id = ID.getText();
+        DTOCurso curso = servicioCurso.obtenerCurso(Id);
         
-        Nombre.setText("");
+        Nombre.setText(curso.getNombre());
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarActionPerformed
@@ -278,6 +280,7 @@ public class ManejoCurso extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JComboBox<String> programa;
     // End of variables declaration//GEN-END:variables
+    ServicioCurso servicioCurso;
     ServicioPrograma servicioPrograma;
     List<DTOPrograma> listaPrograma;
 }
