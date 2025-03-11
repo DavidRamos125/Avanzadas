@@ -34,6 +34,12 @@ public class InscripcionesPersonas {
             }
         }
     }
+
+    public DTOPersona obtener(String id){
+        return serializar(crud.obtener(id));
+    }
+
+
     public void guardarInformacion(Persona persona) {
         try {
             crud.crear(persona);
