@@ -42,9 +42,11 @@ public class GIU_Principal extends javax.swing.JFrame {
         InscribirDecano = new javax.swing.JToggleButton();
         ActualizarDecano = new javax.swing.JToggleButton();
         CursosProfesores = new javax.swing.JPanel();
-        content_CursosProfesores = new javax.swing.JPanel();
+        contentInscripciones = new javax.swing.JPanel();
         Inscribir_Profesores = new javax.swing.JToggleButton();
         toString_Profesores = new javax.swing.JButton();
+        inscribirCursoProfesor = new javax.swing.JButton();
+        ManejoCursoProfesor = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         CrearFaculdad = new javax.swing.JButton();
         ActualizarFacultad = new javax.swing.JButton();
@@ -65,7 +67,7 @@ public class GIU_Principal extends javax.swing.JFrame {
             .addGroup(HomeLayout.createSequentialGroup()
                 .addGap(214, 214, 214)
                 .addComponent(jLabel1)
-                .addContainerGap(728, Short.MAX_VALUE))
+                .addContainerGap(735, Short.MAX_VALUE))
         );
         HomeLayout.setVerticalGroup(
             HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -81,7 +83,7 @@ public class GIU_Principal extends javax.swing.JFrame {
         content_PersonasInscritas.setLayout(content_PersonasInscritasLayout);
         content_PersonasInscritasLayout.setHorizontalGroup(
             content_PersonasInscritasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 858, Short.MAX_VALUE)
+            .addGap(0, 865, Short.MAX_VALUE)
         );
         content_PersonasInscritasLayout.setVerticalGroup(
             content_PersonasInscritasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -171,32 +173,36 @@ public class GIU_Principal extends javax.swing.JFrame {
 
         HOME.addTab("Personas Inscritas", PersonasInscritas);
 
-        content_CursosProfesores.setPreferredSize(new java.awt.Dimension(778, 544));
+        contentInscripciones.setPreferredSize(new java.awt.Dimension(778, 544));
 
-        javax.swing.GroupLayout content_CursosProfesoresLayout = new javax.swing.GroupLayout(content_CursosProfesores);
-        content_CursosProfesores.setLayout(content_CursosProfesoresLayout);
-        content_CursosProfesoresLayout.setHorizontalGroup(
-            content_CursosProfesoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout contentInscripcionesLayout = new javax.swing.GroupLayout(contentInscripciones);
+        contentInscripciones.setLayout(contentInscripcionesLayout);
+        contentInscripcionesLayout.setHorizontalGroup(
+            contentInscripcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 778, Short.MAX_VALUE)
         );
-        content_CursosProfesoresLayout.setVerticalGroup(
-            content_CursosProfesoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        contentInscripcionesLayout.setVerticalGroup(
+            contentInscripcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        Inscribir_Profesores.setLabel("Inscribir");
+        Inscribir_Profesores.setText("Crear Inscripciones");
         Inscribir_Profesores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Inscribir_ProfesoresActionPerformed(evt);
             }
         });
 
-        toString_Profesores.setLabel("toString");
+        toString_Profesores.setText("Actualizar/Eliminar Inscripciones");
         toString_Profesores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 toString_ProfesoresActionPerformed(evt);
             }
         });
+
+        inscribirCursoProfesor.setText("Crear Cursos-Profesores");
+
+        ManejoCursoProfesor.setText("Actualizar/Eliminar Cursos-Profesores");
 
         javax.swing.GroupLayout CursosProfesoresLayout = new javax.swing.GroupLayout(CursosProfesores);
         CursosProfesores.setLayout(CursosProfesoresLayout);
@@ -205,25 +211,31 @@ public class GIU_Principal extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CursosProfesoresLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(CursosProfesoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Inscribir_Profesores, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
-                    .addComponent(toString_Profesores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
-                .addComponent(content_CursosProfesores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Inscribir_Profesores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(toString_Profesores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(inscribirCursoProfesor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ManejoCursoProfesor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(contentInscripciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         CursosProfesoresLayout.setVerticalGroup(
             CursosProfesoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CursosProfesoresLayout.createSequentialGroup()
-                .addComponent(content_CursosProfesores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(contentInscripciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(CursosProfesoresLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(Inscribir_Profesores)
                 .addGap(18, 18, 18)
                 .addComponent(toString_Profesores)
-                .addContainerGap(480, Short.MAX_VALUE))
+                .addGap(55, 55, 55)
+                .addComponent(inscribirCursoProfesor)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ManejoCursoProfesor)
+                .addContainerGap(373, Short.MAX_VALUE))
         );
 
-        HOME.addTab("Cursos Profesores", CursosProfesores);
+        HOME.addTab("Inscripciones", CursosProfesores);
 
         CrearFaculdad.setText("Crear Facultad");
         CrearFaculdad.addActionListener(new java.awt.event.ActionListener() {
@@ -294,7 +306,7 @@ public class GIU_Principal extends javax.swing.JFrame {
                     .addComponent(InscripcionCurso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(InscripcionCurso1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(content_AreaAdministrativa, javax.swing.GroupLayout.PREFERRED_SIZE, 777, Short.MAX_VALUE)
+                .addComponent(content_AreaAdministrativa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(36, 36, 36))
         );
         jPanel1Layout.setVerticalGroup(
@@ -324,7 +336,7 @@ public class GIU_Principal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(HOME)
+            .addComponent(HOME, javax.swing.GroupLayout.DEFAULT_SIZE, 1018, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -363,11 +375,13 @@ public class GIU_Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_CrearFaculdadActionPerformed
 
     private void toString_ProfesoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_toString_ProfesoresActionPerformed
-        
+        ManejoInscripcion Panel = new ManejoInscripcion();
+        ShowPanel(Panel ,contentInscripciones);
     }//GEN-LAST:event_toString_ProfesoresActionPerformed
 
     private void Inscribir_ProfesoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Inscribir_ProfesoresActionPerformed
-        
+        InscribirInscripcion Panel = new InscribirInscripcion();
+        ShowPanel(Panel ,contentInscripciones);
     }//GEN-LAST:event_Inscribir_ProfesoresActionPerformed
 
     private void ActualizarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarEstudianteActionPerformed
@@ -466,10 +480,12 @@ public class GIU_Principal extends javax.swing.JFrame {
     private javax.swing.JToggleButton Inscribir_Profesores;
     private javax.swing.JButton InscripcionCurso;
     private javax.swing.JButton InscripcionCurso1;
+    private javax.swing.JButton ManejoCursoProfesor;
     private javax.swing.JPanel PersonasInscritas;
+    private javax.swing.JPanel contentInscripciones;
     private javax.swing.JPanel content_AreaAdministrativa;
-    private javax.swing.JPanel content_CursosProfesores;
     private javax.swing.JPanel content_PersonasInscritas;
+    private javax.swing.JButton inscribirCursoProfesor;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton toString_Profesores;

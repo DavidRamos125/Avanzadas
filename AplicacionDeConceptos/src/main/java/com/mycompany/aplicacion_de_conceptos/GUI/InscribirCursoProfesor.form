@@ -57,7 +57,7 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="ID_Curso" alignment="0" max="32767" attributes="0"/>
+                              <Component id="idProfesor" alignment="0" max="32767" attributes="0"/>
                               <Component id="Año" alignment="0" max="32767" attributes="0"/>
                               <Component id="Semestre" alignment="0" pref="299" max="32767" attributes="0"/>
                           </Group>
@@ -69,7 +69,7 @@
                               <Group type="102" attributes="0">
                                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="ID_Estudiante" min="-2" pref="301" max="-2" attributes="0"/>
+                                  <Component id="idCurso" min="-2" pref="301" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -83,7 +83,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="ID_Curso" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="idProfesor" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -98,7 +98,7 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="ID_Estudiante" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="idCurso" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -111,27 +111,27 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="ID del Curso"/>
+            <Property name="text" type="java.lang.String" value="ID del Profesor :"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
-            <Property name="text" type="java.lang.String" value="A&#xf1;o del curso"/>
+            <Property name="text" type="java.lang.String" value="A&#xf1;o :"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Semestre"/>
+            <Property name="text" type="java.lang.String" value="Semestre :"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
-            <Property name="text" type="java.lang.String" value="ID del estudiante"/>
+            <Property name="text" type="java.lang.String" value="ID del Curso :"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="ID_Curso">
+        <Component class="javax.swing.JTextField" name="idProfesor">
           <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="ID_CursoKeyTyped"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="idProfesorKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="A&#xf1;o">
@@ -144,9 +144,9 @@
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="SemestreKeyTyped"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="ID_Estudiante">
+        <Component class="javax.swing.JTextField" name="idCurso">
           <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="ID_EstudianteKeyTyped"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="idCursoKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="Inscribir">
