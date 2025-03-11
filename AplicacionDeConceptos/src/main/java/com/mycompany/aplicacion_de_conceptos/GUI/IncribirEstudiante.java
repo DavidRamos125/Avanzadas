@@ -286,7 +286,7 @@ public class IncribirEstudiante extends javax.swing.JPanel {
     }//GEN-LAST:event_ApellidosActionPerformed
 
     private void actualizarProgramaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarProgramaActionPerformed
-        listaPrograma = servicioPrograma.obtenerTodos();
+        listaPrograma = servicioPrograma.obtenerProgramas();
         programa.removeAllItems();
         for (DTOPrograma item : listaPrograma) {
             programa.addItem(item.getNombre());

@@ -167,7 +167,7 @@ public class IncribirFacultad extends javax.swing.JPanel {
         double ID_ = Double.parseDouble(Id);
         nombre = Nombres.getText();
         IdDecano = idDecano.getText();
-        DTOPersona persona = null;
+        DTOPersona persona = servicioPersona.obtener(Id);
         
         
         vacio = Revision(ID);
@@ -182,6 +182,7 @@ public class IncribirFacultad extends javax.swing.JPanel {
             int respuesta = JOptionPane.showConfirmDialog(this, "Seguro que quieres proceder ?");
             if (respuesta == 0 ){
                 DTOFacultad facultad = new DTOFacultad(ID_,nombre,persona);
+                servicioFacultad.añadirFacultad(facultad);
                 JOptionPane.showMessageDialog(this , "Se ah inscrito correctamente");
             }else if(respuesta == 1){
                 JOptionPane.showMessageDialog(this , "Se ah abortado la inscripcion");

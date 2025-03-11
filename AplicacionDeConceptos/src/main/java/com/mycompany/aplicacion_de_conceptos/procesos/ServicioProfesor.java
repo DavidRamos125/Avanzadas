@@ -25,6 +25,8 @@ public class ServicioProfesor {
         crud.eliminar(id);
     }
     
+    
+    
 
     public static DTOProfesor serializar(Profesor profesor) {
         return new DTOProfesor(

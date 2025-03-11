@@ -6,6 +6,7 @@ package com.mycompany.aplicacion_de_conceptos.GUI;
 
 import com.mycompany.aplicacion_de_conceptos.dtos.DTOPersona;
 import com.mycompany.aplicacion_de_conceptos.dtos.DTOProfesor;
+import com.mycompany.aplicacion_de_conceptos.procesos.InscripcionesPersonas;
 
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -183,10 +184,11 @@ public class ActualizarDecano extends javax.swing.JPanel {
     private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
         String Id;
         Id = ID.getText();
+        DTOPersona persona = inscripcionesPersona.obtener(Id);
         
-        Nombre.setText("");
-        Apellido.setText("");
-        Email.setText("");
+        Nombre.setText(persona.getNombres());
+        Apellido.setText(persona.getApellidos());
+        Email.setText(persona.getEmail());
     }//GEN-LAST:event_BuscarActionPerformed
 
     private void NombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NombreActionPerformed
@@ -209,5 +211,5 @@ public class ActualizarDecano extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
-    
+    InscripcionesPersonas inscripcionesPersona;
 }

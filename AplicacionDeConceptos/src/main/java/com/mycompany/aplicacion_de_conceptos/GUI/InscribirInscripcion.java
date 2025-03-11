@@ -7,6 +7,7 @@ package com.mycompany.aplicacion_de_conceptos.GUI;
 import com.mycompany.aplicacion_de_conceptos.dtos.DTOCurso;
 import com.mycompany.aplicacion_de_conceptos.dtos.DTOCursoInscrito;
 import com.mycompany.aplicacion_de_conceptos.dtos.DTOEstudiante;
+import com.mycompany.aplicacion_de_conceptos.procesos.CursosInscritos;
 import com.mycompany.aplicacion_de_conceptos.procesos.ServicioCurso;
 import com.mycompany.aplicacion_de_conceptos.procesos.ServicioEstudiante;
 import javax.swing.JOptionPane;
@@ -172,8 +173,8 @@ public class InscribirInscripcion extends javax.swing.JPanel {
         semestre = Semestre.getText();
         int semestre_ = Integer.parseInt(semestre);
         Id_Estudiante = ID_Estudiante.getText();
-        DTOEstudiante estudiante = null;
-        DTOCurso curso = null;
+        DTOEstudiante estudiante = servicioEstudiante.obtenerEstudiante(Id_Estudiante);
+        DTOCurso curso = servicioCurso.obtenerCurso(Id_Curso);
         
         vacio = Revision(ID_Curso);
         if(vacio == true){
@@ -184,6 +185,7 @@ public class InscribirInscripcion extends javax.swing.JPanel {
             int respuesta = JOptionPane.showConfirmDialog(this, "Seguro que quieres proceder ?");
             if (respuesta == 0 ){
                 DTOCursoInscrito cursoInscrito = new DTOCursoInscrito(curso,Año,semestre_,estudiante);
+                servicioCursoInscrito.inscribirCurso(cursoInscrito);
                 JOptionPane.showMessageDialog(this , "Se ah inscrito correctamente");
             }else if(respuesta == 1){
                 JOptionPane.showMessageDialog(this , "Se ah abortado la inscripcion");
@@ -231,4 +233,5 @@ public class InscribirInscripcion extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
    ServicioCurso servicioCurso;
    ServicioEstudiante servicioEstudiante;
+   CursosInscritos servicioCursoInscrito;
 }

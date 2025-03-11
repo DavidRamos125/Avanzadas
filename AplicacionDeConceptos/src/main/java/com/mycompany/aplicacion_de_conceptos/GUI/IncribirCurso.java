@@ -11,6 +11,7 @@ import com.mycompany.aplicacion_de_conceptos.dtos.DTOPersona;
 import com.mycompany.aplicacion_de_conceptos.dtos.DTOProfesor;
 import com.mycompany.aplicacion_de_conceptos.dtos.DTOPrograma;
 import com.mycompany.aplicacion_de_conceptos.procesos.InscripcionesPersonas;
+import com.mycompany.aplicacion_de_conceptos.procesos.ServicioCurso;
 import com.mycompany.aplicacion_de_conceptos.procesos.ServicioFacultad;
 import com.mycompany.aplicacion_de_conceptos.procesos.ServicioPrograma;
 
@@ -216,6 +217,7 @@ public class IncribirCurso extends javax.swing.JPanel {
             int respuesta = JOptionPane.showConfirmDialog(this, "Seguro que quieres proceder ?");
             if (respuesta == 0 ){
                 DTOCurso curso = new DTOCurso(ID_,nombre,programaSeleccionado,activBoolean);
+                servicioCurso.crearCurso(curso);
                 JOptionPane.showMessageDialog(this , "Se ah inscrito correctamente");
             }else if(respuesta == 1){
                 JOptionPane.showMessageDialog(this , "Se ah abortado la inscripcion");
@@ -226,7 +228,7 @@ public class IncribirCurso extends javax.swing.JPanel {
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void actualizarProgramaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarProgramaActionPerformed
-        listaPrograma = servicioPrograma.obtenerTodos();
+        listaPrograma = servicioPrograma.obtenerProgramas();
         programa.removeAllItems();
         for (DTOPrograma item : listaPrograma) {
             programa.addItem(item.getNombre());
@@ -249,5 +251,6 @@ public class IncribirCurso extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> programa;
     // End of variables declaration//GEN-END:variables
     ServicioPrograma servicioPrograma;
+    ServicioCurso servicioCurso;
     List<DTOPrograma> listaPrograma;
 }

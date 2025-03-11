@@ -205,7 +205,7 @@ public class IncribirPrograma extends javax.swing.JPanel {
         Registro = registro.getText();
         IdFacultad = idFacultad.getText();
         double IDfacultad = Double.parseDouble(IdFacultad);
-        DTOFacultad Facultad = null;
+        DTOFacultad Facultad = servicioFacultad.obtenerFacultad(Id);
         
         
         vacio = Revision(ID);

@@ -4,7 +4,12 @@
  */
 package com.mycompany.aplicacion_de_conceptos.GUI;
 
+import com.mycompany.aplicacion_de_conceptos.dtos.DTOEstudiante;
 import com.mycompany.aplicacion_de_conceptos.dtos.DTOPersona;
+import com.mycompany.aplicacion_de_conceptos.dtos.DTOProfesor;
+import com.mycompany.aplicacion_de_conceptos.procesos.InscripcionesPersonas;
+import com.mycompany.aplicacion_de_conceptos.procesos.ServicioEstudiante;
+import com.mycompany.aplicacion_de_conceptos.procesos.ServicioProfesor;
 
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -167,6 +172,7 @@ public class Eliminar_Persona extends javax.swing.JPanel {
         if(vacio == true){
             int respuesta = JOptionPane.showConfirmDialog(this, "Seguro que quieres proceder ?"); 
             if (respuesta == 0 ){
+                inscripcionesPersona.eliminar(Id);
                 JOptionPane.showMessageDialog(this , "Se ah eliminado correctamente");
             }else if(respuesta == 1){
                 JOptionPane.showMessageDialog(this , "Se ah abortado la eliminacion");
@@ -186,9 +192,12 @@ public class Eliminar_Persona extends javax.swing.JPanel {
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         String Id;
         Id = ID.getText();
-        Nombre_Busqueda.setText("");
-        Apellido_Busqueda.setText("");
-        Email_Busqueda.setText("");
+        
+        DTOPersona persona = inscripcionesPersona.obtener(Id);
+        
+        Nombre_Busqueda.setText(persona.getNombres());
+        Apellido_Busqueda.setText(persona.getApellidos());
+        Email_Busqueda.setText(persona.getEmail());
         
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
@@ -209,5 +218,5 @@ public class Eliminar_Persona extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
-    
+    InscripcionesPersonas inscripcionesPersona;
 }
