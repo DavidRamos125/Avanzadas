@@ -37,16 +37,22 @@ public class GIU_Principal extends javax.swing.JFrame {
         Inscribir_Persona = new javax.swing.JToggleButton();
         Eliminar_Persona = new javax.swing.JToggleButton();
         Actualizar_Persona = new javax.swing.JToggleButton();
+        InscribirEstudiante = new javax.swing.JToggleButton();
+        ActualizarEstudiante = new javax.swing.JToggleButton();
+        InscribirDecano = new javax.swing.JToggleButton();
+        ActualizarDecano = new javax.swing.JToggleButton();
         CursosProfesores = new javax.swing.JPanel();
         content_CursosProfesores = new javax.swing.JPanel();
         Inscribir_Profesores = new javax.swing.JToggleButton();
         toString_Profesores = new javax.swing.JButton();
-        CursosInscritos = new javax.swing.JPanel();
-        content_CusosInscritos = new javax.swing.JPanel();
-        Inscribir_Cursos = new javax.swing.JButton();
-        Eliminar_Cursos = new javax.swing.JButton();
-        Actualizar_Cursos = new javax.swing.JButton();
-        toString = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        CrearFaculdad = new javax.swing.JButton();
+        ActualizarFacultad = new javax.swing.JButton();
+        InscribirPrograma = new javax.swing.JButton();
+        ActualizarPrograma = new javax.swing.JButton();
+        InscripcionCurso = new javax.swing.JButton();
+        InscripcionCurso1 = new javax.swing.JButton();
+        content_AreaAdministrativa = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,7 +65,7 @@ public class GIU_Principal extends javax.swing.JFrame {
             .addGroup(HomeLayout.createSequentialGroup()
                 .addGap(214, 214, 214)
                 .addComponent(jLabel1)
-                .addContainerGap(668, Short.MAX_VALUE))
+                .addContainerGap(728, Short.MAX_VALUE))
         );
         HomeLayout.setVerticalGroup(
             HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -75,14 +81,14 @@ public class GIU_Principal extends javax.swing.JFrame {
         content_PersonasInscritas.setLayout(content_PersonasInscritasLayout);
         content_PersonasInscritasLayout.setHorizontalGroup(
             content_PersonasInscritasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 778, Short.MAX_VALUE)
+            .addGap(0, 858, Short.MAX_VALUE)
         );
         content_PersonasInscritasLayout.setVerticalGroup(
             content_PersonasInscritasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        Inscribir_Persona.setLabel("Incribir");
+        Inscribir_Persona.setText("Incribir Profesor");
         Inscribir_Persona.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Inscribir_PersonaActionPerformed(evt);
@@ -96,12 +102,30 @@ public class GIU_Principal extends javax.swing.JFrame {
             }
         });
 
-        Actualizar_Persona.setLabel("Actualizar");
+        Actualizar_Persona.setText("Actualizar Profesor");
         Actualizar_Persona.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Actualizar_PersonaActionPerformed(evt);
             }
         });
+
+        InscribirEstudiante.setText("Inscribir Estudiante");
+        InscribirEstudiante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InscribirEstudianteActionPerformed(evt);
+            }
+        });
+
+        ActualizarEstudiante.setText("Actualizar Estudiante");
+        ActualizarEstudiante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ActualizarEstudianteActionPerformed(evt);
+            }
+        });
+
+        InscribirDecano.setText("Inscribir Decano");
+
+        ActualizarDecano.setText("Actualizar Decano");
 
         javax.swing.GroupLayout PersonasInscritasLayout = new javax.swing.GroupLayout(PersonasInscritas);
         PersonasInscritas.setLayout(PersonasInscritasLayout);
@@ -109,12 +133,16 @@ public class GIU_Principal extends javax.swing.JFrame {
             PersonasInscritasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PersonasInscritasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(PersonasInscritasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Eliminar_Persona, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Actualizar_Persona, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
-                    .addComponent(Inscribir_Persona, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
-                .addComponent(content_PersonasInscritas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(PersonasInscritasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(InscribirDecano, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Eliminar_Persona, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Actualizar_Persona, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Inscribir_Persona, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(InscribirEstudiante, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ActualizarEstudiante, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ActualizarDecano, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(content_PersonasInscritas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PersonasInscritasLayout.setVerticalGroup(
             PersonasInscritasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -124,11 +152,19 @@ public class GIU_Principal extends javax.swing.JFrame {
             .addGroup(PersonasInscritasLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(Inscribir_Persona)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Actualizar_Persona)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(InscribirEstudiante)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ActualizarEstudiante)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(InscribirDecano)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ActualizarDecano)
                 .addGap(18, 18, 18)
                 .addComponent(Eliminar_Persona)
-                .addGap(18, 18, 18)
-                .addComponent(Actualizar_Persona)
-                .addContainerGap(439, Short.MAX_VALUE))
+                .addContainerGap(335, Short.MAX_VALUE))
         );
 
         Inscribir_Persona.getAccessibleContext().setAccessibleName("Inscribir");
@@ -171,7 +207,7 @@ public class GIU_Principal extends javax.swing.JFrame {
                 .addGroup(CursosProfesoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(Inscribir_Profesores, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
                     .addComponent(toString_Profesores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
                 .addComponent(content_CursosProfesores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         CursosProfesoresLayout.setVerticalGroup(
@@ -189,89 +225,106 @@ public class GIU_Principal extends javax.swing.JFrame {
 
         HOME.addTab("Cursos Profesores", CursosProfesores);
 
-        content_CusosInscritos.setPreferredSize(new java.awt.Dimension(778, 544));
+        CrearFaculdad.setText("Crear Facultad");
+        CrearFaculdad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CrearFaculdadActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout content_CusosInscritosLayout = new javax.swing.GroupLayout(content_CusosInscritos);
-        content_CusosInscritos.setLayout(content_CusosInscritosLayout);
-        content_CusosInscritosLayout.setHorizontalGroup(
-            content_CusosInscritosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 778, Short.MAX_VALUE)
+        ActualizarFacultad.setText("Actualizar/Eliminar Facultad");
+        ActualizarFacultad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ActualizarFacultadActionPerformed(evt);
+            }
+        });
+
+        InscribirPrograma.setText("Inscribir Programa");
+        InscribirPrograma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InscribirProgramaActionPerformed(evt);
+            }
+        });
+
+        ActualizarPrograma.setText("Actualizar/Eliminar Programa");
+        ActualizarPrograma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ActualizarProgramaActionPerformed(evt);
+            }
+        });
+
+        InscripcionCurso.setText("Inscribir Curso");
+        InscripcionCurso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InscripcionCursoActionPerformed(evt);
+            }
+        });
+
+        InscripcionCurso1.setText("Actualizar/Eliminar Curso");
+        InscripcionCurso1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InscripcionCurso1ActionPerformed(evt);
+            }
+        });
+
+        content_AreaAdministrativa.setMinimumSize(new java.awt.Dimension(778, 544));
+
+        javax.swing.GroupLayout content_AreaAdministrativaLayout = new javax.swing.GroupLayout(content_AreaAdministrativa);
+        content_AreaAdministrativa.setLayout(content_AreaAdministrativaLayout);
+        content_AreaAdministrativaLayout.setHorizontalGroup(
+            content_AreaAdministrativaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
-        content_CusosInscritosLayout.setVerticalGroup(
-            content_CusosInscritosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        content_AreaAdministrativaLayout.setVerticalGroup(
+            content_AreaAdministrativaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        Inscribir_Cursos.setLabel("Inscribir");
-        Inscribir_Cursos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Inscribir_CursosActionPerformed(evt);
-            }
-        });
-
-        Eliminar_Cursos.setLabel("Eliminar");
-        Eliminar_Cursos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Eliminar_CursosActionPerformed(evt);
-            }
-        });
-
-        Actualizar_Cursos.setLabel("Actualizar");
-        Actualizar_Cursos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Actualizar_CursosActionPerformed(evt);
-            }
-        });
-
-        toString.setActionCommand("toString");
-        toString.setLabel("toString");
-        toString.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                toStringActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout CursosInscritosLayout = new javax.swing.GroupLayout(CursosInscritos);
-        CursosInscritos.setLayout(CursosInscritosLayout);
-        CursosInscritosLayout.setHorizontalGroup(
-            CursosInscritosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CursosInscritosLayout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(CursosInscritosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Inscribir_Cursos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Eliminar_Cursos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Actualizar_Cursos, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
-                    .addComponent(toString, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
-                .addComponent(content_CusosInscritos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(ActualizarFacultad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(CrearFaculdad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(InscribirPrograma, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ActualizarPrograma, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(InscripcionCurso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(InscripcionCurso1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(content_AreaAdministrativa, javax.swing.GroupLayout.PREFERRED_SIZE, 777, Short.MAX_VALUE)
+                .addGap(36, 36, 36))
         );
-        CursosInscritosLayout.setVerticalGroup(
-            CursosInscritosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CursosInscritosLayout.createSequentialGroup()
-                .addComponent(content_CusosInscritos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(CrearFaculdad)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ActualizarFacultad)
+                .addGap(35, 35, 35)
+                .addComponent(InscribirPrograma)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ActualizarPrograma)
+                .addGap(35, 35, 35)
+                .addComponent(InscripcionCurso)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(InscripcionCurso1)
+                .addContainerGap(318, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(content_AreaAdministrativa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(CursosInscritosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Inscribir_Cursos)
-                .addGap(18, 18, 18)
-                .addComponent(Eliminar_Cursos)
-                .addGap(18, 18, 18)
-                .addComponent(Actualizar_Cursos)
-                .addGap(18, 18, 18)
-                .addComponent(toString)
-                .addContainerGap(398, Short.MAX_VALUE))
         );
 
-        HOME.addTab("Cursos Inscritos", CursosInscritos);
+        HOME.addTab("Area Administrativa", jPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(HOME)
-                .addContainerGap())
+            .addComponent(HOME)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -284,6 +337,69 @@ public class GIU_Principal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void InscripcionCurso1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InscripcionCurso1ActionPerformed
+        ManejoCurso Panel = new ManejoCurso();
+        ShowPanel(Panel ,content_AreaAdministrativa);
+    }//GEN-LAST:event_InscripcionCurso1ActionPerformed
+
+    private void ActualizarProgramaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarProgramaActionPerformed
+        ManejoPrograma Panel = new ManejoPrograma();
+        ShowPanel(Panel ,content_AreaAdministrativa);
+    }//GEN-LAST:event_ActualizarProgramaActionPerformed
+
+    private void InscribirProgramaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InscribirProgramaActionPerformed
+        IncribirPrograma Panel = new IncribirPrograma();
+        ShowPanel(Panel ,content_AreaAdministrativa);
+    }//GEN-LAST:event_InscribirProgramaActionPerformed
+
+    private void ActualizarFacultadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarFacultadActionPerformed
+        ManejoFacultad Panel = new ManejoFacultad();
+        ShowPanel(Panel ,content_AreaAdministrativa);
+    }//GEN-LAST:event_ActualizarFacultadActionPerformed
+
+    private void CrearFaculdadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearFaculdadActionPerformed
+        IncribirFacultad Panel = new IncribirFacultad();
+        ShowPanel(Panel ,content_AreaAdministrativa);
+    }//GEN-LAST:event_CrearFaculdadActionPerformed
+
+    private void toString_ProfesoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_toString_ProfesoresActionPerformed
+        
+    }//GEN-LAST:event_toString_ProfesoresActionPerformed
+
+    private void Inscribir_ProfesoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Inscribir_ProfesoresActionPerformed
+        
+    }//GEN-LAST:event_Inscribir_ProfesoresActionPerformed
+
+    private void ActualizarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarEstudianteActionPerformed
+        ActualizarEstudiante Panel = new ActualizarEstudiante();
+        ShowPanel(Panel ,content_PersonasInscritas);
+    }//GEN-LAST:event_ActualizarEstudianteActionPerformed
+
+    private void InscribirEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InscribirEstudianteActionPerformed
+        IncribirEstudiante Panel = new IncribirEstudiante();
+        ShowPanel(Panel ,content_PersonasInscritas);
+    }//GEN-LAST:event_InscribirEstudianteActionPerformed
+
+    private void Actualizar_PersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Actualizar_PersonaActionPerformed
+        ActualizarProfesor Panel = new ActualizarProfesor();
+        ShowPanel(Panel,content_PersonasInscritas);
+    }//GEN-LAST:event_Actualizar_PersonaActionPerformed
+
+    private void Eliminar_PersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Eliminar_PersonaActionPerformed
+        Eliminar_Persona Panel = new Eliminar_Persona();
+        ShowPanel(Panel,content_PersonasInscritas);
+    }//GEN-LAST:event_Eliminar_PersonaActionPerformed
+
+    private void Inscribir_PersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Inscribir_PersonaActionPerformed
+        IncribirProfesor Panel = new IncribirProfesor ();
+        ShowPanel(Panel ,content_PersonasInscritas);
+    }//GEN-LAST:event_Inscribir_PersonaActionPerformed
+
+    private void InscripcionCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InscripcionCursoActionPerformed
+        IncribirCurso Panel = new IncribirCurso();
+        ShowPanel(Panel ,content_AreaAdministrativa);
+    }//GEN-LAST:event_InscripcionCursoActionPerformed
+
     private void ShowPanel(JPanel panel,JPanel content){
         panel.setSize(778, 544);
         panel.setLocation(0,0);
@@ -295,51 +411,6 @@ public class GIU_Principal extends javax.swing.JFrame {
     }
     
     
-    private void Inscribir_PersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Inscribir_PersonaActionPerformed
-        Incribir_Persona Panel = new Incribir_Persona ();
-        ShowPanel(Panel ,content_PersonasInscritas);
-    }//GEN-LAST:event_Inscribir_PersonaActionPerformed
-
-    private void Eliminar_PersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Eliminar_PersonaActionPerformed
-        Eliminar_Persona Panel = new Eliminar_Persona();
-        ShowPanel(Panel,content_PersonasInscritas);
-    }//GEN-LAST:event_Eliminar_PersonaActionPerformed
-
-    private void Actualizar_PersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Actualizar_PersonaActionPerformed
-        Actualizar_Persona Panel = new Actualizar_Persona();
-        ShowPanel(Panel,content_PersonasInscritas);
-    }//GEN-LAST:event_Actualizar_PersonaActionPerformed
-
-    private void Inscribir_ProfesoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Inscribir_ProfesoresActionPerformed
-        Inscribir_Profesores Panel = new Inscribir_Profesores();
-        ShowPanel(Panel,content_CursosProfesores);
-    }//GEN-LAST:event_Inscribir_ProfesoresActionPerformed
-
-    private void toString_ProfesoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_toString_ProfesoresActionPerformed
-        toString_Profesores Panel = new toString_Profesores();
-        ShowPanel(Panel,content_CursosProfesores);
-    }//GEN-LAST:event_toString_ProfesoresActionPerformed
-
-    private void Inscribir_CursosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Inscribir_CursosActionPerformed
-        Inscribir_Inscripcion Panel = new Inscribir_Inscripcion();
-        ShowPanel(Panel,content_CusosInscritos);
-    }//GEN-LAST:event_Inscribir_CursosActionPerformed
-
-    private void Eliminar_CursosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Eliminar_CursosActionPerformed
-        Eliminar_Inscripcion Panel = new Eliminar_Inscripcion();
-        ShowPanel(Panel,content_CusosInscritos);
-    }//GEN-LAST:event_Eliminar_CursosActionPerformed
-
-    private void Actualizar_CursosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Actualizar_CursosActionPerformed
-        Actualizar_Inscripcion Panel = new Actualizar_Inscripcion();
-        ShowPanel(Panel,content_CusosInscritos);
-    }//GEN-LAST:event_Actualizar_CursosActionPerformed
-
-    private void toStringActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_toStringActionPerformed
-        toString_Inscripcion Panel = new toString_Inscripcion();
-        ShowPanel(Panel,content_CusosInscritos);
-    }//GEN-LAST:event_toStringActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -378,23 +449,31 @@ public class GIU_Principal extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Actualizar_Cursos;
+    private javax.swing.JToggleButton ActualizarDecano;
+    private javax.swing.JToggleButton ActualizarEstudiante;
+    private javax.swing.JButton ActualizarFacultad;
+    private javax.swing.JButton ActualizarPrograma;
     private javax.swing.JToggleButton Actualizar_Persona;
-    private javax.swing.JPanel CursosInscritos;
+    private javax.swing.JButton CrearFaculdad;
     private javax.swing.JPanel CursosProfesores;
-    private javax.swing.JButton Eliminar_Cursos;
     private javax.swing.JToggleButton Eliminar_Persona;
     private javax.swing.JTabbedPane HOME;
     private javax.swing.JPanel Home;
-    private javax.swing.JButton Inscribir_Cursos;
+    private javax.swing.JToggleButton InscribirDecano;
+    private javax.swing.JToggleButton InscribirEstudiante;
+    private javax.swing.JButton InscribirPrograma;
     private javax.swing.JToggleButton Inscribir_Persona;
     private javax.swing.JToggleButton Inscribir_Profesores;
+    private javax.swing.JButton InscripcionCurso;
+    private javax.swing.JButton InscripcionCurso1;
     private javax.swing.JPanel PersonasInscritas;
+    private javax.swing.JPanel content_AreaAdministrativa;
     private javax.swing.JPanel content_CursosProfesores;
-    private javax.swing.JPanel content_CusosInscritos;
     private javax.swing.JPanel content_PersonasInscritas;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JButton toString;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JButton toString_Profesores;
     // End of variables declaration//GEN-END:variables
+
 }
+

@@ -167,7 +167,6 @@ public class Eliminar_Persona extends javax.swing.JPanel {
         if(vacio == true){
             int respuesta = JOptionPane.showConfirmDialog(this, "Seguro que quieres proceder ?"); 
             if (respuesta == 0 ){
-                servicio.eliminarPersona(Id);
                 JOptionPane.showMessageDialog(this , "Se ah eliminado correctamente");
             }else if(respuesta == 1){
                 JOptionPane.showMessageDialog(this , "Se ah abortado la eliminacion");
@@ -187,11 +186,9 @@ public class Eliminar_Persona extends javax.swing.JPanel {
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         String Id;
         Id = ID.getText();
-        
-        DTOPersona dtoPersona = servicio.getPersona(Id);
-        Nombre_Busqueda.setText(dtoPersona.getNombres());
-        Apellido_Busqueda.setText(dtoPersona.getApellidos());
-        Email_Busqueda.setText(dtoPersona.getEmail());
+        Nombre_Busqueda.setText("");
+        Apellido_Busqueda.setText("");
+        Email_Busqueda.setText("");
         
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
@@ -212,5 +209,5 @@ public class Eliminar_Persona extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
-    private ServicioPersona servicio = new ServicioPersona();
+    
 }

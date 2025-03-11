@@ -5,6 +5,7 @@
 package com.mycompany.aplicacion_de_conceptos.GUI;
 
 import com.mycompany.aplicacion_de_conceptos.dtos.DTOPersona;
+import com.mycompany.aplicacion_de_conceptos.dtos.DTOProfesor;
 
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -13,12 +14,12 @@ import javax.swing.JTextField;
  *
  * @author getro
  */
-public class Actualizar_Persona extends javax.swing.JPanel {
+public class ActualizarProfesor extends javax.swing.JPanel {
 
     /**
      * Creates new form Actualizar_Persona
      */
-    public Actualizar_Persona() {
+    public ActualizarProfesor() {
         initComponents();
     }
 
@@ -40,6 +41,8 @@ public class Actualizar_Persona extends javax.swing.JPanel {
         Nombre = new javax.swing.JTextField();
         Email = new javax.swing.JTextField();
         Actualizar = new javax.swing.JToggleButton();
+        jLabel4 = new javax.swing.JLabel();
+        tipoContrato = new javax.swing.JTextField();
 
         setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
@@ -80,6 +83,8 @@ public class Actualizar_Persona extends javax.swing.JPanel {
             }
         });
 
+        jLabel4.setText("Tipo de contrato :");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -93,13 +98,15 @@ public class Actualizar_Persona extends javax.swing.JPanel {
                             .addComponent(jLabel3)
                             .addComponent(jLabel2)
                             .addComponent(jLabel1)
-                            .addComponent(Buscar))
+                            .addComponent(Buscar)
+                            .addComponent(jLabel4))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(ID)
                             .addComponent(Nombre)
                             .addComponent(Apellido)
-                            .addComponent(Email, javax.swing.GroupLayout.DEFAULT_SIZE, 332, Short.MAX_VALUE))))
+                            .addComponent(Email, javax.swing.GroupLayout.DEFAULT_SIZE, 332, Short.MAX_VALUE)
+                            .addComponent(tipoContrato))))
                 .addContainerGap(313, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -121,9 +128,13 @@ public class Actualizar_Persona extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(Email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(tipoContrato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Actualizar)
-                .addContainerGap(388, Short.MAX_VALUE))
+                .addContainerGap(366, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -138,7 +149,7 @@ public class Actualizar_Persona extends javax.swing.JPanel {
     }
     
     private void ActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarActionPerformed
-        String nombre,apellido,email;
+        String nombre,apellido,email,tipocontrato;
         double Id;
         boolean vacio;
         
@@ -147,6 +158,7 @@ public class Actualizar_Persona extends javax.swing.JPanel {
         apellido = Apellido.getText();
         email = Email.getText();
         vacio = false;
+        tipocontrato = tipoContrato.getText();
         
         vacio = Revision(ID);
         if(vacio == true){
@@ -162,8 +174,7 @@ public class Actualizar_Persona extends javax.swing.JPanel {
         if(vacio == true){
             int respuesta = JOptionPane.showConfirmDialog(this, "Seguro que quieres proceder ?");
             if (respuesta == 0 ){
-                DTOPersona persona = new DTOPersona(Id, nombre, apellido, email);
-                servicio.actualizarPersona(persona);
+                DTOProfesor persona = new DTOProfesor(Id, nombre, apellido, email,tipocontrato);
                 JOptionPane.showMessageDialog(this , "Se ah actualizado correctamente");
             }else if(respuesta == 1){
                 JOptionPane.showMessageDialog(this , "Se ah abortado la actualizacion");
@@ -204,6 +215,8 @@ public class Actualizar_Persona extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JTextField tipoContrato;
     // End of variables declaration//GEN-END:variables
-    ServicioPersona servicio = new ServicioPersona();
+    
 }
