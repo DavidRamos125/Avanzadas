@@ -19,37 +19,35 @@ public class DBPrograma implements CRUD<Programa> {
         }
     }
     
-    @Override
     public void crear(Programa objecto) {
-        String sql = "INSERT INTO Programa (ID, nombre, duracion, registro, facultad_id) VALUES (BIGINT, VARCHAR, INT, VARCHAR, BIGINT)";
-        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
-            pstmt.setLong(1, (long) objecto.getID());
-            pstmt.setString(2, objecto.getNombre());
-            pstmt.setInt(3, (int) objecto.getDuracion());
-            pstmt.setString(4, objecto.getRegistro());
-            pstmt.setLong(5, (long) objecto.getFacultad().getID()); 
-            pstmt.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+    String sql = "INSERT INTO Programa (ID, nombre, duracion, registro, facultad_id) VALUES (BIGINT, VARCHAR, INT, VARCHAR, BIGINT)";
+    try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+        pstmt.setDouble(1, objecto.getID());
+        pstmt.setString(2, objecto.getNombre());
+        pstmt.setDouble(3, objecto.getDuracion());
+        pstmt.setString(4, objecto.getRegistro());
+        pstmt.setDouble(5, objecto.getFacultad().getID());
+        pstmt.executeUpdate();
+    } catch (SQLException e) {
+        e.printStackTrace();
     }
+}
 
     @Override
     public Programa obtener(String id) {
         String sql = "SELECT p.*, f.nombre AS facultad_nombre FROM Programa p " +
                      "JOIN Facultad f ON p.facultad_id = f.ID WHERE p.ID = BIGINT";
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
-            pstmt.setLong(1, Long.parseLong(id));
             ResultSet rs = pstmt.executeQuery();
             if (rs.next()) {
                 Facultad facultad = new Facultad(
-                    rs.getLong("facultad_id"),
+                    rs.getDouble("facultad_id"),
                     rs.getString("facultad_nombre"),
                     null
                 );
 
                 return new Programa(
-                    rs.getLong("ID"),
+                    rs.getDouble("ID"),
                     rs.getString("nombre"),
                     rs.getInt("duracion"),
                     rs.getString("registro"),
@@ -71,13 +69,13 @@ public class DBPrograma implements CRUD<Programa> {
              ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
                 Facultad facultad = new Facultad(
-                    rs.getLong("facultad_id"),
+                    rs.getDouble("facultad_id"),
                     rs.getString("facultad_nombre"),
                     null
                 );
 
                 lista.add(new Programa(
-                    rs.getLong("ID"),
+                    rs.getDouble("ID"),
                     rs.getString("nombre"),
                     rs.getInt("duracion"),
                     rs.getString("registro"),
@@ -97,8 +95,8 @@ public class DBPrograma implements CRUD<Programa> {
             pstmt.setString(1, objecto.getNombre());
             pstmt.setInt(2, (int) objecto.getDuracion());
             pstmt.setString(3, objecto.getRegistro());
-            pstmt.setLong(4, (long) objecto.getFacultad().getID()); // FK de Facultad
-            pstmt.setLong(5, (long) objecto.getID());
+            pstmt.setDouble(4, objecto.getFacultad().getID());
+            pstmt.setDouble(5, objecto.getID());
             pstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -109,7 +107,7 @@ public class DBPrograma implements CRUD<Programa> {
     public void eliminar(String id) {
         String sql = "DELETE FROM Programa WHERE ID = bigint";
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
-            pstmt.setLong(1, Long.parseLong(id));
+            pstmt.setString(1, id);
             pstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

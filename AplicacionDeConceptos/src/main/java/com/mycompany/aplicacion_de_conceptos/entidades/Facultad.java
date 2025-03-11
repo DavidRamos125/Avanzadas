@@ -7,7 +7,7 @@ public class Facultad implements Serializable{
     private String nombre;
     private Persona decano;
     
-    public Facultad(long ID, String nombre, Persona decano) {
+    public Facultad(double ID, String nombre, Persona decano) {
         this.ID = ID;
         this.nombre = nombre;
         this.decano = decano;

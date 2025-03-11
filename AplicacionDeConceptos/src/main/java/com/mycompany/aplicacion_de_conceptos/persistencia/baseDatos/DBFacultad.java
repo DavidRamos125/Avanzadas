@@ -1,7 +1,6 @@
 package com.mycompany.aplicacion_de_conceptos.persistencia.baseDatos;
 
 import com.mycompany.aplicacion_de_conceptos.entidades.Facultad;
-import com.mycompany.aplicacion_de_conceptos.entidades.Persona;
 import com.mycompany.aplicacion_de_conceptos.persistencia.CRUD;
 import java.sql.*;
 import java.util.ArrayList;
@@ -19,16 +18,12 @@ public class DBFacultad implements CRUD<Facultad> {
     }
 
     @Override
-    public void crear(Facultad objecto) {
-        String sql = "INSERT INTO Facultad (ID, nombre, decano_id) VALUES (BIGINT, VARCHAR, BIGINT)";
+    public void crear(Facultad facultad) {
+        String sql = "INSERT INTO Facultad (ID, nombre) VALUES (BIGINT, VARCHAR)";
+
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
-            pstmt.setLong(1, (long) objecto.getID());
-            pstmt.setString(2, objecto.getNombre());
-            if (objecto.getDecano() != null) {
-                pstmt.setLong(3, (long) objecto.getDecano().getID()); 
-            } else {
-                pstmt.setNull(3, Types.BIGINT);
-            }
+            pstmt.setDouble(1, facultad.getID());
+            pstmt.setString(2, facultad.getNombre());
             pstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -37,24 +32,15 @@ public class DBFacultad implements CRUD<Facultad> {
 
     @Override
     public Facultad obtener(String id) {
-        String sql = "SELECT f.*, p.nombres, p.apellidos, p.email FROM Facultad f " +
-                     "LEFT JOIN Persona p ON f.decano_id = p.ID WHERE f.ID = BIGINT";
+        String sql = "SELECT * FROM Facultad WHERE ID = BIGINT";
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
-            pstmt.setLong(1, Long.parseLong(id));
+            pstmt.setDouble(1, Double.parseDouble(id));
             ResultSet rs = pstmt.executeQuery();
             if (rs.next()) {
-                Persona decano = (rs.getLong("decano_id") > 0) ? 
-                    new Persona(
-                        rs.getLong("decano_id"),
-                        rs.getString("nombres"),
-                        rs.getString("apellidos"),
-                        rs.getString("email")
-                    ) : null;
-
                 return new Facultad(
-                    rs.getLong("ID"),
+                    rs.getDouble("ID"),
                     rs.getString("nombre"),
-                    decano 
+                    null
                 );
             }
         } catch (SQLException e) {
@@ -66,23 +52,15 @@ public class DBFacultad implements CRUD<Facultad> {
     @Override
     public List<Facultad> obtenerTodos() {
         List<Facultad> lista = new ArrayList<>();
-        String sql = "SELECT f.*, p.nombres, p.apellidos, p.email FROM Facultad f " +
-                     "LEFT JOIN Persona p ON f.decano_id = p.ID";
+        String sql = "SELECT * FROM Facultad";
+
         try (Statement stmt = connection.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
-                Persona decano = (rs.getLong("decano_id") > 0) ? 
-                    new Persona(
-                        rs.getLong("decano_id"),
-                        rs.getString("nombres"),
-                        rs.getString("apellidos"),
-                        rs.getString("email")
-                    ) : null;
-
                 lista.add(new Facultad(
-                    rs.getLong("ID"),
+                    rs.getDouble("ID"),
                     rs.getString("nombre"),
-                    decano 
+                    null
                 ));
             }
         } catch (SQLException e) {
@@ -92,16 +70,12 @@ public class DBFacultad implements CRUD<Facultad> {
     }
 
     @Override
-    public void actualizar(Facultad objecto) {
-        String sql = "UPDATE Facultad SET nombre = ?, decano_id = ? WHERE ID = ?";
+    public void actualizar(Facultad facultad) {
+        String sql = "UPDATE Facultad SET nombre = VARCHAR WHERE ID = BIGINT";
+
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
-            pstmt.setString(1, objecto.getNombre());
-            if (objecto.getDecano() != null) {
-                pstmt.setLong(2, (long) objecto.getDecano().getID());
-            } else {
-                pstmt.setNull(2, Types.BIGINT);
-            }
-            pstmt.setLong(3, (long) objecto.getID());
+            pstmt.setString(1, facultad.getNombre());
+            pstmt.setDouble(2, facultad.getID());
             pstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -111,8 +85,9 @@ public class DBFacultad implements CRUD<Facultad> {
     @Override
     public void eliminar(String id) {
         String sql = "DELETE FROM Facultad WHERE ID = BIGINT";
+
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
-            pstmt.setLong(1, Long.parseLong(id));
+            pstmt.setDouble(1, Double.parseDouble(id));
             pstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

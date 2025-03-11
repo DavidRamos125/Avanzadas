@@ -45,7 +45,7 @@ public class Estudiante extends Persona implements Serializable {
                "Promedio: " + promedio;
     }
 
-    public long getId() {
+    public double getId() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

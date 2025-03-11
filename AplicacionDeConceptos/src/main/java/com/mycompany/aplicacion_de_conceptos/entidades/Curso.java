@@ -8,7 +8,7 @@ public class Curso implements Serializable{
     private Programa programa;
     private boolean activo;
     
-    public Curso(int ID,String nombre ,Programa programa, boolean activo) {
+    public Curso(double ID,String nombre ,Programa programa, boolean activo) {
         this.ID = ID;
         this.nombre=nombre;
         this.programa = programa;

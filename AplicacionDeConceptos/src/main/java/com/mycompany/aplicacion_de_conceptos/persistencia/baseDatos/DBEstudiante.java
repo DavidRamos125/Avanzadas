@@ -25,9 +25,9 @@ public class DBEstudiante implements CRUD<Estudiante> {
     public void crear(Estudiante objecto) {
         String sql = "INSERT INTO Estudiante (ID, codigo, programa_id, activo, promedio) VALUES (BIGINT, BIGINT, BIGINT, BOOLEAN, DOUBLE)";
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
-            pstmt.setLong(1, (long) objecto.getID());
-            pstmt.setLong(2, (long) objecto.getCodigo());
-            pstmt.setLong(3, (long) objecto.getPrograma().getID());
+            pstmt.setDouble(1, objecto.getID());
+            pstmt.setDouble(2, objecto.getCodigo());
+            pstmt.setDouble(3, objecto.getPrograma().getID());
             pstmt.setBoolean(4, objecto.isActivo());
             pstmt.setDouble(5, objecto.getPromedio());
             pstmt.executeUpdate();
@@ -41,22 +41,21 @@ public class DBEstudiante implements CRUD<Estudiante> {
         String sql = "SELECT e.*, p.nombre AS programa_nombre, p.duracion, p.registro FROM Estudiante e " +
                      "JOIN Programa p ON e.programa_id = p.ID WHERE e.ID = BIGINT";
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
-            pstmt.setLong(1, Long.parseLong(id));
             ResultSet rs = pstmt.executeQuery();
             if (rs.next()) {
                 Programa programa = new Programa(
-                    rs.getLong("programa_id"),
+                    rs.getDouble("programa_id"),
                     rs.getString("programa_nombre"),
                     rs.getInt("duracion"),
                     rs.getString("registro")
                 );
 
                 return new Estudiante(
-                    rs.getLong("ID"),
+                    rs.getDouble("ID"),
                     rs.getString("nombres"),
                     rs.getString("apellidos"),
                     rs.getString("email"),
-                    rs.getLong("codigo"),
+                    rs.getDouble("codigo"),
                     programa,
                     rs.getBoolean("activo"),
                     rs.getDouble("promedio")
@@ -77,17 +76,17 @@ public class DBEstudiante implements CRUD<Estudiante> {
              ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
                 Programa programa = new Programa(
-                    rs.getLong("programa_id"),
+                    rs.getDouble("programa_id"),
                     rs.getString("programa_nombre"),
                     rs.getInt("duracion"),
                     rs.getString("registro")
                 );
                 lista.add(new Estudiante(
-                    rs.getLong("ID"),
+                    rs.getDouble("ID"),
                     rs.getString("nombres"),
                     rs.getString("apellidos"),
                     rs.getString("email"),
-                    rs.getLong("codigo"),
+                    rs.getDouble("codigo"),
                     programa,
                     rs.getBoolean("activo"),
                     rs.getDouble("promedio")
@@ -103,11 +102,11 @@ public class DBEstudiante implements CRUD<Estudiante> {
     public void actualizar(Estudiante objecto) {
         String sql = "UPDATE Estudiante SET codigo = BIGINT, programa_id = BIGINT, activo = BOOLEAN, promedio = DOUBLE WHERE ID = BIGINT";
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
-            pstmt.setLong(1, (long) objecto.getCodigo());
-            pstmt.setLong(2, objecto.getPrograma().getId());
+            pstmt.setDouble(1, objecto.getCodigo());
+            pstmt.setDouble(2, objecto.getPrograma().getId());
             pstmt.setBoolean(3, objecto.isActivo());
             pstmt.setDouble(4, objecto.getPromedio());
-            pstmt.setLong(5, objecto.getId());
+            pstmt.setDouble(5, objecto.getId());
             pstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

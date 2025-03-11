@@ -10,7 +10,7 @@ public class Programa implements Serializable{
     private String registro;
     private Facultad facultad;
 
-    public Programa(long aLong, String string, int aInt, String string0) {
+    public Programa(double aDouble, String string, int aInt, String string0) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -34,7 +34,7 @@ public class Programa implements Serializable{
         return facultad;
     }
 
-    public Programa(long ID, String nombre, double duracion, String registro, Facultad facultad) {
+    public Programa(double ID, String nombre, double duracion, String registro, Facultad facultad) {
         this.ID = ID;
         this.nombre = nombre;
         this.duracion = duracion;
@@ -50,7 +50,7 @@ public class Programa implements Serializable{
                 "Facultad :"+(facultad != null ? facultad.toString() : "No asignada");
     }
 
-    public long getId() {
+    public double getId() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

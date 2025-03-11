@@ -24,15 +24,17 @@ public class DBProfesor implements CRUD<Profesor> {
 
         try {
             connection.setAutoCommit(false);
+
             try (PreparedStatement pstmtPersona = connection.prepareStatement(sqlPersona)) {
-                pstmtPersona.setLong(1, objecto.getId());
+                pstmtPersona.setDouble(1, objecto.getId()); 
                 pstmtPersona.setString(2, objecto.getNombres());
                 pstmtPersona.setString(3, objecto.getApellidos());
                 pstmtPersona.setString(4, objecto.getEmail());
                 pstmtPersona.executeUpdate();
             }
+
             try (PreparedStatement pstmtProfesor = connection.prepareStatement(sqlProfesor)) {
-                pstmtProfesor.setLong(1, objecto.getId());
+                pstmtProfesor.setDouble(1, objecto.getId()); 
                 pstmtProfesor.setString(2, objecto.getTipoContrato());
                 pstmtProfesor.executeUpdate();
             }
@@ -58,12 +60,14 @@ public class DBProfesor implements CRUD<Profesor> {
     public Profesor obtener(String id) {
         String sql = "SELECT p.*, pr.tipo_contrato FROM Persona p " +
                      "JOIN Profesor pr ON p.ID = pr.ID WHERE p.ID = BIGINT";
+
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
-            pstmt.setLong(1, Long.parseLong(id));
+            pstmt.setDouble(1, Double.parseDouble(id));
             ResultSet rs = pstmt.executeQuery();
+
             if (rs.next()) {
                 return new Profesor(
-                    rs.getLong("ID"),
+                    rs.getDouble("ID"),
                     rs.getString("nombres"),
                     rs.getString("apellidos"),
                     rs.getString("email"),
@@ -81,11 +85,12 @@ public class DBProfesor implements CRUD<Profesor> {
         List<Profesor> lista = new ArrayList<>();
         String sql = "SELECT p.*, pr.tipo_contrato FROM Persona p " +
                      "JOIN Profesor pr ON p.ID = pr.ID";
+
         try (Statement stmt = connection.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
                 lista.add(new Profesor(
-                    rs.getLong("ID"),
+                    rs.getDouble("ID"),
                     rs.getString("nombres"),
                     rs.getString("apellidos"),
                     rs.getString("email"),
@@ -105,18 +110,18 @@ public class DBProfesor implements CRUD<Profesor> {
 
         try {
             connection.setAutoCommit(false);
+
             try (PreparedStatement pstmtPersona = connection.prepareStatement(sqlPersona)) {
                 pstmtPersona.setString(1, objecto.getNombres());
                 pstmtPersona.setString(2, objecto.getApellidos());
                 pstmtPersona.setString(3, objecto.getEmail());
-                pstmtPersona.setLong(4, objecto.getId());
+                pstmtPersona.setDouble(4, objecto.getId());
                 pstmtPersona.executeUpdate();
             }
 
-            // Actualizar en Profesor
             try (PreparedStatement pstmtProfesor = connection.prepareStatement(sqlProfesor)) {
                 pstmtProfesor.setString(1, objecto.getTipoContrato());
-                pstmtProfesor.setLong(2, objecto.getId());
+                pstmtProfesor.setDouble(2, objecto.getId());
                 pstmtProfesor.executeUpdate();
             }
 
@@ -144,12 +149,14 @@ public class DBProfesor implements CRUD<Profesor> {
 
         try {
             connection.setAutoCommit(false);
+
             try (PreparedStatement pstmtProfesor = connection.prepareStatement(sqlProfesor)) {
-                pstmtProfesor.setLong(1, Long.parseLong(id));
+                pstmtProfesor.setDouble(1, Double.parseDouble(id));
                 pstmtProfesor.executeUpdate();
             }
+
             try (PreparedStatement pstmtPersona = connection.prepareStatement(sqlPersona)) {
-                pstmtPersona.setLong(1, Long.parseLong(id));
+                pstmtPersona.setDouble(1, Double.parseDouble(id));
                 pstmtPersona.executeUpdate();
             }
 

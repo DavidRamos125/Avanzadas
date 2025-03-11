@@ -1,9 +1,7 @@
 package com.mycompany.aplicacion_de_conceptos.persistencia.baseDatos;
 
 import com.mycompany.aplicacion_de_conceptos.entidades.Curso;
-import com.mycompany.aplicacion_de_conceptos.entidades.Programa;
 import com.mycompany.aplicacion_de_conceptos.persistencia.CRUD;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,15 +16,16 @@ public class DBCurso implements CRUD<Curso> {
             System.out.println("Error en la conexión: " + ex.getMessage());
         }
     }
-    
+
     @Override
-    public void crear(Curso objecto) {
-        String sql = "INSERT INTO Curso (ID, nombre, programa_id, activo) VALUES (?, ?, ?, ?)";
+    public void crear(Curso curso) {
+        String sql = "INSERT INTO Curso (ID, nombre, programa_id, activo) VALUES (BIGINT, VARCHAR, BIGINT, BOOLEAN)";
+
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
-            pstmt.setLong(1, (long) objecto.getID());
-            pstmt.setString(2, objecto.getNombre());
-            pstmt.setLong(3, (long) objecto.getPrograma().getID());
-            pstmt.setBoolean(4, objecto.isActivo());
+            pstmt.setDouble(1, curso.getID());
+            pstmt.setString(2, curso.getNombre());
+            pstmt.setDouble(3, curso.getPrograma().getID());  
+            pstmt.setBoolean(4, curso.isActivo());
             pstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -35,23 +34,15 @@ public class DBCurso implements CRUD<Curso> {
 
     @Override
     public Curso obtener(String id) {
-        String sql = "SELECT c.*, p.nombre AS programa_nombre, p.duracion, p.registro FROM Curso c " +
-                     "JOIN Programa p ON c.programa_id = p.ID WHERE c.ID = BIGINT";
+        String sql = "SELECT * FROM Curso WHERE ID = BIGINT";
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
-            pstmt.setLong(1, Long.parseLong(id));
+            pstmt.setDouble(1, Double.parseDouble(id));
             ResultSet rs = pstmt.executeQuery();
             if (rs.next()) {
-                Programa programa = new Programa(
-                    rs.getLong("programa_id"),
-                    rs.getString("programa_nombre"),
-                    rs.getInt("duracion"),
-                    rs.getString("registro")
-                );
-
                 return new Curso(
-                    (int) rs.getLong("ID"),
+                    rs.getDouble("ID"),
                     rs.getString("nombre"),
-                    programa,
+                    null,
                     rs.getBoolean("activo")
                 );
             }
@@ -64,22 +55,15 @@ public class DBCurso implements CRUD<Curso> {
     @Override
     public List<Curso> obtenerTodos() {
         List<Curso> lista = new ArrayList<>();
-        String sql = "SELECT c.*, p.nombre AS programa_nombre, p.duracion, p.registro FROM Curso c " +
-                     "JOIN Programa p ON c.programa_id = p.ID";
+        String sql = "SELECT * FROM Curso";
+
         try (Statement stmt = connection.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
-                Programa programa = new Programa(
-                    rs.getLong("programa_id"),
-                    rs.getString("programa_nombre"),
-                    rs.getInt("duracion"),
-                    rs.getString("registro")
-                );
-
                 lista.add(new Curso(
-                    (int) rs.getLong("ID"),
+                    (int) rs.getDouble("ID"),
                     rs.getString("nombre"),
-                    programa,
+                    null,
                     rs.getBoolean("activo")
                 ));
             }
@@ -90,13 +74,14 @@ public class DBCurso implements CRUD<Curso> {
     }
 
     @Override
-    public void actualizar(Curso objecto) {
-        String sql = "UPDATE Curso SET nombre = VARCHAR, programa_id = BIGINT, activo = BOOOLEAN WHERE ID = BIGINT";
+    public void actualizar(Curso curso) {
+        String sql = "UPDATE Curso SET nombre = VARCHAR, programa_id = BIGINT, activo = BOOLEAN WHERE ID = BIGINT";
+
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
-            pstmt.setString(1, objecto.getNombre());
-            pstmt.setLong(2, (long) objecto.getPrograma().getID());
-            pstmt.setBoolean(3, objecto.isActivo());
-            pstmt.setLong(4, (long) objecto.getID());
+            pstmt.setString(1, curso.getNombre());
+            pstmt.setDouble(2, curso.getPrograma().getID());
+            pstmt.setBoolean(3, curso.isActivo());
+            pstmt.setDouble(4, curso.getID());
             pstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -106,8 +91,9 @@ public class DBCurso implements CRUD<Curso> {
     @Override
     public void eliminar(String id) {
         String sql = "DELETE FROM Curso WHERE ID = BIGINT";
+
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
-            pstmt.setLong(1, Long.parseLong(id));
+            pstmt.setDouble(1, Double.parseDouble(id));
             pstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
