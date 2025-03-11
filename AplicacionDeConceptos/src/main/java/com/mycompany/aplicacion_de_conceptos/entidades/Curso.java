@@ -34,6 +34,6 @@ public class Curso implements Serializable{
     public String toString(){
         return "ID :"+ID+"\n"+
                 "Estado :"+activo+"\n"+
-                "Programa :"+programa.toString();
+                "Programa :"+(programa != null ? programa.toString() : "No asignado");
     }
 }
