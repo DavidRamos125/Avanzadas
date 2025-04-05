@@ -11,7 +11,6 @@ CREATE TABLE Profesor (
     FOREIGN KEY (ID) REFERENCES Persona(ID)
 );
 
--- Tabla Facultad
 CREATE TABLE Facultad (
     ID BIGINT PRIMARY KEY,
     nombre VARCHAR(100),
