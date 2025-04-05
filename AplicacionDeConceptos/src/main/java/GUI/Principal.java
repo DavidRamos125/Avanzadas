@@ -109,8 +109,17 @@ public class Principal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private Estudiante estudiante;
+    private Curso curso;
+    private Docente docente;
+    private Estudiante_Detalle detalle;
+    
     private void Basico_EstidianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Basico_EstidianteActionPerformed
-        // TODO add your handling code here:
+        if (estudiante == null || estudiante.isClosed()) {
+        estudiante = new Estudiante();
+        jDesktopPane1.add(estudiante);
+    }
+    estudiante.setVisible(true);
     }//GEN-LAST:event_Basico_EstidianteActionPerformed
 
     private void Detalle_EstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Detalle_EstudianteActionPerformed
@@ -118,11 +127,19 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_Detalle_EstudianteActionPerformed
 
     private void Basico_CursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Basico_CursoActionPerformed
-        // TODO add your handling code here:
+        if (curso == null || curso.isClosed()) {
+        curso = new Curso();
+        jDesktopPane1.add(curso);
+    }
+    curso.setVisible(true);
     }//GEN-LAST:event_Basico_CursoActionPerformed
 
     private void Basico_DocenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Basico_DocenteActionPerformed
-        // TODO add your handling code here:
+        if (docente == null || docente.isClosed()) {
+        docente = new Docente();
+        jDesktopPane1.add(docente);
+    }
+    docente.setVisible(true);
     }//GEN-LAST:event_Basico_DocenteActionPerformed
 
     /**

@@ -195,13 +195,19 @@ public class Estudiante extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    private Observable observable = new Observable();
 
+    public void agregarObservador(Observador o) {
+        observable.agregarObservador(o);
+    }
+    
+    
     private void EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarActionPerformed
-        // TODO add your handling code here:
+        observable.notificarObservadores("Estudiante", "guardar", this);
     }//GEN-LAST:event_EliminarActionPerformed
 
     private void GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarActionPerformed
-        // TODO add your handling code here:
+        observable.notificarObservadores("Estudiante", "eliminar", this);
     }//GEN-LAST:event_GuardarActionPerformed
 
 

@@ -146,16 +146,22 @@ public class Curso extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private Observable observable = new Observable();
+
+    public void agregarObservador(Observador o) {
+        observable.agregarObservador(o);
+    }
+    
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
-        // TODO add your handling code here:
+        observable.notificarObservadores("Estudiante", "guardar", this);
     }//GEN-LAST:event_guardarActionPerformed
 
     private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
-        // TODO add your handling code here:
+        observable.notificarObservadores("Estudiante", "guardar", this);
     }//GEN-LAST:event_eliminarActionPerformed
 
 

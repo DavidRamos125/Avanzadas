@@ -3,12 +3,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
 package GUI;
-
+import javax.swing.*;
+import java.awt.*;
+import java.util.List;
 /**
  *
  * @author getro
  */
-public class Estudiante_Detalle extends javax.swing.JInternalFrame {
+public class Estudiante_Detalle extends javax.swing.JInternalFrame implements Observador {
 
     /**
      * Creates new form Estudiante_Detalle
@@ -44,7 +46,7 @@ public class Estudiante_Detalle extends javax.swing.JInternalFrame {
         buscar_curso = new javax.swing.JButton();
         Inscribir_curso = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
-        Cursos = new javax.swing.JTextField();
+        cursos = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         docentes = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -105,6 +107,11 @@ public class Estudiante_Detalle extends javax.swing.JInternalFrame {
         });
 
         Inscribir_curso.setText("Inscribir");
+        Inscribir_curso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Inscribir_cursoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -170,14 +177,14 @@ public class Estudiante_Detalle extends javax.swing.JInternalFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Cursos, javax.swing.GroupLayout.DEFAULT_SIZE, 710, Short.MAX_VALUE)
+                .addComponent(cursos, javax.swing.GroupLayout.DEFAULT_SIZE, 710, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Cursos, javax.swing.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE))
+                .addComponent(cursos, javax.swing.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Cursos", jPanel4);
@@ -255,6 +262,13 @@ public class Estudiante_Detalle extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    @Override
+    public void actualizar(String tipoEntidad, String accion, Object dato) {
+        docentes.setText("");
+        cursos.setText("");
+    }
+     
+    
     private void codigo_cursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codigo_cursoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_codigo_cursoActionPerformed
@@ -263,15 +277,19 @@ public class Estudiante_Detalle extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_buscar_cursoActionPerformed
 
+    private void Inscribir_cursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Inscribir_cursoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Inscribir_cursoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Buscar;
-    private javax.swing.JTextField Cursos;
     private javax.swing.JTextField Docente;
     private javax.swing.JButton Inscribir_curso;
     private javax.swing.JTextField ano;
     private javax.swing.JButton buscar_curso;
     private javax.swing.JTextField codigo_curso;
+    private javax.swing.JTextField cursos;
     private javax.swing.JTextField docentes;
     private javax.swing.JTextField historial_Cursos;
     private javax.swing.JTextField id;
