@@ -268,6 +268,16 @@ public class Estudiante_Detalle extends javax.swing.JInternalFrame implements Ob
         cursos.setText("");
     }
      
+    private static Estudiante_Detalle instancia;
+
+   
+    
+    public static Estudiante_Detalle getInstancia() {
+        if (instancia == null) {
+            instancia = new Estudiante_Detalle();
+        }
+        return instancia;
+    }
     
     private void codigo_cursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codigo_cursoActionPerformed
         // TODO add your handling code here:

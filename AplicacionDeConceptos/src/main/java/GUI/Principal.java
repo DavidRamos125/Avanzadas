@@ -4,6 +4,8 @@
  */
 package GUI;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author getro
@@ -123,7 +125,20 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_Basico_EstidianteActionPerformed
 
     private void Detalle_EstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Detalle_EstudianteActionPerformed
-        // TODO add your handling code here:
+        if (estudiante == null || docente == null || curso == null) {
+        JOptionPane.showMessageDialog(this, "Debe abrir primero las ventanas de Estudiante, Docente y Curso.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+        return;
+    }
+
+    if (detalle == null || detalle.isClosed()) {
+        detalle = Estudiante_Detalle.getInstancia();
+        estudiante.agregarObservador(detalle);
+        curso.agregarObservador(detalle);
+        docente.agregarObservador(detalle);
+        jDesktopPane1.add(detalle);
+    }
+
+    detalle.setVisible(true);
     }//GEN-LAST:event_Detalle_EstudianteActionPerformed
 
     private void Basico_CursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Basico_CursoActionPerformed

@@ -1,6 +1,6 @@
 package com.mycompany.aplicacion_de_conceptos;
 
-import com.mycompany.aplicacion_de_conceptos.GUI.GIU_Principal;
+import GUI.Principal;
 import com.mycompany.aplicacion_de_conceptos.dtos.*;
 
 import java.io.IOException;
@@ -42,7 +42,7 @@ public class Aplicacion_de_Conceptos {
 
 
 
-        GIU_Principal principal = new GIU_Principal();
+        Principal principal = new Principal();
         principal.setVisible(true);
 
 
