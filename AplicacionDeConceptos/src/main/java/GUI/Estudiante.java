@@ -4,6 +4,14 @@
  */
 package GUI;
 
+import com.mycompany.aplicacion_de_conceptos.servicios.ServicioEstudiante;
+import com.mycompany.aplicacion_de_conceptos.fabricas.FabricaDTO;
+import com.mycompany.aplicacion_de_conceptos.dtos.DTOEstudiante;
+import com.mycompany.aplicacion_de_conceptos.dtos.DTOPrograma;
+import com.mycompany.aplicacion_de_conceptos.servicios.ServicioPrograma;
+import javax.swing.*;
+import java.util.List;
+import java.util.Arrays;
 /**
  *
  * @author getro
@@ -40,15 +48,14 @@ public class Estudiante extends javax.swing.JInternalFrame {
         Apellidos = new javax.swing.JTextField();
         correo = new javax.swing.JTextField();
         codigo = new javax.swing.JTextField();
-        prmedio = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        promedio = new javax.swing.JTextField();
+        programa = new javax.swing.JComboBox<>();
         Actualizar_Programas = new javax.swing.JButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        Activo = new javax.swing.JRadioButton();
+        Desactivo = new javax.swing.JRadioButton();
         Guardar = new javax.swing.JButton();
         Eliminar = new javax.swing.JButton();
         buscar_identificacion = new javax.swing.JButton();
-        buscar_codigo = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -71,15 +78,20 @@ public class Estudiante extends javax.swing.JInternalFrame {
 
         jLabel8.setText("Promedio :");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", " " }));
+        programa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", " " }));
 
         Actualizar_Programas.setText("Actualizar");
+        Actualizar_Programas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Actualizar_ProgramasActionPerformed(evt);
+            }
+        });
 
-        Estado.add(jRadioButton1);
-        jRadioButton1.setText("Activo");
+        Estado.add(Activo);
+        Activo.setText("Activo");
 
-        Estado.add(jRadioButton2);
-        jRadioButton2.setText("Desactivo");
+        Estado.add(Desactivo);
+        Desactivo.setText("Desactivo");
 
         Guardar.setText("Guardar");
         Guardar.addActionListener(new java.awt.event.ActionListener() {
@@ -96,9 +108,11 @@ public class Estudiante extends javax.swing.JInternalFrame {
         });
 
         buscar_identificacion.setText("Buscar");
-
-        buscar_codigo.setText("Buscar");
-        buscar_codigo.setToolTipText("");
+        buscar_identificacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscar_identificacionActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -129,22 +143,21 @@ public class Estudiante extends javax.swing.JInternalFrame {
                         .addComponent(Eliminar))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(prmedio, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
+                            .addComponent(promedio, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
                             .addComponent(codigo, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
                             .addComponent(correo, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
                             .addComponent(Apellidos, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
                             .addComponent(nombres, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
-                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(programa, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(numero_identificacion))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(Actualizar_Programas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buscar_identificacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buscar_codigo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(buscar_identificacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jRadioButton1)
+                        .addComponent(Activo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButton2))))
+                        .addComponent(Desactivo))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -169,23 +182,22 @@ public class Estudiante extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(codigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buscar_codigo))
+                    .addComponent(codigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(programa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(Actualizar_Programas)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2))
+                    .addComponent(Activo)
+                    .addComponent(Desactivo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(prmedio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(promedio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Guardar)
@@ -203,25 +215,64 @@ public class Estudiante extends javax.swing.JInternalFrame {
     
     
     private void EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarActionPerformed
+        servicioEstudiante.eliminarEstudiante(numero_identificacion.getText());
         observable.notificarObservadores("Estudiante", "guardar", this);
     }//GEN-LAST:event_EliminarActionPerformed
 
     private void GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarActionPerformed
+        double id = Double.parseDouble(numero_identificacion.getText());
+        double Codigo = Double.parseDouble(codigo.getText());
+        boolean estado;
+        double Promedio = Double.parseDouble(promedio.getText());
+        String seleccion = (String) programa.getSelectedItem();
+        DTOPrograma Programa = servicioPrograma.obtenerPrograma(seleccion);
+        if(Activo.isSelected()){
+            estado = true;
+        }else{
+            estado = false;
+        }
+        DTOEstudiante estudiante = FabricaDTO.obtenerEstudianteDTO(id, nombres.getText(), Apellidos.getText(), 
+                correo.getText(),Codigo,Programa, estado, Promedio);
+        servicioEstudiante.InscribirEstudiante(estudiante);
         observable.notificarObservadores("Estudiante", "eliminar", this);
     }//GEN-LAST:event_GuardarActionPerformed
 
+    private void Actualizar_ProgramasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Actualizar_ProgramasActionPerformed
+        List<DTOPrograma> Programas = servicioPrograma.obtenerProgramas();
+        programa.removeAllItems(); // Limpiar antes de llenar
+
+        for (DTOPrograma programaDTO : Programas) {
+            programa.addItem(String.valueOf(programaDTO.getId()));
+        }
+    }//GEN-LAST:event_Actualizar_ProgramasActionPerformed
+
+    private void buscar_identificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscar_identificacionActionPerformed
+        DTOEstudiante estudiante = servicioEstudiante.obtenerEstudiante(numero_identificacion.getText());
+        nombres.setText(estudiante.getNombres());
+        Apellidos.setText(estudiante.getApellidos());
+        correo.setText(estudiante.getEmail());
+        codigo.setText(String.valueOf(estudiante.getCodigo()));
+        if(estudiante.isActivo() == true){
+            Activo.doClick();
+        }else{
+           Desactivo.doClick();
+        }
+        promedio.setText(String.valueOf(estudiante.getPromedio()));
+        programa.removeAllItems();
+        programa.addItem(String.valueOf(estudiante.getPrograma().getId()));
+    }//GEN-LAST:event_buscar_identificacionActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton Activo;
     private javax.swing.JButton Actualizar_Programas;
     private javax.swing.JTextField Apellidos;
+    private javax.swing.JRadioButton Desactivo;
     private javax.swing.JButton Eliminar;
     private javax.swing.ButtonGroup Estado;
     private javax.swing.JButton Guardar;
-    private javax.swing.JButton buscar_codigo;
     private javax.swing.JButton buscar_identificacion;
     private javax.swing.JTextField codigo;
     private javax.swing.JTextField correo;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -230,10 +281,12 @@ public class Estudiante extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JTextField nombres;
     private javax.swing.JTextField numero_identificacion;
-    private javax.swing.JTextField prmedio;
+    private javax.swing.JComboBox<String> programa;
+    private javax.swing.JTextField promedio;
     // End of variables declaration//GEN-END:variables
+    ServicioEstudiante servicioEstudiante;
+    ServicioPrograma servicioPrograma;
 }
+

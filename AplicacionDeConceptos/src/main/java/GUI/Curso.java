@@ -4,6 +4,13 @@
  */
 package GUI;
 
+import com.mycompany.aplicacion_de_conceptos.dtos.DTOPrograma;
+import com.mycompany.aplicacion_de_conceptos.dtos.DTOCurso;
+import com.mycompany.aplicacion_de_conceptos.servicios.ServicioCurso;
+import com.mycompany.aplicacion_de_conceptos.servicios.ServicioPrograma;
+import com.mycompany.aplicacion_de_conceptos.fabricas.FabricaDTO;
+import java.util.List;
+
 /**
  *
  * @author getro
@@ -33,9 +40,9 @@ public class Curso extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         id = new javax.swing.JTextField();
         nombre = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        programa = new javax.swing.JComboBox<>();
+        Activo = new javax.swing.JRadioButton();
+        Desactivo = new javax.swing.JRadioButton();
         Actualizar_Programas = new javax.swing.JButton();
         guardar = new javax.swing.JButton();
         eliminar = new javax.swing.JButton();
@@ -54,18 +61,23 @@ public class Curso extends javax.swing.JInternalFrame {
 
         jLabel4.setText("Estado :");
 
-        estado.add(jRadioButton1);
-        jRadioButton1.setText("Activo");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+        estado.add(Activo);
+        Activo.setText("Activo");
+        Activo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
+                ActivoActionPerformed(evt);
             }
         });
 
-        estado.add(jRadioButton2);
-        jRadioButton2.setText("Desactivo");
+        estado.add(Desactivo);
+        Desactivo.setText("Desactivo");
 
         Actualizar_Programas.setText("Actualizar");
+        Actualizar_Programas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Actualizar_ProgramasActionPerformed(evt);
+            }
+        });
 
         guardar.setText("Guardar");
         guardar.addActionListener(new java.awt.event.ActionListener() {
@@ -82,6 +94,11 @@ public class Curso extends javax.swing.JInternalFrame {
         });
 
         buscar.setText("Buscar");
+        buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -103,12 +120,12 @@ public class Curso extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jRadioButton1)
+                                .addComponent(Activo)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jRadioButton2))
+                                .addComponent(Desactivo))
                             .addComponent(id)
                             .addComponent(nombre)
-                            .addComponent(jComboBox1, 0, 233, Short.MAX_VALUE))
+                            .addComponent(programa, 0, 233, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(Actualizar_Programas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -129,13 +146,13 @@ public class Curso extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(programa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Actualizar_Programas))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2))
+                    .addComponent(Activo)
+                    .addComponent(Desactivo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(guardar)
@@ -152,33 +169,67 @@ public class Curso extends javax.swing.JInternalFrame {
         observable.agregarObservador(o);
     }
     
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+    private void ActivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActivoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
+    }//GEN-LAST:event_ActivoActionPerformed
 
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
-        observable.notificarObservadores("Estudiante", "guardar", this);
+        String seleccion = (String) programa.getSelectedItem();
+        DTOPrograma Programa = servicioPrograma.obtenerPrograma(seleccion);
+        boolean estado;
+        if(Activo.isSelected()){
+            estado = true;
+        }else{
+            estado = false;
+        }
+        DTOCurso curso = FabricaDTO.obtenerCursoDTO(Integer.parseInt(id.getText()), nombre.getText(), 
+                                                    Programa, estado);
+        servicioCurso.crearCurso(curso);
+        observable.notificarObservadores("", "", this);
     }//GEN-LAST:event_guardarActionPerformed
 
     private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
-        observable.notificarObservadores("Estudiante", "guardar", this);
+        servicioCurso.eliminarCurso(id.getText());
+        observable.notificarObservadores("", "", this);
     }//GEN-LAST:event_eliminarActionPerformed
+
+    private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
+        DTOCurso curso = servicioCurso.obtenerCurso(id.getText());
+        nombre.setText(curso.getNombre());
+        if(curso.isActivo() == true){
+            Activo.doClick();
+        }else{
+           Desactivo.doClick();
+        }
+        programa.addItem(String.valueOf(curso.getPrograma().getId()));
+    }//GEN-LAST:event_buscarActionPerformed
+
+    private void Actualizar_ProgramasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Actualizar_ProgramasActionPerformed
+        List<DTOPrograma> Programas = servicioPrograma.obtenerProgramas();
+        programa.removeAllItems(); // Limpiar antes de llenar
+
+        for (DTOPrograma programaDTO : Programas) {
+            programa.addItem(String.valueOf(programaDTO.getId()));
+        }
+    }//GEN-LAST:event_Actualizar_ProgramasActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton Activo;
     private javax.swing.JButton Actualizar_Programas;
+    private javax.swing.JRadioButton Desactivo;
     private javax.swing.JButton buscar;
     private javax.swing.JButton eliminar;
     private javax.swing.ButtonGroup estado;
     private javax.swing.JButton guardar;
     private javax.swing.JTextField id;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JTextField nombre;
+    private javax.swing.JComboBox<String> programa;
     // End of variables declaration//GEN-END:variables
+    ServicioCurso servicioCurso;
+    ServicioPrograma servicioPrograma;
 }

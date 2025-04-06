@@ -5,6 +5,9 @@ import com.mycompany.aplicacion_de_conceptos.entidades.Profesor;
 import com.mycompany.aplicacion_de_conceptos.persistencia.CRUD;
 import com.mycompany.aplicacion_de_conceptos.persistencia.baseDatos.DBProfesor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ServicioProfesor {
     private CRUD<Profesor> crud;
 
@@ -20,6 +23,20 @@ public class ServicioProfesor {
         crud.eliminar(id);
     }
 
+    public DTOProfesor obtenerProfesor(String id){
+        Profesor profesor = crud.obtener(id);
+        return serializar(profesor);
+    }
+    
+    public List<DTOProfesor> obtenerCursos() {
+        List<DTOProfesor> listaDto = new ArrayList<>();
+        List<Profesor> consulta = crud.obtenerTodos();
+        for (Profesor profesor : consulta) {
+            listaDto.add(serializar(profesor));
+        }
+        return listaDto;
+    }
+    
 
     public static DTOProfesor serializar(Profesor profesor) {
         return new DTOProfesor(

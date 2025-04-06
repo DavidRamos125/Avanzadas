@@ -4,6 +4,9 @@
  */
 package GUI;
 
+import com.mycompany.aplicacion_de_conceptos.servicios.ServicioProfesor;
+import com.mycompany.aplicacion_de_conceptos.fabricas.FabricaDTO;
+import com.mycompany.aplicacion_de_conceptos.dtos.DTOProfesor;
 /**
  *
  * @author getro
@@ -145,17 +148,25 @@ public class Docente extends javax.swing.JInternalFrame {
     }
     
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
-        // TODO add your handling code here:
+        String Id = id.getText();
+        double ID = Double.parseDouble(Id);
+        DTOProfesor profesor = FabricaDTO.obtenerProfesorDTO(ID, nombres.getText(), apellidos.getText(), 
+                                                            correo.getText(), contrato.getText());
+        servicioProfesor.inscribir(profesor);
         observable.notificarObservadores("Estudiante", "guardar", this);
     }//GEN-LAST:event_guardarActionPerformed
 
     private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
-        // TODO add your handling code here:
+        servicioProfesor.eliminar(id.getText());
         observable.notificarObservadores("Estudiante", "guardar", this);
     }//GEN-LAST:event_eliminarActionPerformed
 
     private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
-        // TODO add your handling code here:
+        DTOProfesor profesor = servicioProfesor.obtenerProfesor(id.getText());
+        nombres.setText(profesor.getNombres());
+        apellidos.setText(profesor.getApellidos());
+        correo.setText(profesor.getEmail());
+        contrato.setText(profesor.getTipoContrato());
     }//GEN-LAST:event_BuscarActionPerformed
 
 
@@ -174,4 +185,5 @@ public class Docente extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField nombres;
     // End of variables declaration//GEN-END:variables
+    ServicioProfesor servicioProfesor;
 }
