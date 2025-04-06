@@ -2,7 +2,6 @@ package com.mycompany.aplicacion_de_conceptos;
 
 import com.mycompany.aplicacion_de_conceptos.GUI.GIU_Principal;
 import com.mycompany.aplicacion_de_conceptos.dtos.*;
-import com.mycompany.aplicacion_de_conceptos.procesos.*;
 
 import java.io.IOException;
 

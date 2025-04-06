@@ -1,8 +1,7 @@
-package com.mycompany.aplicacion_de_conceptos.procesos;
+package com.mycompany.aplicacion_de_conceptos.servicios;
 
 import com.mycompany.aplicacion_de_conceptos.dtos.DTOFacultad;
 import com.mycompany.aplicacion_de_conceptos.entidades.Facultad;
-import com.mycompany.aplicacion_de_conceptos.entidades.Persona;
 import com.mycompany.aplicacion_de_conceptos.fabricas.FabricaSistema;
 import com.mycompany.aplicacion_de_conceptos.persistencia.CRUD;
 import com.mycompany.aplicacion_de_conceptos.persistencia.baseDatos.DBFacultad;
@@ -49,7 +48,7 @@ public class ServicioFacultad {
         return new Facultad(
                 (long) dtoFacultad.getId(),
                 dtoFacultad.getNombre(),
-                InscripcionesPersonas.deserializar(dtoFacultad.getDecano())
+                ServicioPersona.deserializar(dtoFacultad.getDecano())
         );
     }
 
@@ -57,7 +56,7 @@ public class ServicioFacultad {
         return new DTOFacultad(
                 facultad.getID(),
                 facultad.getNombre(),
-                InscripcionesPersonas.serializar(facultad.getDecano())
+                ServicioPersona.serializar(facultad.getDecano())
         );
     }
 }

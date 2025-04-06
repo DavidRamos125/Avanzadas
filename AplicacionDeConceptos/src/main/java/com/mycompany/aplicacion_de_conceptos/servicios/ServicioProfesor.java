@@ -1,4 +1,4 @@
-package com.mycompany.aplicacion_de_conceptos.procesos;
+package com.mycompany.aplicacion_de_conceptos.servicios;
 
 import com.mycompany.aplicacion_de_conceptos.dtos.DTOProfesor;
 import com.mycompany.aplicacion_de_conceptos.entidades.Profesor;
@@ -13,20 +13,13 @@ public class ServicioProfesor {
     }
 
     public void inscribir(DTOProfesor profesor) {
-        try {
-            crud.crear(deserializar(profesor));
-        }catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-
+        crud.crear(deserializar(profesor));
     }
 
     public void eliminar(String id) {
         crud.eliminar(id);
     }
-    
-    
-    
+
 
     public static DTOProfesor serializar(Profesor profesor) {
         return new DTOProfesor(
@@ -47,6 +40,4 @@ public class ServicioProfesor {
                 dtoProfesor.getTipoContrato()
         );
     }
-
-
 }

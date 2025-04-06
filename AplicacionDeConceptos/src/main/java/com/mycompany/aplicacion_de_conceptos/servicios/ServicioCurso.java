@@ -1,4 +1,4 @@
-package com.mycompany.aplicacion_de_conceptos.procesos;
+package com.mycompany.aplicacion_de_conceptos.servicios;
 
 import com.mycompany.aplicacion_de_conceptos.dtos.DTOCurso;
 import com.mycompany.aplicacion_de_conceptos.entidades.Curso;
