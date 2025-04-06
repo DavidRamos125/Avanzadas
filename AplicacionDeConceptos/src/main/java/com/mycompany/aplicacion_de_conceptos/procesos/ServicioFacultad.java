@@ -3,6 +3,7 @@ package com.mycompany.aplicacion_de_conceptos.procesos;
 import com.mycompany.aplicacion_de_conceptos.dtos.DTOFacultad;
 import com.mycompany.aplicacion_de_conceptos.entidades.Facultad;
 import com.mycompany.aplicacion_de_conceptos.entidades.Persona;
+import com.mycompany.aplicacion_de_conceptos.fabricas.FabricaSistema;
 import com.mycompany.aplicacion_de_conceptos.persistencia.CRUD;
 import com.mycompany.aplicacion_de_conceptos.persistencia.baseDatos.DBFacultad;
 
@@ -11,9 +12,11 @@ import java.util.List;
 
 public class ServicioFacultad {
     private CRUD<Facultad> crud;
+    private FabricaSistema fabricaSistema;
 
     public ServicioFacultad() {
         this.crud = new DBFacultad();
+        this.fabricaSistema = FabricaSistema.getInstancia();
     }
 
     public void añadirFacultad(DTOFacultad facultad) {
