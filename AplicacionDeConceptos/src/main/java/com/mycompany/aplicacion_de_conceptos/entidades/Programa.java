@@ -10,8 +10,12 @@ public class Programa implements Serializable{
     private String registro;
     private Facultad facultad;
 
-    public Programa(double aDouble, String string, int aInt, String string0) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Programa(double ID, String nombre, double duracion, String registro, Facultad facultad) {
+        this.ID = ID;
+        this.nombre = nombre;
+        this.duracion = duracion;
+        this.registro = registro;
+        this.facultad = facultad;
     }
 
     public double getID() {
@@ -32,14 +36,6 @@ public class Programa implements Serializable{
 
     public Facultad getFacultad() {
         return facultad;
-    }
-
-    public Programa(double ID, String nombre, double duracion, String registro, Facultad facultad) {
-        this.ID = ID;
-        this.nombre = nombre;
-        this.duracion = duracion;
-        this.registro = registro;
-        this.facultad = facultad;
     }
     
     public String toString(){

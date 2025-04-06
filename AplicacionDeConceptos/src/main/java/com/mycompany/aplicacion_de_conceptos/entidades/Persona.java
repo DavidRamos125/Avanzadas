@@ -8,14 +8,6 @@ public class Persona implements Serializable{
     private String apellidos;
     private String email;
 
-    public String getEmail() {
-        return email;
-    }
-
-    public String getApellidos() {
-        return apellidos;
-    }
-
     public Persona(double ID, String nombres, String apellidos, String email) {
     this.ID = ID;
     this.nombres = nombres;
@@ -34,6 +26,15 @@ public class Persona implements Serializable{
     public double getID() {
         return ID;
     }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getApellidos() {
+        return apellidos;
+    }
+
 
     public String toString(){
         return "Nombres :"+nombres+"\n"+
