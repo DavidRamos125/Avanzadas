@@ -19,7 +19,6 @@ public class ServicioInscripcion {
         if (dto == null) {
             throw new IllegalArgumentException("El DTO de inscripción no puede ser nulo.");
         }
-
         Inscripcion inscripcion = deserializar(dto);
         crud.crear(inscripcion);
     }
@@ -28,8 +27,8 @@ public class ServicioInscripcion {
         List<DTOCursoInscrito> dtos = new ArrayList<>();
         List<Inscripcion> inscripciones = crud.obtenerTodos();
         for (Inscripcion inscripcion : inscripciones) {
-            double id = inscripcion.getEstudiante().getID();
-            if (idEstudiante.equals(Double.toString(id))) {
+            int id = (int) inscripcion.getEstudiante().getID();
+            if (idEstudiante.equals(Integer.toString(id))) {
                 dtos.add(serializar(inscripcion));
             }
         }

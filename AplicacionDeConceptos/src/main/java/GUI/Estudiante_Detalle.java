@@ -337,9 +337,6 @@ public class Estudiante_Detalle extends javax.swing.JInternalFrame implements Ob
     }
      
     private static Estudiante_Detalle instancia;
-
-   
-    
     public static Estudiante_Detalle getInstancia() {
         if (instancia == null) {
             instancia = new Estudiante_Detalle();
@@ -368,6 +365,7 @@ public class Estudiante_Detalle extends javax.swing.JInternalFrame implements Ob
         DTOCursoInscrito cursoins = FabricaExterior.obtenerCursoInscritoDTO(servicioCurso.obtenerCurso(codigo_curso.getText())
                                                 , Integer.valueOf(ano.getText()), 
                                                 Periodo, servicioEstudiante.obtenerEstudiante(id.getText()));
+        servicioInscripcion.guardarInformacion(cursoins);
         List<DTOCursoInscrito> Cursos = servicioInscripcion.obtenerInscripcionesPorEstudiante(id.getText());
         mostrarCursosInscritos(Cursos);
     }//GEN-LAST:event_Inscribir_cursoActionPerformed
@@ -376,7 +374,7 @@ public class Estudiante_Detalle extends javax.swing.JInternalFrame implements Ob
         DTOEstudiante estudiante = servicioEstudiante.obtenerEstudiante(id.getText());
         nombre.setText(estudiante.getNombres());
         
-        List<DTOCursoInscrito> Cursos = servicioInscripcion.obtenerInscripcionesPorEstudiante(title);
+        List<DTOCursoInscrito> Cursos = servicioInscripcion.obtenerInscripcionesPorEstudiante(id.getText());
         mostrarCursosInscritos(Cursos);
     }//GEN-LAST:event_BuscarActionPerformed
 
