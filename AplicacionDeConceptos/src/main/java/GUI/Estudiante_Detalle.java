@@ -356,6 +356,8 @@ public class Estudiante_Detalle extends javax.swing.JInternalFrame implements Ob
     private void buscar_cursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscar_cursoActionPerformed
         DTOCurso curso = servicioCurso.obtenerCurso(codigo_curso.getText());
         nombre_curso.setText(curso.getNombre());
+        List<DTOCursoInscrito> Cursos = servicioInscripcion.obtenerInscripcionesPorEstudiante(id.getText());
+        mostrarCursosInscritos(Cursos);
     }//GEN-LAST:event_buscar_cursoActionPerformed
 
     private void Inscribir_cursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Inscribir_cursoActionPerformed
@@ -368,7 +370,7 @@ public class Estudiante_Detalle extends javax.swing.JInternalFrame implements Ob
         DTOCursoInscrito cursoins = FabricaExterior.obtenerCursoInscritoDTO(servicioCurso.obtenerCurso(codigo_curso.getText())
                                                 , Integer.valueOf(ano.getText()), 
                                                 Periodo, servicioEstudiante.obtenerEstudiante(id.getText()));
-        List<DTOCursoInscrito> Cursos = servicioInscripcion.obtenerInscripcionesPorEstudiante(title);
+        List<DTOCursoInscrito> Cursos = servicioInscripcion.obtenerInscripcionesPorEstudiante(id.getText());
         mostrarCursosInscritos(Cursos);
     }//GEN-LAST:event_Inscribir_cursoActionPerformed
 
