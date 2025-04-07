@@ -8,7 +8,7 @@ import com.mycompany.aplicacion_de_conceptos.dtos.DTOPrograma;
 import com.mycompany.aplicacion_de_conceptos.dtos.DTOCurso;
 import com.mycompany.aplicacion_de_conceptos.servicios.ServicioCurso;
 import com.mycompany.aplicacion_de_conceptos.servicios.ServicioPrograma;
-import com.mycompany.aplicacion_de_conceptos.fabricas.FabricaDTO;
+import com.mycompany.aplicacion_de_conceptos.fabricas.FabricaExterior;
 import java.util.List;
 
 /**
@@ -22,6 +22,8 @@ public class Curso extends javax.swing.JInternalFrame {
      */
     public Curso() {
         initComponents();
+        this.servicioCurso = FabricaExterior.obtenerServicioCurso();
+        this.servicioPrograma = FabricaExterior.obtenerServicioPrograma();
     }
 
     /**
@@ -182,7 +184,7 @@ public class Curso extends javax.swing.JInternalFrame {
         }else{
             estado = false;
         }
-        DTOCurso curso = FabricaDTO.obtenerCursoDTO(Integer.parseInt(id.getText()), nombre.getText(), 
+        DTOCurso curso = FabricaExterior.obtenerCursoDTO(Integer.parseInt(id.getText()), nombre.getText(),
                                                     Programa, estado);
         servicioCurso.crearCurso(curso);
         observable.notificarObservadores("", "", this);

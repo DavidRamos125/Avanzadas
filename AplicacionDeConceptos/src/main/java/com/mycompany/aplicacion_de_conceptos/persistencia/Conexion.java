@@ -4,6 +4,5 @@ import java.sql.SQLException;
 
 public interface Conexion {
     Connection conectar()throws SQLException;
-
     void desconectar();
 }

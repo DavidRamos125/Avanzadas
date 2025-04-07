@@ -7,15 +7,13 @@ import com.mycompany.aplicacion_de_conceptos.dtos.DTOCurso;
 import com.mycompany.aplicacion_de_conceptos.dtos.DTOCursoInscrito;
 import com.mycompany.aplicacion_de_conceptos.dtos.DTOEstudiante;
 import com.mycompany.aplicacion_de_conceptos.dtos.DTOProfesor;
-import com.mycompany.aplicacion_de_conceptos.dtos.DTOPrograma;
-import com.mycompany.aplicacion_de_conceptos.fabricas.FabricaDTO;
+import com.mycompany.aplicacion_de_conceptos.fabricas.FabricaExterior;
 import com.mycompany.aplicacion_de_conceptos.servicios.ServicioCurso;
 import com.mycompany.aplicacion_de_conceptos.servicios.ServicioEstudiante;
 import com.mycompany.aplicacion_de_conceptos.servicios.ServicioInscripcion;
 import com.mycompany.aplicacion_de_conceptos.servicios.ServicioProfesor;
-import com.mycompany.aplicacion_de_conceptos.servicios.ServicioPrograma;
+
 import javax.swing.*;
-import java.awt.*;
 import java.util.List;
 /**
  *
@@ -28,6 +26,10 @@ public class Estudiante_Detalle extends javax.swing.JInternalFrame implements Ob
      */
     public Estudiante_Detalle() {
         initComponents();
+        this.servicioCurso = FabricaExterior.obtenerServicioCurso();
+        this.servicioEstudiante = FabricaExterior.obtenerServicioEstudiante();
+        this.servicioInscripcion = FabricaExterior.obtenerServicioInscripcion();
+        this.servicioProfesor = FabricaExterior.obtenerServicioProfesor();
     }
 
     /**
@@ -328,7 +330,7 @@ public class Estudiante_Detalle extends javax.swing.JInternalFrame implements Ob
     @Override
     public void actualizar(String tipoEntidad, String accion, Object dato) {
         List<DTOCurso> Cursos = servicioCurso.obtenerCursos();
-        List<DTOProfesor> Profesores = servicioProfesor.obtenerCursos();
+        List<DTOProfesor> Profesores = servicioProfesor.obtenerProfesores();
         docentes.setText("");
         cursos.setText("");
         mostrarDocentesYCursos(Profesores, Cursos, docentes, cursos);
@@ -363,7 +365,7 @@ public class Estudiante_Detalle extends javax.swing.JInternalFrame implements Ob
         }else if(periodo_B.isSelected()){
             Periodo = 2;
         }
-        DTOCursoInscrito cursoins = FabricaDTO.obtenerCursoInscritoDTO(servicioCurso.obtenerCurso(codigo_curso.getText())
+        DTOCursoInscrito cursoins = FabricaExterior.obtenerCursoInscritoDTO(servicioCurso.obtenerCurso(codigo_curso.getText())
                                                 , Integer.valueOf(ano.getText()), 
                                                 Periodo, servicioEstudiante.obtenerEstudiante(id.getText()));
         List<DTOCursoInscrito> Cursos = servicioInscripcion.obtenerInscripcionesPorEstudiante(title);
@@ -413,7 +415,6 @@ public class Estudiante_Detalle extends javax.swing.JInternalFrame implements Ob
     private javax.swing.JRadioButton periodo_A;
     private javax.swing.JRadioButton periodo_B;
     // End of variables declaration//GEN-END:variables
-    ServicioPrograma servicioPrograma;
     ServicioCurso servicioCurso;
     ServicioProfesor servicioProfesor;
     ServicioEstudiante servicioEstudiante;

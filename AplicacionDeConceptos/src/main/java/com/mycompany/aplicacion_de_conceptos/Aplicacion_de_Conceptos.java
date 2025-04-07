@@ -8,8 +8,6 @@ import java.io.IOException;
 /**
  *  Fabian David Ramos Acosta    160004327
  *  Tian David Castro Parra     160004333
- *  Maria Camila Galeano Arenas 160004641      
- * 
  */
 public class Aplicacion_de_Conceptos {
 
@@ -38,9 +36,6 @@ public class Aplicacion_de_Conceptos {
 
         DTOCursoProfesor cursoProfesor1 = new DTOCursoProfesor(profesor1, 2025, 1, curso1);
         DTOCursoProfesor cursoProfesor2 = new DTOCursoProfesor(profesor2, 2025, 1, curso2);
-
-
-
 
         Principal principal = new Principal();
         principal.setVisible(true);

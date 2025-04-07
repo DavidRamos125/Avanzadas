@@ -5,7 +5,7 @@
 package GUI;
 
 import com.mycompany.aplicacion_de_conceptos.servicios.ServicioProfesor;
-import com.mycompany.aplicacion_de_conceptos.fabricas.FabricaDTO;
+import com.mycompany.aplicacion_de_conceptos.fabricas.FabricaExterior;
 import com.mycompany.aplicacion_de_conceptos.dtos.DTOProfesor;
 /**
  *
@@ -18,6 +18,7 @@ public class Docente extends javax.swing.JInternalFrame {
      */
     public Docente() {
         initComponents();
+        this.servicioProfesor = FabricaExterior.obtenerServicioProfesor();
     }
 
     /**
@@ -150,7 +151,7 @@ public class Docente extends javax.swing.JInternalFrame {
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
         String Id = id.getText();
         double ID = Double.parseDouble(Id);
-        DTOProfesor profesor = FabricaDTO.obtenerProfesorDTO(ID, nombres.getText(), apellidos.getText(), 
+        DTOProfesor profesor = FabricaExterior.obtenerProfesorDTO(ID, nombres.getText(), apellidos.getText(),
                                                             correo.getText(), contrato.getText());
         servicioProfesor.inscribir(profesor);
         observable.notificarObservadores("Estudiante", "guardar", this);

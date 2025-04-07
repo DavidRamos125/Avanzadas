@@ -5,13 +5,13 @@
 package GUI;
 
 import com.mycompany.aplicacion_de_conceptos.servicios.ServicioEstudiante;
-import com.mycompany.aplicacion_de_conceptos.fabricas.FabricaDTO;
+import com.mycompany.aplicacion_de_conceptos.fabricas.FabricaExterior;
 import com.mycompany.aplicacion_de_conceptos.dtos.DTOEstudiante;
 import com.mycompany.aplicacion_de_conceptos.dtos.DTOPrograma;
 import com.mycompany.aplicacion_de_conceptos.servicios.ServicioPrograma;
-import javax.swing.*;
+
 import java.util.List;
-import java.util.Arrays;
+
 /**
  *
  * @author getro
@@ -23,6 +23,8 @@ public class Estudiante extends javax.swing.JInternalFrame {
      */
     public Estudiante() {
         initComponents();
+        this.servicioEstudiante = FabricaExterior.obtenerServicioEstudiante();
+        this.servicioPrograma = FabricaExterior.obtenerServicioPrograma();
     }
 
     /**
@@ -231,7 +233,7 @@ public class Estudiante extends javax.swing.JInternalFrame {
         }else{
             estado = false;
         }
-        DTOEstudiante estudiante = FabricaDTO.obtenerEstudianteDTO(id, nombres.getText(), Apellidos.getText(), 
+        DTOEstudiante estudiante = FabricaExterior.obtenerEstudianteDTO(id, nombres.getText(), Apellidos.getText(),
                 correo.getText(),Codigo,Programa, estado, Promedio);
         servicioEstudiante.InscribirEstudiante(estudiante);
         observable.notificarObservadores("Estudiante", "eliminar", this);

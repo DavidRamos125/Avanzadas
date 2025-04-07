@@ -28,7 +28,7 @@ public class ServicioProfesor {
         return serializar(profesor);
     }
     
-    public List<DTOProfesor> obtenerCursos() {
+    public List<DTOProfesor> obtenerProfesores() {
         List<DTOProfesor> listaDto = new ArrayList<>();
         List<Profesor> consulta = crud.obtenerTodos();
         for (Profesor profesor : consulta) {

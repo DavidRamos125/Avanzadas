@@ -1,0 +1,141 @@
+-- CREACIÓN DE TABLAS
+CREATE TABLE IF NOT EXISTS Persona (
+    ID        BIGINT PRIMARY KEY,
+    nombres   VARCHAR(100),
+    apellidos VARCHAR(100),
+    email     VARCHAR(150)
+);
+
+CREATE TABLE IF NOT EXISTS Profesor (
+    ID            BIGINT PRIMARY KEY,
+    tipo_contrato VARCHAR(50),
+    FOREIGN KEY (ID) REFERENCES Persona(ID)
+);
+
+CREATE TABLE IF NOT EXISTS Facultad (
+    ID        BIGINT PRIMARY KEY,
+    nombre    VARCHAR(100),
+    decano_id BIGINT,
+    FOREIGN KEY (decano_id) REFERENCES Persona(ID)
+);
+
+CREATE TABLE IF NOT EXISTS Programa (
+    ID          BIGINT PRIMARY KEY,
+    nombre      VARCHAR(100),
+    duracion    INT,
+    registro    VARCHAR(50),
+    facultad_id BIGINT,
+    FOREIGN KEY (facultad_id) REFERENCES Facultad(ID)
+);
+
+CREATE TABLE IF NOT EXISTS Curso (
+    ID          BIGINT PRIMARY KEY,
+    nombre      VARCHAR(100), -- <- columna añadida
+    programa_id BIGINT NOT NULL,
+    activo      BOOLEAN,
+    FOREIGN KEY (programa_id) REFERENCES Programa(ID)
+);
+
+CREATE TABLE IF NOT EXISTS Estudiante (
+    ID          BIGINT PRIMARY KEY,
+    codigo      BIGINT UNIQUE,
+    programa_id BIGINT NOT NULL,
+    activo      BOOLEAN,
+    promedio    DOUBLE,
+    FOREIGN KEY (ID) REFERENCES Persona(ID),
+    FOREIGN KEY (programa_id) REFERENCES Programa(ID)
+);
+
+CREATE TABLE IF NOT EXISTS Inscripcion (
+    estudianteID BIGINT,
+    cursoID      BIGINT,
+    año          INT,
+    semestre     INT,
+    PRIMARY KEY (estudianteID, cursoID, año, semestre),
+    FOREIGN KEY (estudianteID) REFERENCES Estudiante(ID),
+    FOREIGN KEY (cursoID) REFERENCES Curso(ID)
+);
+
+CREATE TABLE IF NOT EXISTS CursoProfesor (
+    cursoID    BIGINT,
+    profesorID BIGINT,
+    año        INT,
+    semestre   INT,
+    PRIMARY KEY (profesorID, cursoID, año, semestre),
+    FOREIGN KEY (cursoID) REFERENCES Curso(ID),
+    FOREIGN KEY (profesorID) REFERENCES Profesor(ID)
+);
+
+-- INSERCIÓN DE 15 PERSONAS
+INSERT INTO Persona (ID, nombres, apellidos, email) VALUES
+(1, 'Ana', 'Martínez', 'ana.martinez@example.com'),
+(2, 'Carlos', 'Gómez', 'carlos.gomez@example.com'),
+(3, 'Laura', 'Ríos', 'laura.rios@example.com'),
+(4, 'Miguel', 'López', 'miguel.lopez@example.com'),
+(5, 'Elena', 'Ramírez', 'elena.ramirez@example.com'),
+(6, 'Pedro', 'Mendoza', 'pedro.mendoza@example.com'),
+(7, 'Lucía', 'Castillo', 'lucia.castillo@example.com'),
+(8, 'Javier', 'Vega', 'javier.vega@example.com'),
+(9, 'Sofía', 'Pineda', 'sofia.pineda@example.com'),
+(10, 'Andrés', 'Camargo', 'andres.camargo@example.com'),
+(11, 'Sandra', 'Quintero', 'sandra.quintero@example.com'),
+(12, 'Tomás', 'Valencia', 'tomas.valencia@example.com'),
+(13, 'María', 'Durán', 'maria.duran@example.com'),
+(14, 'Esteban', 'Silva', 'esteban.silva@example.com'),
+(15, 'Paula', 'Herrera', 'paula.herrera@example.com');
+
+-- PROFESORES (ID 6-10)
+INSERT INTO Profesor (ID, tipo_contrato) VALUES
+(6, 'Tiempo completo'),
+(7, 'Cátedra'),
+(8, 'Medio tiempo'),
+(9, 'Tiempo completo'),
+(10, 'Cátedra');
+
+-- FACULTADES (5-9), decanos (11-15)
+INSERT INTO Facultad (ID, nombre, decano_id) VALUES
+(1, 'Facultad de Ingeniería', 11),
+(2, 'Facultad de Ciencias', 12),
+(3, 'Facultad de Artes', 13),
+(4, 'Facultad de Derecho', 14),
+(5, 'Facultad de Medicina', 15);
+
+-- PROGRAMAS
+INSERT INTO Programa (ID, nombre, duracion, registro, facultad_id) VALUES
+(1, 'Ingeniería de Sistemas', 10, 'IS001', 1),
+(2, 'Biología', 8, 'BIO001', 2),
+(3, 'Diseño Gráfico', 8, 'DG001', 3),
+(4, 'Derecho', 10, 'DER001', 4),
+(5, 'Medicina', 12, 'MED001', 5);
+
+-- ESTUDIANTES (ID 1-5)
+INSERT INTO Estudiante (ID, codigo, programa_id, activo, promedio) VALUES
+(1, 1001, 1, TRUE, 3.5),
+(2, 1002, 2, TRUE, 4.1),
+(3, 1003, 3, TRUE, 3.9),
+(4, 1004, 4, TRUE, 4.5),
+(5, 1005, 5, TRUE, 4.7);
+
+-- CURSOS
+INSERT INTO Curso (ID, nombre, programa_id, activo) VALUES
+(1, 'Programación I', 1, TRUE),
+(2, 'Biología Molecular', 2, TRUE),
+(3, 'Teoría del Color', 3, TRUE),
+(4, 'Constitucional', 4, TRUE),
+(5, 'Anatomía', 5, TRUE);
+
+-- INSCRIPCIONES
+INSERT INTO Inscripcion (estudianteID, cursoID, año, semestre) VALUES
+(1, 1, 2023, 1),
+(2, 2, 2023, 1),
+(3, 3, 2023, 1),
+(4, 4, 2023, 1),
+(5, 5, 2023, 1);
+
+-- CURSO-PROFESOR
+INSERT INTO CursoProfesor (cursoID, profesorID, año, semestre) VALUES
+(1, 6, 2023, 1),
+(2, 7, 2023, 1),
+(3, 8, 2023, 1),
+(4, 9, 2023, 1),
+(5, 10, 2023, 1);

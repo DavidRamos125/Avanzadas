@@ -1,8 +1,9 @@
 package com.mycompany.aplicacion_de_conceptos.fabricas;
 
 import com.mycompany.aplicacion_de_conceptos.dtos.*;
+import com.mycompany.aplicacion_de_conceptos.servicios.*;
 
-public class FabricaDTO {
+public class FabricaExterior {
     public static DTOPersona obtenerPersonaDTO(double id, String nombres, String apellidos, String email) {
         return new DTOPersona(id, nombres, apellidos, email);
     }
@@ -64,4 +65,60 @@ public class FabricaDTO {
     ) {
         return new DTOCursoProfesor(profesor, año, semestre, curso);
     }
+
+
+    public static ServicioCurso obtenerServicioCurso(){
+        return new ServicioCurso();
+    }
+
+    public static ServicioCursoProfesor obtenerServicioCursoProfesor(){
+        return new ServicioCursoProfesor();
+    }
+
+    public static ServicioEstudiante obtenerServicioEstudiante(){
+        return new ServicioEstudiante();
+    }
+
+    public static ServicioFacultad obtenerServicioFacultad(){
+        return new ServicioFacultad();
+    }
+
+    public static ServicioInscripcion obtenerServicioInscripcion(){
+        return new ServicioInscripcion();
+    }
+
+    public static ServicioPersona obtenerServicioPersona(){
+        return new ServicioPersona();
+    }
+
+    public static ServicioProfesor obtenerServicioProfesor(){
+        return new ServicioProfesor();
+    }
+
+    public static ServicioPrograma obtenerServicioPrograma(){
+        return new ServicioPrograma();
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

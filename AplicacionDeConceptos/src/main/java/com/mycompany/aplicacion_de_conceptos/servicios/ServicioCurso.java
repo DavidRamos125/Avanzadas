@@ -25,6 +25,7 @@ public class ServicioCurso {
 
     public DTOCurso obtenerCurso(String id) {
         Curso curso = crud.obtener(id);
+        System.out.println("es nulo?"+ curso.toString());
         return serializar(curso);
     }
 

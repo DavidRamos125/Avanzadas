@@ -9,14 +9,24 @@ import java.sql.SQLException;
 
 public class ConexionMysql implements Conexion {
 
-    private static final String URL = Propiedades.cargarPropiedad("bd.URL");
-    private static final String USER = Propiedades.cargarPropiedad("bd.USER");
-    private static final String PASSWORD = Propiedades.cargarPropiedad("bd.PASSWORD");
+    private static String URL;
+    private static String USER;
+    private static String PASSWORD;
 
     private static ConexionMysql instancia;
     private Connection connection;
 
-    private ConexionMysql() {}
+    private ConexionMysql() {
+        this.URL = Propiedades.cargarPropiedad("db.URL");
+        this.USER = Propiedades.cargarPropiedad("db.USER");
+        this.PASSWORD = Propiedades.cargarPropiedad("db.PASSWORD");
+        try {
+            this.connection = conectar();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
 
     public static ConexionMysql getInstancia() {
         if (instancia == null) {

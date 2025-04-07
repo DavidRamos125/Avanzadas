@@ -41,7 +41,7 @@ public class DBCurso implements CRUD<Curso> {
 
     @Override
     public Curso obtener(String id) {
-        String sql = "SELECT c.ID, c.nombre, c.activo, " +
+        String sql = "SELECT c.ID AS curso_id, c.nombre AS curso_nombre, c.activo, " +
                 "p.ID AS prog_id, p.nombre AS prog_nombre, p.duracion, p.registro, " +
                 "f.ID AS fac_id, f.nombre AS fac_nombre, " +
                 "dec.ID AS decano_id, dec.nombres AS decano_nombres, dec.apellidos AS decano_apellidos, dec.email AS decano_email " +
@@ -52,24 +52,23 @@ public class DBCurso implements CRUD<Curso> {
                 "WHERE c.ID = ?";
 
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
-            pstmt.setDouble(1, Double.parseDouble(id));
+            pstmt.setDouble(1, Double.parseDouble(id)); // O usa setInt si ID es entero
             ResultSet rs = pstmt.executeQuery();
             if (rs.next()) {
-
-                Persona decano = FabricaSistema.obtenerPersona(
+                Persona decano = new Persona(
                         rs.getDouble("decano_id"),
                         rs.getString("decano_nombres"),
                         rs.getString("decano_apellidos"),
                         rs.getString("decano_email")
                 );
 
-                Facultad facultad = FabricaSistema.obtenerFacultad(
+                Facultad facultad = new Facultad(
                         rs.getDouble("fac_id"),
                         rs.getString("fac_nombre"),
                         decano
                 );
 
-                Programa programa = FabricaSistema.obtenerPrograma(
+                Programa programa = new Programa(
                         rs.getDouble("prog_id"),
                         rs.getString("prog_nombre"),
                         rs.getDouble("duracion"),
@@ -77,9 +76,9 @@ public class DBCurso implements CRUD<Curso> {
                         facultad
                 );
 
-                return FabricaSistema.obtenerCurso(
-                        rs.getDouble("ID"),
-                        rs.getString("nombre"),
+                return new Curso(
+                        rs.getDouble("curso_id"),
+                        rs.getString("curso_nombre"),
                         programa,
                         rs.getBoolean("activo")
                 );
@@ -89,7 +88,6 @@ public class DBCurso implements CRUD<Curso> {
         }
         return null;
     }
-
 
     @Override
     public List<Curso> obtenerTodos() {

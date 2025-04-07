@@ -9,14 +9,23 @@ import java.sql.SQLException;
 
 public class ConexionH2 implements Conexion {
 
-    private static final String URL = Propiedades.cargarPropiedad("bd.URL");
-    private static final String USER = Propiedades.cargarPropiedad("bd.USER");
-    private static final String PASSWORD = Propiedades.cargarPropiedad("bd.PASSWORD");
+    private static String URL;
+    private static String USER;
+    private static String PASSWORD;
 
     private static ConexionH2 instancia;
     private Connection conexion;
 
     private ConexionH2() {
+        this.URL = Propiedades.cargarPropiedad("db.URL");
+        this.USER = Propiedades.cargarPropiedad("db.USER");
+        this.PASSWORD = Propiedades.cargarPropiedad("db.PASSWORD");
+        System.out.println(URL + " " + USER + " " + PASSWORD);
+        try {
+            this.conexion = conectar();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public static ConexionH2 getInstancia() {
