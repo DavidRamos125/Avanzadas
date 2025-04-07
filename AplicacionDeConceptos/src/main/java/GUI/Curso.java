@@ -203,7 +203,8 @@ public class Curso extends javax.swing.JInternalFrame {
         }else{
            Desactivo.doClick();
         }
-        programa.addItem(String.valueOf(curso.getPrograma().getId()));
+        programa.removeAllItems();
+        programa.addItem(String.valueOf(curso.getId()));
     }//GEN-LAST:event_buscarActionPerformed
 
     private void Actualizar_ProgramasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Actualizar_ProgramasActionPerformed
